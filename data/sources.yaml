@@ -4,6 +4,10 @@ rss:
     url: "https://36kr.com/feed"
     keywords: ["智驾", "自动驾驶", "ADAS", "辅助驾驶", "NOA", "智能驾驶", "激光雷达"]
 
+  - name: "高工智能汽车"
+    url: "https://rss.csdn.net/GGAI_AI/rss/map"
+    keywords: []   # all content is ADAS-focused, no filter needed
+
 web:
   # Selector verified 2026-03-27: div.quicknews contains 40+ latest news <a> links
   - name: "盖世汽车"
@@ -11,6 +15,33 @@ web:
     article_selector: "div.quicknews a"
     title_selector: "a"
     link_selector: "a"
+
+  - name: "电车汇"
+    url: "https://www.d1ev.com/tag/%E6%99%BA%E8%83%BD%E9%A9%BE%E9%A9%B6"
+    article_selector: ".article--wraped"
+    title_selector: ".article_p"
+    link_selector: ".article--content a"
+
+  - name: "汽车之家-科技"
+    url: "https://www.autohome.com.cn/tech/"
+    article_selector: ".article-wrapper ul li"
+    title_selector: "h3"
+    link_selector: "a"
+
+  - name: "汽车之家-新闻"
+    url: "https://www.autohome.com.cn/news/"
+    article_selector: ".article-wrapper ul li"
+    title_selector: "h3"
+    link_selector: "a"
+
+nextjs:
+  - name: "懂车帝"
+    url: "https://www.dongchedi.com/news/industry"
+    data_path: "props.pageProps.staticData.news"
+    title_field: "title"
+    id_field: "unique_id_str"
+    url_prefix: "https://www.dongchedi.com/article/"
+    keywords: ["自动驾驶", "智能驾驶", "NOA", "辅助驾驶", "激光雷达", "ADAS", "智驾", "端到端", "华为ADS", "小鹏", "比亚迪天神", "特斯拉"]
 
 bilibili:
   keywords:

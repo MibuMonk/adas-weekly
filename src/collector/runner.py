@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 
 import yaml
 
+from src.collector.nextjs import fetch_nextjs
 from src.collector.rss import fetch_rss
 from src.collector.web import fetch_page
 from src.models import Article
@@ -51,6 +52,22 @@ async def collect_all(sources_path: str = "data/sources.yaml") -> list[Article]:
                 link_selector=src.get("link_selector", "a"),
             ),
             name=f"web:{src['name']}",
+        )
+        tasks.append(task)
+
+    # Next.js sources.
+    for src in config.get("nextjs", []):
+        task = asyncio.create_task(
+            fetch_nextjs(
+                source_name=src["name"],
+                url=src["url"],
+                data_path=src["data_path"],
+                title_field=src["title_field"],
+                id_field=src["id_field"],
+                url_prefix=src["url_prefix"],
+                keywords=src.get("keywords"),
+            ),
+            name=f"nextjs:{src['name']}",
         )
         tasks.append(task)
 
