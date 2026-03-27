@@ -39,4 +39,7 @@ htmlcov/
 .idea/
 .vscode/
 *.swp
+
+# Claude Code — ignore user settings but track project slash commands
+# (cannot use !negation on a fully-ignored dir; force-added instead)
 .claude/
