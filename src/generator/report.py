@@ -47,8 +47,22 @@ def generate_report(
         for a in articles
     ]
 
-    # Sort by relevance descending
-    normalised.sort(key=lambda a: a.get("relevance_score", 0), reverse=True)
+    # Sort by relevance descending, with a bonus for Momenta-related articles
+    _MOMENTA_KEYWORDS = {"momenta", "モメンタ"}
+    _MOMENTA_BONUS = 1.5
+
+    def _sort_score(a: dict) -> float:
+        base = a.get("relevance_score", 0)
+        text = " ".join([
+            a.get("title", ""),
+            a.get("title_ja", ""),
+            a.get("summary_ja", ""),
+        ]).lower()
+        if any(kw in text for kw in _MOMENTA_KEYWORDS):
+            base += _MOMENTA_BONUS
+        return base
+
+    normalised.sort(key=_sort_score, reverse=True)
 
     # Split: first article is the hero, rest are secondary
     hero = normalised[0] if normalised else None
