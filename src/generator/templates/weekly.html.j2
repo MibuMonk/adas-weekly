@@ -189,100 +189,6 @@
       margin-top: 5px;
     }
 
-    /* ════════════════════════════════
-       ARTICLE COLUMNS
-    ════════════════════════════════ */
-    .columns {
-      column-count: 3;
-      column-gap: 2rem;
-      column-rule: 1px solid #999;
-    }
-
-    @media (max-width: 768px) {
-      .columns { column-count: 1; }
-    }
-
-    /* ════════════════════════════════
-       HERO ARTICLE (lead story)
-    ════════════════════════════════ */
-    .hero-section {
-      margin-bottom: 0;
-    }
-
-    .hero-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      font-variant: small-caps;
-      color: #8b1a1a;
-      margin-bottom: 8px;
-    }
-
-    .hero-headline {
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-      font-weight: 700;
-      line-height: 1.15;
-      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
-      margin-bottom: 10px;
-      letter-spacing: 0.01em;
-    }
-
-    .hero-headline a {
-      color: #1a1a1a;
-      text-decoration: none;
-    }
-
-    .hero-headline a:hover {
-      color: #8b1a1a;
-    }
-
-    .hero-rule {
-      border: none;
-      border-top: 2px solid #1a1a1a;
-      margin: 8px 0 6px;
-    }
-
-    .hero-byline {
-      font-size: 0.72rem;
-      font-variant: small-caps;
-      letter-spacing: 0.07em;
-      color: #555;
-      margin-bottom: 12px;
-    }
-
-    .hero-body {
-      font-size: 0.95rem;
-      line-height: 1.75;
-      text-align: justify;
-      color: #1a1a1a;
-      margin-bottom: 10px;
-      max-width: 72ch;
-    }
-
-    .hero-tags {
-      font-size: 0.75rem;
-      color: #8b1a1a;
-      margin-bottom: 0;
-    }
-
-    .hero-divider {
-      border: none;
-      border-top: 3px double #1a1a1a;
-      margin: 20px 0 18px;
-    }
-
-    /* Secondary section label */
-    .secondary-label {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #555;
-      margin-bottom: 12px;
-      font-variant: small-caps;
-    }
-
     .article-item {
       break-inside: avoid;
       margin-bottom: 1.5rem;
@@ -336,87 +242,144 @@
     }
 
     /* ════════════════════════════════
-       VIDEO SECTION
+       NEWS GRID
     ════════════════════════════════ */
-    .video-note {
-      font-style: italic;
-      font-size: 0.78rem;
-      color: #555;
-      margin-bottom: 14px;
-      letter-spacing: 0.02em;
-    }
-
-    .video-grid {
+    .news-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 0;
+      row-gap: 0;
     }
 
-    @media (max-width: 600px) {
-      .video-grid { grid-template-columns: 1fr; }
+    .article-t1 {
+      grid-column: 1 / -1;
+      border-bottom: 2px solid #1a1a1a;
+      padding: 16px 0 20px;
     }
-
-    .video-card {
-      border: 1px solid #333;
+    .article-t2 {
+      grid-column: span 3;
+      border-right: 1px solid #999;
+      border-bottom: 1px solid #ccc;
+      padding: 14px 16px 16px 0;
     }
-
-    .video-embed-wrapper {
-      position: relative;
-      padding-top: 56.25%;
-      background: #0d0d0d;
+    .article-t2:nth-of-type(even) {
+      border-right: none;
+      padding-right: 0;
+      padding-left: 16px;
     }
-
-    .video-embed-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
+    .article-t3 {
+      grid-column: span 2;
+      border-right: 1px solid #999;
+      border-bottom: 1px solid #ccc;
+      padding: 12px 14px 14px 0;
     }
-
-    .video-rule {
-      border: none;
-      border-top: 1px solid #333;
+    .article-t3:last-of-type { border-right: none; }
+    .article-t4 {
+      grid-column: span 1;
+      border-right: 1px solid #999;
+      border-bottom: 1px solid #ccc;
+      padding: 10px 10px 12px 0;
     }
+    .article-t4:last-child { border-right: none; }
 
-    .video-meta {
-      padding: 10px 12px 12px;
-    }
-
-    .video-title {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: #8b1a1a;
+    .headline-t1 {
+      font-size: clamp(1.9rem, 3.2vw, 2.4rem);
+      font-weight: 700; line-height: 1.12; letter-spacing: 0.01em;
+      margin-bottom: 10px;
       font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
-      line-height: 1.4;
-      display: block;
+    }
+    .headline-t2 {
+      font-size: 1.35rem;
+      font-weight: 700; line-height: 1.18;
       margin-bottom: 8px;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+    }
+    .headline-t3 {
+      font-size: 1.05rem;
+      font-weight: 700; line-height: 1.22;
+      margin-bottom: 6px;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+    }
+    .headline-t4 {
+      font-size: 0.88rem;
+      font-weight: 700; line-height: 1.3;
+      margin-bottom: 4px;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+    }
+    .headline-t1 a, .headline-t2 a,
+    .headline-t3 a, .headline-t4 a { color: #1a1a1a; text-decoration: none; }
+    .headline-t1 a:hover, .headline-t2 a:hover,
+    .headline-t3 a:hover, .headline-t4 a:hover { color: #8b1a1a; }
+
+    .summary-t1 {
+      font-size: 0.95rem; line-height: 1.75; text-align: justify;
+      color: #1a1a1a; margin-bottom: 10px; max-width: 72ch;
+    }
+    .summary-t2 {
+      font-size: 0.88rem; line-height: 1.65; text-align: justify;
+      color: #1a1a1a; margin-bottom: 8px;
+      display: -webkit-box; -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .summary-t3 {
+      font-size: 0.82rem; line-height: 1.55; color: #1a1a1a; margin-bottom: 6px;
+      display: -webkit-box; -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical; overflow: hidden;
     }
 
-    .video-title:hover {
-      text-decoration: underline;
+    .tier-label {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; font-variant: small-caps;
+      color: #8b1a1a; margin-bottom: 6px; display: block;
     }
 
-    .video-footer {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 8px;
+    .video-insert {
+      grid-column: 1 / -1;
+      display: grid; grid-template-columns: 4fr 2fr; gap: 0;
+      border-top: 3px double #1a1a1a; border-bottom: 3px double #1a1a1a;
+      margin: 12px 0; background: #f4f0e8;
     }
-
-    .video-author {
-      font-size: 0.75rem;
-      font-variant: small-caps;
-      letter-spacing: 0.05em;
-      color: #666;
+    .video-insert-embed {
+      position: relative; padding-top: 37.5%;
+      background: #0d0d0d; overflow: hidden;
     }
+    .video-insert-embed iframe {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; border: none;
+    }
+    .video-insert-meta {
+      padding: 18px 20px; display: flex;
+      flex-direction: column; justify-content: center;
+      border-left: 1px solid #333;
+    }
+    .video-insert-kicker {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #8b1a1a; margin-bottom: 10px;
+    }
+    .video-insert-title {
+      font-size: 1.0rem; font-weight: 700; line-height: 1.4;
+      color: #1a1a1a; margin-bottom: 12px;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+    }
+    .video-insert-title a { color: #1a1a1a; text-decoration: none; }
+    .video-insert-title a:hover { color: #8b1a1a; }
+    .video-insert-footer { font-size: 0.72rem; font-variant: small-caps; color: #666; }
 
-    .video-score {
-      font-size: 0.68rem;
-      color: #555;
-      text-align: right;
-      white-space: nowrap;
+    @media (max-width: 768px) {
+      .news-grid { grid-template-columns: repeat(4, 1fr); }
+      .article-t1 { grid-column: 1 / -1; }
+      .article-t2 { grid-column: span 2; }
+      .article-t3 { grid-column: span 2; }
+      .article-t4 { grid-column: span 1; }
+      .video-insert { grid-template-columns: 1fr; }
+      .video-insert-embed { padding-top: 56.25%; }
+      .video-insert-meta { border-left: none; border-top: 1px solid #333; }
+    }
+    @media (max-width: 480px) {
+      .news-grid { grid-template-columns: 1fr; }
+      .article-t1, .article-t2, .article-t3, .article-t4 {
+        grid-column: 1 / -1; border-right: none;
+      }
     }
 
     /* ════════════════════════════════
@@ -498,7 +461,7 @@
     </section>
 
     <!-- ══════════════════════════════
-         ARTICLES SECTION
+         ARTICLES + VIDEO GRID
     ══════════════════════════════ -->
     <section aria-labelledby="articles-heading">
       <div class="section-header">
@@ -507,47 +470,9 @@
         <hr class="section-hr-bottom">
       </div>
 
-      {% if hero %}
-      <!-- Hero: lead story -->
-      <div class="hero-section">
-        <p class="hero-label">◈ 本週の主要記事</p>
-
-        {% if hero.credibility_score >= 8 %}
-          {% set hero_cred = "公式発表" %}
-        {% elif hero.credibility_score >= 6 %}
-          {% set hero_cred = "報道" %}
-        {% elif hero.credibility_score >= 4 %}
-          {% set hero_cred = "評価・レポート" %}
-        {% else %}
-          {% set hero_cred = "情報源未確認" %}
-        {% endif %}
-
-        <h2 class="hero-headline">
-          <a href="{{ hero.url }}" target="_blank" rel="noopener noreferrer">
-            {{ hero.title_ja if hero.title_ja else hero.title }}
-          </a>
-        </h2>
-        <hr class="hero-rule">
-        <p class="hero-byline">
-          {{ hero.source }}&nbsp;·&nbsp;{{ hero_cred }}&nbsp;·&nbsp;関連度 {{ "%.1f"|format(hero.relevance_score) }}
-          {% if hero.published_at %}&nbsp;·&nbsp;{{ hero.published_at[:10] }}{% endif %}
-        </p>
-        <p class="hero-body">{{ hero.summary_ja if hero.summary_ja else "" }}</p>
-        {% if hero.tags %}
-        <p class="hero-tags">
-          {% for tag in hero.tags %}▶ {{ tag }}{% if not loop.last %}&nbsp;&nbsp;{% endif %}{% endfor %}
-        </p>
-        {% endif %}
-      </div>
-
-      <hr class="hero-divider">
-      {% endif %}
-
-      <!-- Secondary articles in columns -->
-      {% if articles %}
-      <p class="secondary-label">その他の注目記事 — {{ articles | length }} 件</p>
-      <div class="columns">
-        {% for article in articles %}
+      <div class="news-grid">
+      {% set video_idx = namespace(value=0) %}
+      {% for article in articles %}
 
         {% if article.credibility_score >= 8 %}
           {% set cred_label = "公式発表" %}
@@ -559,70 +484,77 @@
           {% set cred_label = "情報源未確認" %}
         {% endif %}
 
-        <article class="article-item">
-          <h3 class="article-headline">
+        <article class="article-t{{ article.tier }}">
+          {% if article.tier == 1 %}
+          <span class="tier-label">◈ 本週の主要記事</span>
+          {% endif %}
+          <h2 class="headline-t{{ article.tier }}">
             <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer">
               {{ article.title_ja if article.title_ja else article.title }}
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            {{ article.source }}&nbsp;·&nbsp;{{ cred_label }}&nbsp;·&nbsp;スコア {{ "%.1f"|format(article.credibility_score) }}
+            {{ article.source }}&nbsp;·&nbsp;{{ cred_label }}
             {% if article.published_at %}&nbsp;·&nbsp;{{ article.published_at[:10] }}{% endif %}
           </p>
-          <p class="article-body-text">{{ article.summary_ja if article.summary_ja else "" }}</p>
-          {% if article.tags %}
+          {% if article.tier <= 3 and article.summary_ja %}
+          <p class="summary-t{{ article.tier }}">{{ article.summary_ja }}</p>
+          {% endif %}
+          {% if article.tier <= 2 and article.tags %}
           <p class="article-tags">
             {% for tag in article.tags %}▶ {{ tag }}{% if not loop.last %}&nbsp;&nbsp;{% endif %}{% endfor %}
           </p>
           {% endif %}
         </article>
 
-        {% endfor %}
-      </div>
-      {% endif %}
-
-    </section>
-
-    <!-- ══════════════════════════════
-         VIDEO SECTION
-    ══════════════════════════════ -->
-    {% if videos %}
-    <section aria-labelledby="video-heading">
-      <div class="section-header">
-        <hr class="section-hr-top">
-        <span class="section-title" id="video-heading">▌ 動画通信員リポート（B站）</span>
-        <hr class="section-hr-bottom">
-      </div>
-      <p class="video-note">※ 本欄は動画メディアからの現場リポートです</p>
-
-      <div class="video-grid">
-        {% for v in videos %}
-        <div class="video-card">
-          <div class="video-embed-wrapper">
-            <iframe
-              src="{{ v.embed_url }}"
-              scrolling="no"
-              frameborder="0"
-              allowfullscreen="true"
-              loading="lazy">
-            </iframe>
+        {% if loop.index % 4 == 0 and video_idx.value < videos|length %}
+        <div class="video-insert">
+          <div class="video-insert-embed">
+            <iframe src="{{ videos[video_idx.value].embed_url }}"
+                    scrolling="no" frameborder="0"
+                    allowfullscreen="true" loading="lazy"></iframe>
           </div>
-          <hr class="video-rule">
-          <div class="video-meta">
-            <a class="video-title" href="{{ v.url }}" target="_blank" rel="noopener noreferrer">
-              {{ v.title_ja or v.title }}
-            </a>
-            <div class="video-footer">
-              <span class="video-author">{{ v.author }}</span>
-              <span class="video-score">スコア: {{ "%.1f"|format(v.relevance_score) }}</span>
+          <div class="video-insert-meta">
+            <span class="video-insert-kicker">▌ 動画通信員リポート</span>
+            <p class="video-insert-title">
+              <a href="{{ videos[video_idx.value].url }}" target="_blank" rel="noopener noreferrer">
+                {{ videos[video_idx.value].title_ja or videos[video_idx.value].title }}
+              </a>
+            </p>
+            <div class="video-insert-footer">
+              {{ videos[video_idx.value].author }}&nbsp;·&nbsp;スコア {{ "%.1f"|format(videos[video_idx.value].relevance_score) }}
             </div>
           </div>
         </div>
-        {% endfor %}
+        {% set video_idx.value = video_idx.value + 1 %}
+        {% endif %}
+
+      {% endfor %}
+
+      {% for v in videos[video_idx.value:] %}
+      <div class="video-insert">
+        <div class="video-insert-embed">
+          <iframe src="{{ v.embed_url }}"
+                  scrolling="no" frameborder="0"
+                  allowfullscreen="true" loading="lazy"></iframe>
+        </div>
+        <div class="video-insert-meta">
+          <span class="video-insert-kicker">▌ 動画通信員リポート</span>
+          <p class="video-insert-title">
+            <a href="{{ v.url }}" target="_blank" rel="noopener noreferrer">
+              {{ v.title_ja or v.title }}
+            </a>
+          </p>
+          <div class="video-insert-footer">
+            {{ v.author }}&nbsp;·&nbsp;スコア {{ "%.1f"|format(v.relevance_score) }}
+          </div>
+        </div>
       </div>
+      {% endfor %}
+
+      </div><!-- /.news-grid -->
     </section>
-    {% endif %}
 
     <!-- ── Footer ── -->
     <footer class="site-footer">

@@ -64,9 +64,18 @@ def generate_report(
 
     normalised.sort(key=_sort_score, reverse=True)
 
-    # Split: first article is the hero, rest are secondary
-    hero = normalised[0] if normalised else None
-    secondary = normalised[1:] if len(normalised) > 1 else []
+    def _assign_tier(score: float) -> int:
+        if score >= 8.5:   return 1
+        if score >= 7.0:   return 2
+        if score >= 5.0:   return 3
+        return 4
+
+    for a in normalised:
+        a["tier"] = _assign_tier(_sort_score(a))
+
+    # Force the lead article to Tier 1 regardless of score
+    if normalised:
+        normalised[0]["tier"] = 1
 
     # Normalise videos to plain dicts, keep top 8 by relevance
     normalised_videos = sorted(
@@ -82,8 +91,7 @@ def generate_report(
     html = template.render(
         week_label=week_label,
         generated_at=generated_at,
-        hero=hero,
-        articles=secondary,
+        articles=normalised,
         total_articles=len(normalised),
         executive_summary=executive_summary,
         videos=normalised_videos,
