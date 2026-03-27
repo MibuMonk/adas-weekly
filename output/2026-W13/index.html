@@ -189,100 +189,6 @@
       margin-top: 5px;
     }
 
-    /* ════════════════════════════════
-       ARTICLE COLUMNS
-    ════════════════════════════════ */
-    .columns {
-      column-count: 3;
-      column-gap: 2rem;
-      column-rule: 1px solid #999;
-    }
-
-    @media (max-width: 768px) {
-      .columns { column-count: 1; }
-    }
-
-    /* ════════════════════════════════
-       HERO ARTICLE (lead story)
-    ════════════════════════════════ */
-    .hero-section {
-      margin-bottom: 0;
-    }
-
-    .hero-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      font-variant: small-caps;
-      color: #8b1a1a;
-      margin-bottom: 8px;
-    }
-
-    .hero-headline {
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-      font-weight: 700;
-      line-height: 1.15;
-      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
-      margin-bottom: 10px;
-      letter-spacing: 0.01em;
-    }
-
-    .hero-headline a {
-      color: #1a1a1a;
-      text-decoration: none;
-    }
-
-    .hero-headline a:hover {
-      color: #8b1a1a;
-    }
-
-    .hero-rule {
-      border: none;
-      border-top: 2px solid #1a1a1a;
-      margin: 8px 0 6px;
-    }
-
-    .hero-byline {
-      font-size: 0.72rem;
-      font-variant: small-caps;
-      letter-spacing: 0.07em;
-      color: #555;
-      margin-bottom: 12px;
-    }
-
-    .hero-body {
-      font-size: 0.95rem;
-      line-height: 1.75;
-      text-align: justify;
-      color: #1a1a1a;
-      margin-bottom: 10px;
-      max-width: 72ch;
-    }
-
-    .hero-tags {
-      font-size: 0.75rem;
-      color: #8b1a1a;
-      margin-bottom: 0;
-    }
-
-    .hero-divider {
-      border: none;
-      border-top: 3px double #1a1a1a;
-      margin: 20px 0 18px;
-    }
-
-    /* Secondary section label */
-    .secondary-label {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #555;
-      margin-bottom: 12px;
-      font-variant: small-caps;
-    }
-
     .article-item {
       break-inside: avoid;
       margin-bottom: 1.5rem;
@@ -336,87 +242,144 @@
     }
 
     /* ════════════════════════════════
-       VIDEO SECTION
+       NEWS GRID
     ════════════════════════════════ */
-    .video-note {
-      font-style: italic;
-      font-size: 0.78rem;
-      color: #555;
-      margin-bottom: 14px;
-      letter-spacing: 0.02em;
-    }
-
-    .video-grid {
+    .news-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 0;
+      row-gap: 0;
     }
 
-    @media (max-width: 600px) {
-      .video-grid { grid-template-columns: 1fr; }
+    .article-t1 {
+      grid-column: 1 / -1;
+      border-bottom: 2px solid #1a1a1a;
+      padding: 16px 0 20px;
     }
-
-    .video-card {
-      border: 1px solid #333;
+    .article-t2 {
+      grid-column: span 3;
+      border-right: 1px solid #999;
+      border-bottom: 1px solid #ccc;
+      padding: 14px 16px 16px 0;
     }
-
-    .video-embed-wrapper {
-      position: relative;
-      padding-top: 56.25%;
-      background: #0d0d0d;
+    .article-t2:nth-of-type(even) {
+      border-right: none;
+      padding-right: 0;
+      padding-left: 16px;
     }
-
-    .video-embed-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
+    .article-t3 {
+      grid-column: span 2;
+      border-right: 1px solid #999;
+      border-bottom: 1px solid #ccc;
+      padding: 12px 14px 14px 0;
     }
-
-    .video-rule {
-      border: none;
-      border-top: 1px solid #333;
+    .article-t3:last-of-type { border-right: none; }
+    .article-t4 {
+      grid-column: span 1;
+      border-right: 1px solid #999;
+      border-bottom: 1px solid #ccc;
+      padding: 10px 10px 12px 0;
     }
+    .article-t4:last-child { border-right: none; }
 
-    .video-meta {
-      padding: 10px 12px 12px;
-    }
-
-    .video-title {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: #8b1a1a;
+    .headline-t1 {
+      font-size: clamp(1.9rem, 3.2vw, 2.4rem);
+      font-weight: 700; line-height: 1.12; letter-spacing: 0.01em;
+      margin-bottom: 10px;
       font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
-      line-height: 1.4;
-      display: block;
+    }
+    .headline-t2 {
+      font-size: 1.35rem;
+      font-weight: 700; line-height: 1.18;
       margin-bottom: 8px;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+    }
+    .headline-t3 {
+      font-size: 1.05rem;
+      font-weight: 700; line-height: 1.22;
+      margin-bottom: 6px;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+    }
+    .headline-t4 {
+      font-size: 0.88rem;
+      font-weight: 700; line-height: 1.3;
+      margin-bottom: 4px;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+    }
+    .headline-t1 a, .headline-t2 a,
+    .headline-t3 a, .headline-t4 a { color: #1a1a1a; text-decoration: none; }
+    .headline-t1 a:hover, .headline-t2 a:hover,
+    .headline-t3 a:hover, .headline-t4 a:hover { color: #8b1a1a; }
+
+    .summary-t1 {
+      font-size: 0.95rem; line-height: 1.75; text-align: justify;
+      color: #1a1a1a; margin-bottom: 10px; max-width: 72ch;
+    }
+    .summary-t2 {
+      font-size: 0.88rem; line-height: 1.65; text-align: justify;
+      color: #1a1a1a; margin-bottom: 8px;
+      display: -webkit-box; -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .summary-t3 {
+      font-size: 0.82rem; line-height: 1.55; color: #1a1a1a; margin-bottom: 6px;
+      display: -webkit-box; -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical; overflow: hidden;
     }
 
-    .video-title:hover {
-      text-decoration: underline;
+    .tier-label {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; font-variant: small-caps;
+      color: #8b1a1a; margin-bottom: 6px; display: block;
     }
 
-    .video-footer {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 8px;
+    .video-insert {
+      grid-column: 1 / -1;
+      display: grid; grid-template-columns: 4fr 2fr; gap: 0;
+      border-top: 3px double #1a1a1a; border-bottom: 3px double #1a1a1a;
+      margin: 12px 0; background: #f4f0e8;
     }
-
-    .video-author {
-      font-size: 0.75rem;
-      font-variant: small-caps;
-      letter-spacing: 0.05em;
-      color: #666;
+    .video-insert-embed {
+      position: relative; padding-top: 37.5%;
+      background: #0d0d0d; overflow: hidden;
     }
+    .video-insert-embed iframe {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; border: none;
+    }
+    .video-insert-meta {
+      padding: 18px 20px; display: flex;
+      flex-direction: column; justify-content: center;
+      border-left: 1px solid #333;
+    }
+    .video-insert-kicker {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #8b1a1a; margin-bottom: 10px;
+    }
+    .video-insert-title {
+      font-size: 1.0rem; font-weight: 700; line-height: 1.4;
+      color: #1a1a1a; margin-bottom: 12px;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+    }
+    .video-insert-title a { color: #1a1a1a; text-decoration: none; }
+    .video-insert-title a:hover { color: #8b1a1a; }
+    .video-insert-footer { font-size: 0.72rem; font-variant: small-caps; color: #666; }
 
-    .video-score {
-      font-size: 0.68rem;
-      color: #555;
-      text-align: right;
-      white-space: nowrap;
+    @media (max-width: 768px) {
+      .news-grid { grid-template-columns: repeat(4, 1fr); }
+      .article-t1 { grid-column: 1 / -1; }
+      .article-t2 { grid-column: span 2; }
+      .article-t3 { grid-column: span 2; }
+      .article-t4 { grid-column: span 1; }
+      .video-insert { grid-template-columns: 1fr; }
+      .video-insert-embed { padding-top: 56.25%; }
+      .video-insert-meta { border-left: none; border-top: 1px solid #333; }
+    }
+    @media (max-width: 480px) {
+      .news-grid { grid-template-columns: 1fr; }
+      .article-t1, .article-t2, .article-t3, .article-t4 {
+        grid-column: 1 / -1; border-right: none;
+      }
     }
 
     /* ════════════════════════════════
@@ -465,8 +428,8 @@
         <h1 class="masthead-title">中国ADAS週報</h1>
       </div>
       <div class="masthead-right">
-        2026年03月27日 15:23 JST<br>
-        71 件の記事
+        2026年03月27日 15:42 JST<br>
+        68 件の記事
       </div>
     </div>
     <div class="masthead-subtitle">中国自動運転産業インテリジェンス</div>
@@ -488,9 +451,9 @@
           <div class="exec-inner">
             <p class="exec-heading" id="exec-heading">■ 今週の三大トピック</p>
             <ul class="exec-list">
-              <li>禾赛科技のADASライダー出荷138万台、前年比202%増で市場首位を確立</li>
-              <li>地平線ロボティクスの征程6チップが中高グレード市場シェア44%を量産初年度で獲得</li>
-              <li>都市部NOA搭載納車が340万台超、前年比102%増で全域インテリジェント化が競争軸に</li>
+              <li>Hesai LiDAR、ADAS向け出荷138万台・前年比202%増で首位確立</li>
+              <li>地平線ロボティクス、征程6チップがADASシェア44%・売上57.7%増</li>
+              <li>都市NOA搭載車340万台超・前年比102%増、全域インテリジェント化が主戦場に</li>
             </ul>
           </div>
         </div>
@@ -498,7 +461,7 @@
     </section>
 
     <!-- ══════════════════════════════
-         ARTICLES SECTION
+         ARTICLES + VIDEO GRID
     ══════════════════════════════ -->
     <section aria-labelledby="articles-heading">
       <div class="section-header">
@@ -507,1405 +470,1327 @@
         <hr class="section-hr-bottom">
       </div>
 
-      <!-- Hero: lead story -->
-      <div class="hero-section">
-        <p class="hero-label">◈ 本週の主要記事</p>
+      <div class="news-grid">
 
 
-        <h2 class="hero-headline">
-          <a href="https://www.d1ev.com/news/qiye/267117" target="_blank" rel="noopener noreferrer">
-            Momentaの累計協力量産車種が130車種超、業界初の前装量産Robotaxiを間もなく発表
-          </a>
-        </h2>
-        <hr class="hero-rule">
-        <p class="hero-byline">
-          电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;関連度 9.5
-        </p>
-        <p class="hero-body">自動運転スタートアップのMomentaは、累計協力量産車種が130車種を超えたと発表し、量産分野における強力な実績を示した。また、業界初となる前装量産Robotaxi（ロボタクシー）を間もなくリリースする予定であり、自動運転の商業化において重要なマイルストーンとなる。これによりMomentaは、ADAS・自動運転の量産領域でリーディングポジションをさらに強化する見込みだ。</p>
-        <p class="hero-tags">
-▶ Robotaxi&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ 量産&nbsp;&nbsp;▶ 前装量産&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ 商業化        </p>
-      </div>
-
-      <hr class="hero-divider">
-
-      <!-- Secondary articles in columns -->
-      <p class="secondary-label">その他の注目記事 — 70 件</p>
-      <div class="columns">
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
+            <a href="https://www.d1ev.com/news/qiye/267117" target="_blank" rel="noopener noreferrer">
+              Momentaの累計協業量産車種が130車種超、業界初の前装量産Robotaxiを近日発表予定
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            电车汇&nbsp;·&nbsp;情報源未確認
+          </p>
+          <p class="summary-t1">Momentaは累計協業量産車種が130車種を超えたと発表し、自動運転分野における幅広い展開を示した。また、業界初となる前装量産Robotaxiの近日発表を予告しており、自動運転の商業化において重要な節目を迎えている。このマイルストーンはMomentaのADAS・自動運転技術の量産実装における先進的な地位を示している。</p>
+          <p class="article-tags">
+▶ Robotaxi&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ 量産&nbsp;&nbsp;▶ 前装量産&nbsp;&nbsp;▶ ADAS          </p>
+        </article>
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://blog.csdn.net/GGAI_AI/article/details/159534857" target="_blank" rel="noopener noreferrer">
-              LiDAR市場で受注争いが激化、業界リーダーの禾赛科技が最大の勝者に
+              LiDARの受注争奪戦が激化、リーダーのHesaiが最大の勝者に
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-27          </p>
-          <p class="article-body-text">禾赛科技（Hesai Technology）は全スタック自社開発技術と幅広い顧客基盤を武器に、40社の自動車ブランド・160モデル超の量産受注を獲得し、中国販売上位10ブランドをすべてカバー。ADASライダーの出荷台数は138.1万台に達し、前年比202.6%増と急拡大し、総出荷量の85%超を占める。長安・北汽などL3認可取得企業とも連携し、L3/L4自動運転市場で圧倒的な優位性を確立している。</p>
+          <p class="summary-t1">Hesai（禾赛科技）は独自開発技術と幅広い顧客基盤を武器に、40社以上の自動車ブランド・160車種以上の量産受注を獲得し、中国販売台数トップ10全ブランドをカバーする。ADAS向けLiDAR出荷台数は138.1万台と前年比202.6%増を記録し、総出荷量の85%以上を占め、L3/L4自動運転市場で圧倒的な優位性を確立している。</p>
           <p class="article-tags">
-▶ LiDAR&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ L3自動運転&nbsp;&nbsp;▶ 量産&nbsp;&nbsp;▶ 禾赛科技          </p>
+▶ LiDAR&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ L3自動運転&nbsp;&nbsp;▶ 量産&nbsp;&nbsp;▶ センサー          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://blog.csdn.net/GGAI_AI/article/details/159380373" target="_blank" rel="noopener noreferrer">
-              地平線ロボティクス、2025年売上高57.7%増—中高グレード自動運転チップソリューションが約5倍に急成長
+              地平線ロボティクス、2025年売上高57.7%増・中高級ADASチップソリューションが約5倍成長
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-23          </p>
-          <p class="article-body-text">地平線ロボティクスの2025年売上高は前年比57.7%増を記録し、年間チップソリューション出荷量は400万セットを超え38.8%増となった。征程6シリーズチップを基盤とする中高グレードADASソリューションは市場シェア44%を獲得し、量産初年度にして首位を確立した。さらに次世代コックピット・運転融合型全車インテリジェントチップとOSの投入を予定しており、次世代スマートカーの標準装備となることが期待される。</p>
+          <p class="summary-t1">地平線ロボティクスの2025年売上高は前年比57.7%増を達成し、年間チップソリューション出荷量は400万セットを超え38.8%増となった。征程6シリーズチップ搭載の中高級ADASソリューションは市場シェア44%を獲得し、量産初年度でシェア首位を確保した。次世代コクピット・運転融合型全車AIチップと知能体OSの発表も予定しており、次世代スマートカーの標準装備となることが期待されている。</p>
           <p class="article-tags">
-▶ ADAS&nbsp;&nbsp;▶ 自動運転チップ&nbsp;&nbsp;▶ 征程6&nbsp;&nbsp;▶ 舱驾融合&nbsp;&nbsp;▶ 中高阶智驾&nbsp;&nbsp;▶ 市場シェア          </p>
+▶ ADASチップ&nbsp;&nbsp;▶ 征程6&nbsp;&nbsp;▶ 舱驾融合&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ 市场份额          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
+            <a href="https://blog.csdn.net/GGAI_AI/article/details/159003668" target="_blank" rel="noopener noreferrer">
+              半年で17億元調達！CATLとMomentaが商用車自動運転に「賭ける」
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
+&nbsp;·&nbsp;2026-03-13          </p>
+          <p class="summary-t1">高工智能汽車研究院のレポートによると、商用車（特に重トラック）の自動運転市場はL4レベルが港湾・鉱山などの閉鎖環境で先行突破し、2026年には普及率30%超が見込まれる。CATLとMomentaは半年間で17億元の資金調達を実施し、商用車自動運転分野への強い投資意欲を示した。2025年の新エネルギー重トラック普及率は約28%に達し、2026年には各社の商業化・収益化能力が問われる局面を迎える。</p>
+          <p class="article-tags">
+▶ L4自動運転&nbsp;&nbsp;▶ 商用車&nbsp;&nbsp;▶ 重トラック&nbsp;&nbsp;▶ 資金調達&nbsp;&nbsp;▶ 新エネルギー車          </p>
+        </article>
+
+        <div class="video-insert">
+          <div class="video-insert-embed">
+            <iframe src="https://player.bilibili.com/player.html?bvid=BV1zKX8BLEBE&autoplay=0&high_quality=1"
+                    scrolling="no" frameborder="0"
+                    allowfullscreen="true" loading="lazy"></iframe>
+          </div>
+          <div class="video-insert-meta">
+            <span class="video-insert-kicker">▌ 動画通信員リポート</span>
+            <p class="video-insert-title">
+              <a href="https://www.bilibili.com/video/BV1zKX8BLEBE" target="_blank" rel="noopener noreferrer">
+                天神之眼5.0アクティブセーフティ全面アップグレード、CCTV生中継による実走テスト
+              </a>
+            </p>
+            <div class="video-insert-footer">
+              比亚迪DiLink&nbsp;·&nbsp;スコア 9.5
+            </div>
+          </div>
+        </div>
+
+
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://blog.csdn.net/GGAI_AI/article/details/158960290" target="_blank" rel="noopener noreferrer">
-              「千線」時代到来！LiDARが性能競争で激化——華為が次世代デュアル光路イメージングLiDARを発表
+              「千ライン」時代到来！LiDARが性能競争で激化
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-12          </p>
-          <p class="article-body-text">華為乾崑が新世代デュアル光路イメージングLiDAR（896線）を正式発表し、複数の新型車に順次搭載される。高速NOA・都市部NOAの普及サイクル到来を背景に、OEMは技術格差拡大のためセンサーと演算プラットフォームのアップグレードを加速している。小鹏がLiDAR非依存路線を採る一方、華為はLiDARフル展開戦略を堅持している。</p>
+          <p class="summary-t1">華為乾崑が新世代デュアル光路イメージングLiDARを正式発表し、複数の新車に順次搭載される。高速NOAと市街地NOAの普及期突入を背景に、車メーカーはセンサー性能で技術差別化を図る必要に迫られており、華為はLiDARを全面採用する戦略を堅持している。一方、小鹏はLiDARに依存しないルートを選択しており、業界内での技術アプローチの分化が進んでいる。</p>
           <p class="article-tags">
-▶ LiDAR&nbsp;&nbsp;▶ NOA&nbsp;&nbsp;▶ 高速NOA&nbsp;&nbsp;▶ 城区NOA&nbsp;&nbsp;▶ センサー&nbsp;&nbsp;▶ ADAS          </p>
+▶ LiDar&nbsp;&nbsp;▶ NOA&nbsp;&nbsp;▶ 城区NOA&nbsp;&nbsp;▶ 高速NOA&nbsp;&nbsp;▶ 华为乾崑&nbsp;&nbsp;▶ 传感器          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://blog.csdn.net/GGAI_AI/article/details/158877951" target="_blank" rel="noopener noreferrer">
-              中国スマート運転が深化：L3/L4決戦開幕、業界再編が加速
+              中国スマートドライビングが深化段階へ：L3/L4決戦開始、業界再編が加速
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-10          </p>
-          <p class="article-body-text">中国のスマート運転業界はL3/L4レベルの決戦段階に突入し、業界再編が加速している。現行のL2システムはモジュール化の寄せ集めで場景分断の問題を抱えるが、小鹏汽車の第2世代VLAは従来の「視覚→言語変換→行動」の中間ステップを廃止し、エンドツーエンドの直接意思決定を実現した。異形車両の認識や事故現場の回避、夜間の小動物への対応など全シーン能力の向上を達成しており、今後10年を左右する智能運転競争が本格化している。</p>
+          <p class="summary-t1">現在主流のL2自動運転システムはモジュール式の組み合わせに過ぎず、複雑な実環境でシステム分断や意思決定の硬直などの問題が露呈している。小鹏汽車（Xpeng）は第2世代VLA（視覚・言語・動作）モデルを発表し、従来の中間変換ステップを廃してエンドツーエンドの直接意思決定を実現、異形車両の認識や事故現場の回避、夜間の動物への配慮など全シーン対応能力を備えた。記事は今後10年を左右するL3/L4自動運転の業界決戦がすでに全面的に始まったと指摘している。</p>
           <p class="article-tags">
-▶ E2E&nbsp;&nbsp;▶ VLA&nbsp;&nbsp;▶ L3/L4&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ 端到端&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ 小鹏          </p>
+▶ L3/L4&nbsp;&nbsp;▶ エンドツーエンド&nbsp;&nbsp;▶ VLA&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ 業界再編          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://www.d1ev.com/news/zhengce/277040" target="_blank" rel="noopener noreferrer">
-              三段階政策体系が支える中国L3級自動運転制度、商用化に向け整備進む
+              三段階政策体系が支える中国L3級自動運転制度、商用化に向け準備万端
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            电车汇&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">中国はL3級自動運転の商業化を支援するため、三段階の政策体系を構築しつつある。関連法規と標準体系の整備が進み、L3級自動運転技術の大規模普及に向けた制度的基盤が形成されている。この政策フレームワークはOEMやサプライヤーに明確なコンプライアンス経路と市場参入根拠を提供するものとなる。</p>
+          <p class="summary-t1">本記事は中国におけるL3級自動運転の三段階政策フレームワークを分析し、制度面での整備状況を解説している。法規制の段階的な整備により、L3級自動運転の商業化・量産化に向けた環境が整いつつある。中国のL3自動運転規制体系は大規模応用の実現に向けた重要な転換点を迎えていると指摘している。</p>
           <p class="article-tags">
-▶ L3自動運転&nbsp;&nbsp;▶ 政策規制&nbsp;&nbsp;▶ 自動運転法規&nbsp;&nbsp;▶ 中国ADAS政策          </p>
+▶ L3自動運転&nbsp;&nbsp;▶ 政策・規制&nbsp;&nbsp;▶ 自動運転制度&nbsp;&nbsp;▶ ADAS          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.d1ev.com/news/qiye/189878" target="_blank" rel="noopener noreferrer">
-              総投資1.5億元、ボッシュの「未来インテリジェント運転・制御（上海）研究開発センター」が正式稼働
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
+            <a href="https://www.d1ev.com/news/shuju/214016" target="_blank" rel="noopener noreferrer">
+              16車種のADAS演算能力ランキング：誰の自動運転能力が最も強いか？
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            电车汇&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">ボッシュは上海に総投資1.5億元の「未来インテリジェント運転・制御研究開発センター」を正式に開設した。同センターはADAS・自動運転および車両制御技術の研究開発に特化しており、中国市場におけるボッシュのインテリジェント運転分野での重要な戦略的拠点となる。</p>
+          <p class="summary-t1">本記事では16車種のインテリジェント運転支援システムの演算能力をランキング形式で比較・評価している。算力（コンピューティングパワー）を指標として市場主流のADAS搭載車種を横断的に比較し、各メーカーの自動運転能力の優劣を明らかにしている。消費者および業界関係者向けの参考資料として位置づけられる。</p>
+          <p class="article-tags">
+▶ ADAS&nbsp;&nbsp;▶ 算力&nbsp;&nbsp;▶ 智能驾驶&nbsp;&nbsp;▶ 排行榜&nbsp;&nbsp;▶ 横向评测          </p>
+        </article>
+
+        <div class="video-insert">
+          <div class="video-insert-embed">
+            <iframe src="https://player.bilibili.com/player.html?bvid=BV1BTX8ByEnL&autoplay=0&high_quality=1"
+                    scrolling="no" frameborder="0"
+                    allowfullscreen="true" loading="lazy"></iframe>
+          </div>
+          <div class="video-insert-meta">
+            <span class="video-insert-kicker">▌ 動画通信員リポート</span>
+            <p class="video-insert-title">
+              <a href="https://www.bilibili.com/video/BV1BTX8ByEnL" target="_blank" rel="noopener noreferrer">
+                CCTVニュースが「城中村」NOAをライブ体験！天神之眼5.0は熟練ドライバー並みの安定走行を実現できるか？
+              </a>
+            </p>
+            <div class="video-insert-footer">
+              比亚迪DiLink&nbsp;·&nbsp;スコア 9.5
+            </div>
+          </div>
+        </div>
+
+
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
+            <a href="https://www.d1ev.com/news/qiye/189878" target="_blank" rel="noopener noreferrer">
+              総投資1.5億元、ボッシュ「未来スマートドライビング＆コントロール（上海）R&Dセンター」が正式稼働
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            电车汇&nbsp;·&nbsp;情報源未確認
+          </p>
+          <p class="summary-t1">ボッシュは総投資1.5億元を投じ、上海に「未来スマートドライビング＆コントロール研究開発センター」を正式に開設した。同センターはADAS・自動運転および車両制御技術の研究開発に特化しており、ボッシュの中国における知能運転分野の重要な戦略拠点となる。中国市場でのADAS技術開発強化を目的とした大規模投資として注目される。</p>
           <p class="article-tags">
 ▶ ADAS&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ R&Dセンター&nbsp;&nbsp;▶ Tier1&nbsp;&nbsp;▶ 上海          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://www.autohome.com.cn/tech/202509/1309248.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              L3自動運転の落とし穴はどこ？システムがハンドルを奪った場合の責任は？車企・サプライヤーの今後の道は？
+              L3自動運転の落とし穴はどこに？システムがステアリングを奪った場合の責任は？OEM・サプライヤーの行く末は？
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            汽车之家-科技&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            汽车之家-科技&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">本記事はL3レベル自動運転が直面する核心的課題を深く分析し、システムが自律的にハンドル操作を行った際の法的責任の帰属問題を考察している。L3自動運転における法律・技術上の難点に焦点を当てつつ、自動車メーカーやサプライヤーに対して今後の発展の方向性を示している。この議題は自動運転産業チェーン全体にとって重要な意味を持つ。</p>
+          <p class="summary-t1">L3レベルの自動運転が抱える核心的な課題を深掘りし、システムが能動的にステアリングを介入した際の責任帰属問題を検討している。OEMおよびサプライヤーがL3自動運転の商業化において直面する技術・法規・責任認定上の難題と今後の方向性を分析している。</p>
           <p class="article-tags">
-▶ L3自動運転&nbsp;&nbsp;▶ 責任帰属&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ 自動運転規制&nbsp;&nbsp;▶ OEM戦略&nbsp;&nbsp;▶ Tier1サプライヤー          </p>
+▶ L3自動運転&nbsp;&nbsp;▶ 責任帰属&nbsp;&nbsp;▶ 法規制&nbsp;&nbsp;▶ 商業化&nbsp;&nbsp;▶ ADAS          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.dongchedi.com/article/7621731041485062681" target="_blank" rel="noopener noreferrer">
-              NVIDIAが自動運転の「ChatGPTモーメント」を宣言――その意味とは？
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
+            <a href="https://www.autohome.com.cn/tech/202509/1309070.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
+              L4自動運転物流車を解剖：佑驾创新が発表と同時に納車開始
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            懂车帝&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            汽车之家-科技&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">NVIDIAが自動運転分野における「ChatGPTモーメント」の到来を宣言し、大規模言語モデルのブレークスルーに匹敵する転換点が自動運転技術にも訪れたと示唆した。これはAI駆動の自動運転システムが能力・普及両面で飛躍的な進化を遂げることを意味する。ADAS・自動運転業界全体に対して重要な戦略的示唆を持つ発表として注目される。</p>
+          <p class="summary-t1">佑驾创新（MINIEYE）がL4レベルの無人物流車を発表し、発表と同時に納車を開始した。このプロダクトは自動運転技術の物流分野における商業化実装を示すものであり、L4レベルの自動運転能力を備えている。</p>
           <p class="article-tags">
-▶ 自動運転&nbsp;&nbsp;▶ NVIDIA&nbsp;&nbsp;▶ AI&nbsp;&nbsp;▶ ChatGPT&nbsp;&nbsp;▶ 転換点          </p>
+▶ L4自動運転&nbsp;&nbsp;▶ 無人物流&nbsp;&nbsp;▶ 商業化&nbsp;&nbsp;▶ 佑驾创新          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://36kr.com/newsflashes/3740754845565184?f=rss" target="_blank" rel="noopener noreferrer">
-              智己LS8が正式予約販売開始、25.98万元から——NVIDIAチップと520線LiDARを全車標準搭載
+              智己LS8が正式に先行予約開始、25.98万元から
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            36氪&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            36氪&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-27          </p>
-          <p class="article-body-text">智己LS8が正式に予約販売を開始し、大5座・大6座の2バージョンを展開、起売価格はそれぞれ25.98万元・30.98万元。全グレードにNVIDIA Thorチップと520線LiDARを標準搭載し、IM AD運転支援システムにより都市・高速道路シーンでの自動運転支援に対応する。コックピットにはIM Ultra Agent 1.0と通義千問大規模モデルを採用し、アリババのライフサービスエコシステムと連携している。</p>
+          <p class="summary-t1">智己LS8が正式に先行予約を開始し、大5座版と大6座版を提供、起売価格はそれぞれ25.98万元と30.98万元。全グレードにNVIDIA Thorチップと520線LiDARを標準搭載し、IM AD運転支援システムにより都市部・高速道路シーンでの支援走行に対応する。コックピットにはIM Ultra Agent 1.0とアリババの通義千問大規模モデルを搭載し、アリの全シーンサービスエコシステムと連携する。</p>
           <p class="article-tags">
-▶ ADAS&nbsp;&nbsp;▶ LiDAR&nbsp;&nbsp;▶ NVIDIA Thor&nbsp;&nbsp;▶ 城市NOA&nbsp;&nbsp;▶ 智己&nbsp;&nbsp;▶ EV          </p>
+▶ ADAS&nbsp;&nbsp;▶ LiDAR&nbsp;&nbsp;▶ NVIDIA Thor&nbsp;&nbsp;▶ 城市NOA&nbsp;&nbsp;▶ 智己          </p>
         </article>
 
+        <div class="video-insert">
+          <div class="video-insert-embed">
+            <iframe src="https://player.bilibili.com/player.html?bvid=BV1k4Q6BmEzD&autoplay=0&high_quality=1"
+                    scrolling="no" frameborder="0"
+                    allowfullscreen="true" loading="lazy"></iframe>
+          </div>
+          <div class="video-insert-meta">
+            <span class="video-insert-kicker">▌ 動画通信員リポート</span>
+            <p class="video-insert-title">
+              <a href="https://www.bilibili.com/video/BV1k4Q6BmEzD" target="_blank" rel="noopener noreferrer">
+                小鹏VLA2.0 上海市街地での実際体験
+              </a>
+            </p>
+            <div class="video-insert-footer">
+              数据里奥斯&nbsp;·&nbsp;スコア 9.0
+            </div>
+          </div>
+        </div>
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://blog.csdn.net/GGAI_AI/article/details/159380418" target="_blank" rel="noopener noreferrer">
               2026年の生存競争！合弁ブランドは中国サプライチェーンで延命、自主ブランドは全域インテリジェント化で激突
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-23          </p>
-          <p class="article-body-text">高工智能汽車研究院は、コックピット・運転支援統合AI大モデルや集中型車両電子アーキテクチャ、全域線控シャシーを含む全域インテリジェント化が新たな市場競争の焦点になると指摘。2025年1〜12月の中国乗用車における都市部NOA搭載納車台数は340.16万台に達し、前年比102%超の成長を記録した。合弁ブランドが中国サプライチェーンへの依存で生き残りを図る一方、自主ブランドは全面的なインテリジェント化競争を展開している。</p>
+          <p class="summary-t1">高工智能汽車研究院は、コックピットと運転の統合AI大モデル、集中型車両電子アーキテクチャ、全域線控シャシーなどを含む「全域インテリジェント化」が新たな競争の焦点になると指摘。2025年1〜12月の中国市場における都市部NOA搭載乗用車の納車台数は340.16万台に達し、前年比102%超の増加を記録した。合弁ブランドが中国サプライチェーンに依存する一方、自主ブランドは全面的なインテリジェント化競争を展開し、2026年に向けて激しい市場争いが予想される。</p>
           <p class="article-tags">
-▶ NOA&nbsp;&nbsp;▶ 全域智能化&nbsp;&nbsp;▶ 舱驾一体&nbsp;&nbsp;▶ 线控底盘&nbsp;&nbsp;▶ 中国市场          </p>
+▶ NOA&nbsp;&nbsp;▶ 全域智能化&nbsp;&nbsp;▶ 舱驾一体&nbsp;&nbsp;▶ 线控底盘&nbsp;&nbsp;▶ AI大模型&nbsp;&nbsp;▶ 城区NOA          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://blog.csdn.net/GGAI_AI/article/details/159200998" target="_blank" rel="noopener noreferrer">
-              量産が王道！激光レーダー「千線」時代、誰がリードしているか？
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-&nbsp;·&nbsp;2026-03-18          </p>
-          <p class="article-body-text">本記事は激光レーダー（LiDAR）の「千線」時代における量産競争を分析し、コアデバイスの自社開発が車載シーンの最適化に果たす役割を論じている。高度自動運転システムの大規模量産化に伴い、LiDARサプライヤーは性能・安全信頼性・コスト・シーン適応性の全面的な試練に直面している。線数増加による点群垂直解像度向上と、コスト管理のバランスが規模化量産の技術的参入障壁となっている。</p>
-          <p class="article-tags">
-▶ LiDAR&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ センサー&nbsp;&nbsp;▶ 量産&nbsp;&nbsp;▶ 高阶智驾          </p>
-        </article>
 
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://blog.csdn.net/GGAI_AI/article/details/158844947" target="_blank" rel="noopener noreferrer">
               NXP・ルネサス・TIが一斉参入！中央演算アーキテクチャが車載チップの最終決戦を開幕
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-09          </p>
-          <p class="article-body-text">NXP、ルネサス、TIなどの大手チップメーカーが中央演算アーキテクチャに注力し、コックピットと自動運転を統合するシングルチップソリューションの普及を推進している。シングルチップ舱驾一体方案はコスト効率に優れ、高速道路・市街地NOA機能をミドルレンジ以下の車種にまで展開することを可能にする。一方で、演算リソースの最適配分やソフトウェア互換性の課題が残り、設計難易度は依然として高い。</p>
+          <p class="summary-t1">NXP・ルネサス・TIなどの大手半導体メーカーが中央演算アーキテクチャに集結し、コックピットと運転支援の一体化ソリューションをマルチチップからシングルチップへ進化させている。シングルチップ統合型ソリューションはコスト削減を実現するとともに、高速道路・市街地NOA機能を中・低価格帯車種にまで普及させる。一方で、演算リソースの配分やソフトウェア互換性の問題など、技術的難易度は依然として高い。</p>
           <p class="article-tags">
 ▶ NOA&nbsp;&nbsp;▶ 舱驾一体&nbsp;&nbsp;▶ 中央计算架构&nbsp;&nbsp;▶ 车载芯片&nbsp;&nbsp;▶ 域控制器&nbsp;&nbsp;▶ 区域控制器          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://www.d1ev.com/news/qiye/255274" target="_blank" rel="noopener noreferrer">
-              自動運転ユニコーン企業が存亡の危機：縦目科技が給与未払い、毫末智行がリストラ実施
+              自動運転ユニコーン企業が存亡の危機：縦目科技が給与未払い、毫末智行がリストラ
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            电车汇&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">中国の自動運転ユニコーン企業が深刻な経営危機に直面しており、縦目科技（Momenta競合）が給与の支払いを停止し、毫末智行（長城汽車系）が大規模なリストラを断行している。かつて多額の投資を受けた自動運転リーディング企業が相次いで苦境に立たされており、業界全体が厳しい淘汰局面を迎えていることを示している。</p>
+          <p class="summary-t1">自動運転ユニコーン企業が深刻な経営危機に直面しており、縦目科技（Kyber）が給与の支払いを停止し、毫末智行が大規模なリストラを実施していることが明らかになった。かつて資本市場から高い評価を受けた自動運転スタートアップ2社が相次いで財務的苦境に陥っており、中国の自動運転業界における淘汰・再編の激化を示している。</p>
           <p class="article-tags">
-▶ 自動運転&nbsp;&nbsp;▶ 業界再編&nbsp;&nbsp;▶ スタートアップ&nbsp;&nbsp;▶ 経営危機&nbsp;&nbsp;▶ ADAS          </p>
+▶ 自動運転&nbsp;&nbsp;▶ スタートアップ&nbsp;&nbsp;▶ 業界再編&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ 経営危機          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://www.d1ev.com/news/shichang/232955" target="_blank" rel="noopener noreferrer">
-              工信部など4省庁が知能コネクテッドカーの認可・公道走行試験を開始、なぜ小鵬・理想などの人気EV企業は対象外なのか？
+              工信部など4省庁が知能コネクテッドカーの認可・路上走行試験を開始、なぜ小鹏・理想などの人気メーカーは含まれないのか？
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            电车汇&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">中国の工業情報化部など4省庁が智能コネクテッドカー（ICV）の認可および公道走行試験を開始したが、小鵬汽車や理想汽車などの注目されるEVメーカーが試点リストに含まれていないことが話題となっている。試点参加の資格要件や政策背景を分析し、有名企業が選外となった理由を考察した記事である。</p>
+          <p class="summary-t1">中国工信部など4省庁が智能ネットワーク接続車（スマートカー）の認可および路上走行試験パイロットプログラムを開始したが、小鹏汽車や理想汽車などADAS分野で注目される新興EVメーカーが試験対象リストに含まれていないことが話題となっている。記事では試験参加のための認定基準と、これらの人気企業が選外となった理由について分析している。このパイロット政策は中国における自動運転技術の商業化に向けた規制整備として重要な意味を持つ。</p>
           <p class="article-tags">
-▶ 智能网联汽车&nbsp;&nbsp;▶ 准入试点&nbsp;&nbsp;▶ 自动驾驶&nbsp;&nbsp;▶ 政策规范&nbsp;&nbsp;▶ 工信部          </p>
+▶ 智能网联汽车&nbsp;&nbsp;▶ 政策規制&nbsp;&nbsp;▶ 准入試験&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ 工信部          </p>
         </article>
 
+        <div class="video-insert">
+          <div class="video-insert-embed">
+            <iframe src="https://player.bilibili.com/player.html?bvid=BV18bXnBBEje&autoplay=0&high_quality=1"
+                    scrolling="no" frameborder="0"
+                    allowfullscreen="true" loading="lazy"></iframe>
+          </div>
+          <div class="video-insert-meta">
+            <span class="video-insert-kicker">▌ 動画通信員リポート</span>
+            <p class="video-insert-title">
+              <a href="https://www.bilibili.com/video/BV18bXnBBEje" target="_blank" rel="noopener noreferrer">
+                全行程ゼロ介入？智界R7の市街地ナビゲーション操縦実走テスト
+              </a>
+            </p>
+            <div class="video-insert-footer">
+              小民汽车观&nbsp;·&nbsp;スコア 9.0
+            </div>
+          </div>
+        </div>
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://www.d1ev.com/news/shichang/215276" target="_blank" rel="noopener noreferrer">
-              2024年開幕戦：スマートドライビング四強が激しく競争
+              2024年の初戦：スマートドライビング「四虎」が激しく競争
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            电车汇&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">2024年の幕開けとともに、中国のスマートドライビング（ADAS・自動運転）分野で主要4社が激しい競争を繰り広げている。各社の技術開発・製品展開における競争構図と市場動向を分析した記事。</p>
+          <p class="summary-t1">2024年の幕開けとともに、中国の自動運転・ADAS分野で主要4社（「智驾四虎」）が熾烈な競争を繰り広げている様子を報じた記事。各社が智能運転技術と市場シェア獲得に向けて積極的な戦略を展開している。中国自動運転市場における主要プレイヤーの競合構図を分析している。</p>
           <p class="article-tags">
-▶ 智能驾驶&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ 自动驾驶&nbsp;&nbsp;▶ 竞争分析&nbsp;&nbsp;▶ 2024          </p>
+▶ ADAS&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ 智能驾驶&nbsp;&nbsp;▶ 市場競争&nbsp;&nbsp;▶ 2024          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://www.d1ev.com/news/qiye/214516" target="_blank" rel="noopener noreferrer">
               メルセデス・ベンツ、北京市の条件付き自動運転テストライセンスを取得
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            电车汇&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">メルセデス・ベンツが北京市から条件付き自動運転テストライセンスを取得した。これにより同社は北京での自動運転テスト走行が公式に認められた国際自動車ブランドの一つとなった。北京市の自動運転テスト開放の進展と、国際OEMによる中国自動運転市場への参入加速を示す動きとして注目される。</p>
+          <p class="summary-t1">メルセデス・ベンツが北京市から条件付き自動運転テストライセンスを取得した。これにより、同社は特定条件下で北京の公道における自動運転技術のテストが可能となり、外資系自動車メーカーとして北京での自動運転実証に参入することになる。</p>
           <p class="article-tags">
-▶ 自動運転&nbsp;&nbsp;▶ テストライセンス&nbsp;&nbsp;▶ 北京&nbsp;&nbsp;▶ L3          </p>
+▶ 自動運転&nbsp;&nbsp;▶ テストライセンス&nbsp;&nbsp;▶ 北京&nbsp;&nbsp;▶ 有条件自动驾驶          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.d1ev.com/news/shuju/214016" target="_blank" rel="noopener noreferrer">
-              16車種の知能運転支援システム算力ランキング：どの車が最も高い自動運転能力を持つか？
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">16車種を対象に知能運転支援システムの算力（コンピューティングパワー）をランキング形式で評価・比較した記事。市場における主要なスマートドライビング搭載車のADAS性能を算力指標で横断的に分析している。</p>
-          <p class="article-tags">
-▶ ADAS&nbsp;&nbsp;▶ 算力&nbsp;&nbsp;▶ 智能驾驶&nbsp;&nbsp;▶ 排行榜&nbsp;&nbsp;▶ 辅助驾驶          </p>
-        </article>
 
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://www.d1ev.com/news/jishu/208350" target="_blank" rel="noopener noreferrer">
-              智己の自動運転技術、アウディが賭ける価値はあるのか？
+              智己の自動運転技術、アウディが賭ける価値は本当にあるのか？
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            电车汇&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">本記事は、上汽集団傘下の高級ブランド「智己汽車」の自動運転・ADAS技術がアウディの投資・提携に値するかどうかを検証する内容。外資系高級ブランドが中国ローカルの知能運転技術を取り込む戦略の是非を問うもので、智己とアウディの協業が注目されている。中国市場における自動運転技術の競争力と国際ブランドとの連携の可能性を分析している。</p>
+          <p class="summary-t1">中国の上汽集団傘下ブランド「智己汽車」のADAS・インテリジェントドライビング技術がアウディとの提携において注目を集めている。本記事では、智己の自動運転技術の実力とアウディが同社に投資・提携する価値があるかどうかを検証している。中独自動車メーカー間の技術協力の観点から、智己のADAS競争力が評価されている。</p>
           <p class="article-tags">
-▶ 自動運転&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ 智己&nbsp;&nbsp;▶ アウディ&nbsp;&nbsp;▶ 合弁&nbsp;&nbsp;▶ 高級車          </p>
+▶ ADAS&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ OEM提携&nbsp;&nbsp;▶ 智己&nbsp;&nbsp;▶ アウディ&nbsp;&nbsp;▶ 中独合作          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://www.d1ev.com/news/qiye/204849" target="_blank" rel="noopener noreferrer">
-              理想L9が時速120kmの「自動運転」中に高速道路で追突事故
+              理想L9が時速120kmの「自動運転」走行中に高速道路で追突事故
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            电车汇&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">理想汽車（Li Auto）のL9が時速120kmで高速道路を走行中、自動運転モードで追突事故を起こした。このインシデントは理想汽車のADASシステムの安全性に対する疑問を呼び起こしている。高速域における自動運転機能の信頼性とドライバーの責任範囲が改めて問われている。</p>
+          <p class="summary-t1">理想汽車のL9が高速道路で時速120kmの「自動運転」モード走行中に追突事故を起こした。このインシデントはADAS（先進運転支援システム）の安全性に対する社会的議論を再び呼び起こしている。</p>
           <p class="article-tags">
 ▶ 自動運転事故&nbsp;&nbsp;▶ ADAS安全&nbsp;&nbsp;▶ 高速道路&nbsp;&nbsp;▶ 追突          </p>
         </article>
 
+        <div class="video-insert">
+          <div class="video-insert-embed">
+            <iframe src="https://player.bilibili.com/player.html?bvid=BV1rNAnznEE7&autoplay=0&high_quality=1"
+                    scrolling="no" frameborder="0"
+                    allowfullscreen="true" loading="lazy"></iframe>
+          </div>
+          <div class="video-insert-meta">
+            <span class="video-insert-kicker">▌ 動画通信員リポート</span>
+            <p class="video-insert-title">
+              <a href="https://www.bilibili.com/video/BV1rNAnznEE7" target="_blank" rel="noopener noreferrer">
+                FSDついに登場！緊急介入：極限危険シーン！北京での通勤における実際のインテリジェント運転を全網最深解説！
+              </a>
+            </p>
+            <div class="video-insert-footer">
+              计算机-刘经纬教授&nbsp;·&nbsp;スコア 9.0
+            </div>
+          </div>
+        </div>
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.d1ev.com/news/jishu/193180" target="_blank" rel="noopener noreferrer">
-              哪吒S（ナタS）に搭載されたTA PILOT 4.0の進捗状況は？
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">中国EVメーカー・哪吒汽車（ナタ）の車種「哪吒S」に搭載されたADASシステム「TA PILOT 4.0」の実装進捗に関する記事。TA PILOT 4.0は哪吒汽車の上位自動運転支援システムであり、量産車への展開状況と実際のパフォーマンスについて取り上げている。</p>
-          <p class="article-tags">
-▶ ADAS&nbsp;&nbsp;▶ TA PILOT 4.0&nbsp;&nbsp;▶ 哪吒S&nbsp;&nbsp;▶ 智能驾驶&nbsp;&nbsp;▶ 量产落地          </p>
-        </article>
 
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://www.d1ev.com/news/shichang/189589" target="_blank" rel="noopener noreferrer">
-              百度ANP2.0はなぜ大疆をライバルと見なすのか？走行・駐車統合システムが「コスパ競争」に参入
+              百度ANP2.0はなぜDJIをライバル視するのか？走行・駐車一体型ADASが「コスパ競争」に参入
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            电车汇&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">百度がANP2.0の走行・駐車統合ADASソリューションを発表し、DJI（大疆）の車載部門を主要競合として位置づけた。中低価格帯市場をターゲットにしたコストパフォーマンス戦略で市場シェア獲得を狙う。行泊一体システムの普及価格帯への展開が本格化していることを示す内容。</p>
+          <p class="summary-t1">百度が発布したANP2.0は走行・駐車一体型ADAS솔루션として、DJI車載（大疆）を主要競合と位置付け、高コスパ市場セグメントに参入した。記事では百度ANP2.0と大疆車載の製品戦略と競争構図を分析している。</p>
           <p class="article-tags">
-▶ 行泊一体&nbsp;&nbsp;▶ ANP&nbsp;&nbsp;▶ 性価比&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ 自動駐車&nbsp;&nbsp;▶ NOA          </p>
+▶ ANP&nbsp;&nbsp;▶ 行泊一体&nbsp;&nbsp;▶ 性价比&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ 自动驾驶          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://www.d1ev.com/news/qiye/188374" target="_blank" rel="noopener noreferrer">
-              斑马智行が地平線・芯驰科技と共同でスマートドライビング／スマートコックピット エコプラットフォームを発表
+              斑馬智行が地平線・芯馳科技と共同で知能運転・知能コックピット生態プラットフォームを発表
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            电车汇&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">斑马智行（Banma Zhixing）は地平線（Horizon Robotics）および芯驰科技（Semidrive）と共同で、スマートドライビングとスマートコックピットのエコシステム統合プラットフォームを発表した。国内主要ADASチップ・ソフトウェアプラットフォーム企業が連携し、智驾・智舱の一体化ソリューションの普及を目指す取り組みとなる。</p>
+          <p class="summary-t1">斑馬智行（Banma）は地平線（Horizon Robotics）および芯馳科技と共同で、スマートドライビングとスマートコックピットを統合した生態プラットフォームを発表した。三社はそれぞれのチップおよびソフトウェア生態における強みを結集し、OEMに対して一体化ソリューションを提供することを目指す。</p>
           <p class="article-tags">
-▶ ADAS&nbsp;&nbsp;▶ 智能驾驶&nbsp;&nbsp;▶ 智能座舱&nbsp;&nbsp;▶ 芯片&nbsp;&nbsp;▶ 生态平台&nbsp;&nbsp;▶ Tier1          </p>
+▶ スマートコックピット&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ スマートドライビング&nbsp;&nbsp;▶ プラットフォーム&nbsp;&nbsp;▶ チップ          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
+            <a href="https://www.d1ev.com/news/qiye/186822" target="_blank" rel="noopener noreferrer">
+              毫末智行「国慶節」スマート運転データレポート：北京・上海など6都市でHPilot利用が最多
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            电车汇&nbsp;·&nbsp;情報源未確認
+          </p>
+          <p class="summary-t1">毫末智行が国慶節連休期間のスマート運転データレポートを発表し、北京・上海など6都市でHPilot（高速道路ナビゲーション支援機能）の利用が最も多かったことが明らかになった。このレポートは中国ユーザーの長期休暇中における高度運転支援機能の実際の使用状況と地域分布を示している。</p>
+          <p class="article-tags">
+▶ HPilot&nbsp;&nbsp;▶ NOA&nbsp;&nbsp;▶ 高速领航&nbsp;&nbsp;▶ 智能驾驶&nbsp;&nbsp;▶ 数据报告          </p>
+        </article>
+
+
+
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://www.autohome.com.cn/tech/202601/1311615.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              ADASの新章！吉利「千里浩瀚G-ASD」の全貌を解説
+              ADASの新章開幕！吉利汽車「千里浩瀚G-ASD」先進運転支援システムを徹底解剖
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            汽车之家-科技&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            汽车之家-科技&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">本記事では、吉利汽車の千里浩瀚プラットフォームに搭載されたG-ASD先進運転支援システムの詳細を紹介している。G-ASDは吉利が独自開発したADASシステムであり、同社のインテリジェントドライビング技術における最新の成果を示すものである。吉利のADAS分野における競争力強化を象徴する重要な技術発表となっている。</p>
+          <p class="summary-t1">本記事は吉利汽車が新たに発表した千里浩瀚G-ASDと呼ばれる先進運転支援システムを詳細に紹介している。このシステムは吉利のインテリジェントドライビング分野における重要な技術的突破を示すものであり、同社の車両ラインアップの自動運転能力を大きく向上させると期待されている。吉利にとってADAS技術の新たな章の幕開けを告げる製品となっている。</p>
           <p class="article-tags">
-▶ ADAS&nbsp;&nbsp;▶ 吉利&nbsp;&nbsp;▶ G-ASD&nbsp;&nbsp;▶ 千里浩瀚&nbsp;&nbsp;▶ 辅助驾驶&nbsp;&nbsp;▶ 智能驾驶          </p>
+▶ ADAS&nbsp;&nbsp;▶ 吉利&nbsp;&nbsp;▶ G-ASD&nbsp;&nbsp;▶ 千里浩瀚&nbsp;&nbsp;▶ 辅助驾驶          </p>
         </article>
 
+        <div class="video-insert">
+          <div class="video-insert-embed">
+            <iframe src="https://player.bilibili.com/player.html?bvid=BV1EZXPByESi&autoplay=0&high_quality=1"
+                    scrolling="no" frameborder="0"
+                    allowfullscreen="true" loading="lazy"></iframe>
+          </div>
+          <div class="video-insert-meta">
+            <span class="video-insert-kicker">▌ 動画通信員リポート</span>
+            <p class="video-insert-title">
+              <a href="https://www.bilibili.com/video/BV1EZXPByESi" target="_blank" rel="noopener noreferrer">
+                壁衝突？道を譲らない？？信号無視？頻繁な手動介入？！一発撮りで2026年款「雲海卓馭」シティNOAの真実を暴露！
+              </a>
+            </p>
+            <div class="video-insert-footer">
+              欧总试玩&nbsp;·&nbsp;スコア 8.5
+            </div>
+          </div>
+        </div>
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://www.autohome.com.cn/tech/202510/1309848.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              欧摩威（Omniwave）第6世代レーダーシステム解析：より広い検出範囲と高精度を実現
+              オムニビュー第六世代レーダーシステム解析：検出範囲拡大と精度向上
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            汽车之家-科技&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            汽车之家-科技&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">欧摩威（Omniwave）が第6世代レーダーシステムを発表し、従来比で検出範囲の拡大および精度向上を達成した。本システムはADAS・自動運転向けの重要なセンサー技術のアップグレードであり、検出性能において顕著な改善が見られる。記事ではその技術仕様や特徴について詳細な解析が行われている。</p>
+          <p class="summary-t1">欧摩威（オムニビュー）が第六世代レーダーシステムを発表し、より広い検出範囲と高精度を実現した。本システムはADAS分野における重要なセンサー技術のアップグレードであり、自動運転の認識能力向上に貢献する。記事ではその技術仕様と特徴について詳細に解析している。</p>
           <p class="article-tags">
-▶ レーダー&nbsp;&nbsp;▶ センサー&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ 第6世代&nbsp;&nbsp;▶ 欧摩威          </p>
+▶ レーダー&nbsp;&nbsp;▶ センサー&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ 第六世代&nbsp;&nbsp;▶ 欧摩威          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.autohome.com.cn/tech/202509/1309070.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              L4無人物流車を「解剖」：佑驾创新が発表と同時に納車を実現
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            汽车之家-科技&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">佑驾创新（MINIEYE）がL4レベルの無人物流車を発表し、発表と同時に納車を実現した。これはL4級自動運転技術の物流シーンにおける商業化を示すものであり、中国のADAS・自動運転企業による無人配送分野での最新の進展を表している。</p>
-          <p class="article-tags">
-▶ L4自動運転&nbsp;&nbsp;▶ 無人物流&nbsp;&nbsp;▶ 商業化&nbsp;&nbsp;▶ 自動運転配送          </p>
-        </article>
 
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://www.dongchedi.com/article/7621757640657699352" target="_blank" rel="noopener noreferrer">
               物理AI時代の到来！中国自動運転が黄金期を迎え、2大巨頭が先行布局
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            懂车帝&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            懂车帝&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">物理AI時代の到来により、中国の自動運転産業が黄金の発展期を迎えつつある。業界の2大巨頭がいち早く戦略的な布局を進め、物理AIと自動運転の融合による市場機会を先取りしている。中国の自動運転業界における新技術の波と競争構図の変化が注目されている。</p>
+          <p class="summary-t1">物理AI時代の到来により、中国の自動運転業界が黄金発展期を迎えている。2大巨頭企業が先行して戦略的布局を進め、物理AIと自動運転技術の融合領域での主導権争いを展開している。中国自動運転市場における新たな技術トレンドと競争構図が浮き彫りになっている。</p>
           <p class="article-tags">
-▶ 自動運転&nbsp;&nbsp;▶ 物理AI&nbsp;&nbsp;▶ 中国市場&nbsp;&nbsp;▶ 戦略布局&nbsp;&nbsp;▶ 黄金発展期          </p>
+▶ 自動運転&nbsp;&nbsp;▶ 物理AI&nbsp;&nbsp;▶ 中国市場&nbsp;&nbsp;▶ 黄金期          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t1">
+          <span class="tier-label">◈ 本週の主要記事</span>
+          <h2 class="headline-t1">
             <a href="https://www.dongchedi.com/article/7621744897342620222" target="_blank" rel="noopener noreferrer">
-              狂乱と虚熱：自動運転業界の真実と苦境
+              熱狂と虚偽の熱気：自動運転業界の真実と困境
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            懂车帝&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            懂车帝&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">本記事は中国自動運転業界の実態と発展上の困難を深く分析し、業界熱狂の裏に潜むバブルと過熱現象を明らかにする。技術の実用化の難しさや商業化の道筋の不透明さなどの核心的課題を論じ、業界の過度な炒作と実際の進展とのギャップを考察する。</p>
+          <p class="summary-t1">本記事は自動運転業界における過熱した熱狂とバブル現象を分析し、業界の実態と直面する困境を探る内容である。資本市場の注目を集める一方で、実際の技術実装と商業化には多くの課題が残されていると指摘している。</p>
           <p class="article-tags">
-▶ 自動運転&nbsp;&nbsp;▶ 業界分析&nbsp;&nbsp;▶ 商業化&nbsp;&nbsp;▶ 技術課題          </p>
+▶ 自動運転&nbsp;&nbsp;▶ 業界分析&nbsp;&nbsp;▶ 商業化&nbsp;&nbsp;▶ バブル          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.d1ev.com/news/qiye/186822" target="_blank" rel="noopener noreferrer">
-              毫末智行「国慶節」スマート運転データレポート：北京・上海など6都市でHPilotの利用が最多
+
+        <article class="article-t2">
+          <h2 class="headline-t2">
+            <a href="https://blog.csdn.net/GGAI_AI/article/details/159200998" target="_blank" rel="noopener noreferrer">
+              量産が王道！LiDAR「千ライン」時代、誰がリードするか？
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">毫末智行が国慶節連休中のスマート運転データレポートを発表し、北京・上海など6都市でHPilot（高速道路ナビゲーション支援）機能の利用が最も多かったことが明らかになった。このレポートは、連休中の長距離移動シーンにおけるNOA/HPilotシステムの実際の利用状況とユーザー分布を示している。</p>
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
+&nbsp;·&nbsp;2026-03-18          </p>
+          <p class="summary-t2">本記事はLiDARの「千ライン」時代における量産競争を分析し、コアデバイスの自社開発が車載シーン向け最適化に与える優位性を論じている。高度な自動運転システムの大規模量産が進む中、LiDARサプライヤーには性能・安全信頼性・コスト・シーン適応性の総合的な対応能力が求められる。ライン数の増加により点群の垂直解像度が向上し環境認識が精緻化される一方、性能とコストのバランスが量産成功の鍵となる。</p>
           <p class="article-tags">
-▶ HPilot&nbsp;&nbsp;▶ NOA&nbsp;&nbsp;▶ 智能驾驶&nbsp;&nbsp;▶ 毫末智行&nbsp;&nbsp;▶ 数据报告          </p>
+▶ LiDAR&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ 量産&nbsp;&nbsp;▶ センサー&nbsp;&nbsp;▶ 点群&nbsp;&nbsp;▶ 高阶智驾          </p>
+        </article>
+
+        <div class="video-insert">
+          <div class="video-insert-embed">
+            <iframe src="https://player.bilibili.com/player.html?bvid=BV1KwQrB9ED9&autoplay=0&high_quality=1"
+                    scrolling="no" frameborder="0"
+                    allowfullscreen="true" loading="lazy"></iframe>
+          </div>
+          <div class="video-insert-meta">
+            <span class="video-insert-kicker">▌ 動画通信員リポート</span>
+            <p class="video-insert-title">
+              <a href="https://www.bilibili.com/video/BV1KwQrB9ED9" target="_blank" rel="noopener noreferrer">
+                宝駿享境 100TOPS算力・高悟性エンドツーエンド1.0 都市NOA日常走行レビュー精編版（2025年3月24日）
+              </a>
+            </p>
+            <div class="video-insert-footer">
+              开着享境在路上&nbsp;·&nbsp;スコア 8.5
+            </div>
+          </div>
+        </div>
+
+
+
+        <article class="article-t2">
+          <h2 class="headline-t2">
+            <a href="https://www.d1ev.com/news/jishu/193180" target="_blank" rel="noopener noreferrer">
+              哪吒Sに搭載されたTA PILOT 4.0の最新動向
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            电车汇&nbsp;·&nbsp;情報源未確認
+          </p>
+          <p class="summary-t2">本記事は、哪吒（NETA）のセダンモデル「哪吒S」に搭載された高度運転支援システム「TA PILOT 4.0」の進捗状況を取り上げている。TA PILOT 4.0は哪吒汽車の最新ADASプラットフォームであり、哪吒Sへの量産搭載が実現している。システムの機能性や今後のアップデート動向が焦点となっている。</p>
+          <p class="article-tags">
+▶ ADAS&nbsp;&nbsp;▶ TA PILOT 4.0&nbsp;&nbsp;▶ 哪吒汽车&nbsp;&nbsp;▶ 量产落地&nbsp;&nbsp;▶ 智能驾驶          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t2">
+          <h2 class="headline-t2">
             <a href="https://36kr.com/p/3739712915816457?f=rss" target="_blank" rel="noopener noreferrer">
-              速騰聚創が初の単四半期黒字化達成、2025年ロボット製品販売台数が25倍増
+              RoboSense、四半期初の黒字化達成——2025年ロボット製品販売台数が25倍超に急増
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            36氪&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            36氪&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-26          </p>
-          <p class="article-body-text">速騰聚創（RoboSense）が2025年通期業績を発表し、年間売上高19.41億元、LiDAR総販売台数91.2万台を達成、第4四半期に初めて単四半期黒字化を実現した。ADAS事業では年間35社・167車種の受注を獲得し、合弁ブランド向けLiDAR市場シェア70%超で首位を維持している。ロボット事業は第4四半期に前年比2565%増と爆発的成長を遂げ、「車載＋ロボット」の二輪駆動戦略が財務的に実証される段階に入った。</p>
+          <p class="summary-t2">RoboSense（速腾聚创）は2025年通年売上高19.41億元、LiDAR総販売台数91.2万台を記録し、第4四半期に初めて単四半期での黒字化を達成した。ADAS事業では年間35社・167車種の受注を獲得し、合資ブランド向けLiDAR市場シェアは70%超で首位。ロボット事業も第4四半期に前年同期比2565%増と爆発的成長を遂げ、車載とロボットの二輪駆動体制が財務上でも証明された。</p>
           <p class="article-tags">
-▶ LiDAR&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ Robotaxi&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ ロボット&nbsp;&nbsp;▶ 決算          </p>
+▶ LiDAR&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ Robotaxi&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ ロボット&nbsp;&nbsp;▶ 激光雷达          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t2">
+          <h2 class="headline-t2">
             <a href="https://blog.csdn.net/GGAI_AI/article/details/159239779" target="_blank" rel="noopener noreferrer">
-              最前線の声｜自動運転体験を形成する半導体技術
+              自動運転体験を形成する半導体技術
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-19          </p>
-          <p class="article-body-text">本記事では、自動運転体験を支える半導体技術について解説しており、LiDAR・カメラ・レーダーセンサーのデータを統合する中央演算システム向けの高性能プロセッサと、4Dデータ解析による精密な物体分類技術に焦点を当てている。また、業界ウォッチャーのMarkが2026年CES展示会のトレンド予測や将来の運転体験の変革についての見解も紹介されている。</p>
+          <p class="summary-t2">本記事では、自動運転体験を支える半導体技術について解説し、LiDAR・カメラ・レーダーなど複数センサーのデータを統合・リアルタイム分析する高性能プロセッサの重要性を取り上げている。業界専門家Markの視点から、未来の運転体験の再定義と2026年CES展示会における技術トレンドの予測が共有されている。</p>
           <p class="article-tags">
-▶ 自動運転&nbsp;&nbsp;▶ 半導体&nbsp;&nbsp;▶ LiDAR&nbsp;&nbsp;▶ センサーフュージョン&nbsp;&nbsp;▶ 中央演算&nbsp;&nbsp;▶ CES2026          </p>
+▶ 自動運転&nbsp;&nbsp;▶ 半導体&nbsp;&nbsp;▶ センサーフュージョン&nbsp;&nbsp;▶ LiDAR&nbsp;&nbsp;▶ 中央計算&nbsp;&nbsp;▶ CES2026          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://blog.csdn.net/GGAI_AI/article/details/159003668" target="_blank" rel="noopener noreferrer">
-              半年で17億元調達！CATLとMomentaが商用車自動運転に「賭け」
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-&nbsp;·&nbsp;2026-03-13          </p>
-          <p class="article-body-text">高工智能汽車研究院の報告によると、商用車（特に重トラック）の自動運転は「能動的安全から始まり、シナリオ分化、ADAS/自動運転の重層的浸透」という形で進展しており、L4レベルは港湾・鉱山などの閉鎖シナリオで先行突破し、2026年には浸透率30%超が見込まれる。CATLとMomentaは半年間で17億元の資金調達を完了し、商用車自動運転への資本集中が続いている。2026年には資金調達のハードルが上昇し、自動運転企業は商業化と収益化能力の試練を迎えるとされる。</p>
-          <p class="article-tags">
-▶ L4自動運転&nbsp;&nbsp;▶ 商用車ADAS&nbsp;&nbsp;▶ 重トラック&nbsp;&nbsp;▶ 自動運転投資&nbsp;&nbsp;▶ 閉鎖シナリオ          </p>
-        </article>
 
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
+        <article class="article-t2">
+          <h2 class="headline-t2">
             <a href="https://blog.csdn.net/GGAI_AI/article/details/158918104" target="_blank" rel="noopener noreferrer">
-              商用車インテリジェント化の競争ロジックが一変——「スペック競争」から「システム能力の深層競争」へ
+              商用車インテリジェント化の競争ロジックが一変—「スペック競争」から「システム能力の深層競争」へ
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-11          </p>
-          <p class="article-body-text">商用車のインテリジェント化競争は、機能・スペックの積み上げ競争から、システム化能力の深層的な競争へと移行しつつある。極目科技（Jimo Tech）は保険事業を通じて大規模な車両データを収集し、走行データをアルゴリズム進化の燃料とする「使えば使うほど安全になる」データクローズドループを構築している。技術ソリューションが量産段階に入ることで、OEMの開発リスク低減とサプライチェーン成熟度の向上が進み、業界参入障壁が再定義されている。</p>
+          <p class="summary-t2">商用車のインテリジェント化における競争ロジックが、機能・スペックの軍拡競争からシステム化能力の深層的な競争へとシフトしている。極目科技（Eyecloud）は保険事業を通じた大規模車両データから「使えば使うほど安全になる」データクローズドループを構築し、走行データをアルゴリズム進化の燃料として活用している。技術ソリューションが量産段階に入り、OEMの開発リスク低減とサプライチェーン成熟度向上が加速している。</p>
           <p class="article-tags">
-▶ 商用車ADAS&nbsp;&nbsp;▶ データクローズドループ&nbsp;&nbsp;▶ OTA&nbsp;&nbsp;▶ 量産&nbsp;&nbsp;▶ サプライチェーン          </p>
+▶ 商用車ADAS&nbsp;&nbsp;▶ データ活用&nbsp;&nbsp;▶ OTA&nbsp;&nbsp;▶ 量産化&nbsp;&nbsp;▶ サプライチェーン          </p>
         </article>
 
+        <div class="video-insert">
+          <div class="video-insert-embed">
+            <iframe src="https://player.bilibili.com/player.html?bvid=BV1XkQmBSEr4&autoplay=0&high_quality=1"
+                    scrolling="no" frameborder="0"
+                    allowfullscreen="true" loading="lazy"></iframe>
+          </div>
+          <div class="video-insert-meta">
+            <span class="video-insert-kicker">▌ 動画通信員リポート</span>
+            <p class="video-insert-title">
+              <a href="https://www.bilibili.com/video/BV1XkQmBSEr4" target="_blank" rel="noopener noreferrer">
+                問界M5を探訪レビュー：5大アップグレード後により人気の選択肢となるか？
+              </a>
+            </p>
+            <div class="video-insert-footer">
+              巴渝车网&nbsp;·&nbsp;スコア 8.5
+            </div>
+          </div>
+        </div>
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t2">
+          <h2 class="headline-t2">
             <a href="https://blog.csdn.net/GGAI_AI/article/details/158844845" target="_blank" rel="noopener noreferrer">
-              高度自動運転2.0：ステアバイワイヤ底盤技術の争奪戦
+              高度自動運転2.0：線控底盘（バイワイヤシャシー）争奪戦
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-09          </p>
-          <p class="article-body-text">本記事は高度ADAS/自動運転2.0時代におけるステアバイワイヤ（線控底盘）技術の競争を特集し、ボッシュが推進する48V直接駆動式ステアバイワイヤシステムを詳述している。従来のウォームギア方式と比べ、NVH性能・パワー密度（同体積で助力性能50%超向上）で優れており、4輪ステアバイワイヤにより操縦安定性・横転防止・経路追従制御などの多目標最適化が実現可能となる。ボッシュは万達転向の買収を通じてシャシー製品ラインを補完し、転向・制動システムの市場シナジーを目指している。</p>
+          <p class="summary-t2">ボッシュは48V直接駆動式ステア・バイ・ワイヤシステムの実用化を推進しており、従来のウォームギア方式と比べて同一体積で50%以上のアシスト性能向上を実現している。四輪ステア・バイ・ワイヤは高度自動運転において操縦安定性制御・横転防止・経路追従制御などの多目標最適化制御を容易にし、より多くの自由度（DOF）を提供する。ボッシュは万達転向の買収を通じてシャシー製品ラインを強化し、転向・制動システムの市場シナジーを狙っている。</p>
           <p class="article-tags">
-▶ ステアバイワイヤ&nbsp;&nbsp;▶ 線控底盘&nbsp;&nbsp;▶ 高阶智驾&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ シャシー制御&nbsp;&nbsp;▶ 48V          </p>
+▶ 线控底盘&nbsp;&nbsp;▶ 线控转向&nbsp;&nbsp;▶ 高阶智驾&nbsp;&nbsp;▶ 底盘控制&nbsp;&nbsp;▶ Tier1          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t2">
+          <h2 class="headline-t2">
             <a href="https://www.d1ev.com/news/jishu/209655" target="_blank" rel="noopener noreferrer">
-              スマートドライビングで都市を再計測——第1回中国スマートドライビング大会が間もなく開幕
+              インテリジェント運転で都市を再計測——第1回中国スマートドライビング大会が間もなく開幕
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            电车汇&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">第1回中国スマートドライビング大会が間もなく開催される。智能駕驶（スマートドライビング）技術を活用して都市を再探索・計測することをテーマとしたイベントで、中国における自動運転技術の普及と競技を促進することを目的としている。</p>
+          <p class="summary-t2">第1回中国スマートドライビング大会が間もなく開幕し、インテリジェント運転技術を活用して都市空間を再探索することを目指している。このイベントは中国における自動運転・ADAS技術の競技・普及促進を目的としており、業界全体の発展に貢献することが期待される。</p>
           <p class="article-tags">
-▶ 自動運転&nbsp;&nbsp;▶ スマートドライビング&nbsp;&nbsp;▶ コンペティション&nbsp;&nbsp;▶ 智能驾驶大赛          </p>
+▶ 自動運転&nbsp;&nbsp;▶ スマートドライビング&nbsp;&nbsp;▶ 競技大会&nbsp;&nbsp;▶ 都市走行          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t2">
+          <h2 class="headline-t2">
             <a href="https://www.dongchedi.com/article/7621731179103830553" target="_blank" rel="noopener noreferrer">
-              一般ユーザーが高度な自動運転に依然として不安を抱く理由
+              一般ユーザーはなぜ高度な自動運転に対して依然として懸念を抱くのか？
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            懂车帝&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            懂车帝&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">本記事は、一般ユーザーが高度な自動運転技術に対して依然として懸念を持つ理由を考察する。安全性への不安や技術への信頼不足など、高度ADASが大衆市場へ普及する上での障壁を分析している。消費者の心理的側面から自動運転技術の普及課題を掘り下げる内容となっている。</p>
+          <p class="summary-t2">本記事は、一般ユーザーが高度な自動運転技術に対して依然として懸念を持つ理由を考察している。消費者の自動運転への信頼度不足の背景を分析し、高度ADAS機能の普及における心理的障壁とユーザー受容性の課題を明らかにしている。</p>
           <p class="article-tags">
-▶ 高阶自动驾驶&nbsp;&nbsp;▶ 用户信任&nbsp;&nbsp;▶ ADAS普及&nbsp;&nbsp;▶ 消费者心理          </p>
+▶ 高阶自动驾驶&nbsp;&nbsp;▶ 用户接受度&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ 消费者信心          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://blog.csdn.net/GGAI_AI/article/details/159156085" target="_blank" rel="noopener noreferrer">
-              センサー大手が中国独資企業を設立、自動車＋ロボット市場に本格参入
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-&nbsp;·&nbsp;2026-03-17          </p>
-          <p class="article-body-text">世界第4位の自動車センサー企業Melexisが中国に独資企業を設立し、ローカライズ戦略を強化。30年以上の自動車センサー技術を基盤に、中国の電動化・知能化転換を支援するとともに、ロボット分野にも事業拡大を図る。同社のセンサー製品ラインナップは自動車全領域をカバーしており、今回の設立は中国戦略の全面的なアップグレードと位置づけられる。</p>
-          <p class="article-tags">
-▶ センサー&nbsp;&nbsp;▶ 自動車電動化&nbsp;&nbsp;▶ スマート化&nbsp;&nbsp;▶ ロボット&nbsp;&nbsp;▶ サプライチェーン&nbsp;&nbsp;▶ ローカライズ          </p>
-        </article>
 
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://blog.csdn.net/GGAI_AI/article/details/159113692" target="_blank" rel="noopener noreferrer">
-              業界初の機能安全三重認証取得、瑞発科が車載SerDes分野をリード
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-&nbsp;·&nbsp;2026-03-16          </p>
-          <p class="article-body-text">瑞発科はTÜV RheinlandのASIL-D機能安全三重認証を業界に先駆けて取得し、車載SerDes市場でリーダーポジションを確立した。同社のチップは車載カメラから自動運転プロセッサ、コックピット主チップから車載ディスプレイまで、長距離・高帯域・低遅延の映像信号伝送に活用されている。2023年にチップの研究開発から量産・運用保守まで全ライフサイクルをカバーする最高等級の安全プロセスを構築した。</p>
-          <p class="article-tags">
-▶ SerDes&nbsp;&nbsp;▶ 機能安全&nbsp;&nbsp;▶ ASIL-D&nbsp;&nbsp;▶ 車載チップ&nbsp;&nbsp;▶ 自動運転          </p>
-        </article>
-
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.d1ev.com/news/shichang/259506" target="_blank" rel="noopener noreferrer">
-              調査：20万元以上の車に高度な自動運転機能がなければ購入しますか？
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">本記事は、20万元以上の車両に高度なADAS（スマートドライビング）機能が搭載されていない場合、消費者が購入する意向があるかを調査したアンケート記事である。中高級車市場における高度自動運転機能の重要性と消費者ニーズの動向を探っている。スマートドライビング機能が購買決定に与える影響をユーザー投票形式で考察している。</p>
-          <p class="article-tags">
-▶ 高阶智驾&nbsp;&nbsp;▶ 消费者调查&nbsp;&nbsp;▶ 智能驾驶&nbsp;&nbsp;▶ 中高端市场          </p>
-        </article>
-
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.autohome.com.cn/tech/202511/1310673.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              2025広州モーターショーの注目新技術を一図で解説
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            汽车之家-科技&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">2025年広州モーターショーの注目新技術をインフォグラフィックで紹介する記事。広州モーターショーは中国の主要自動車展示会として、ADAS、電動化、インテリジェント化など最新技術が多数展示される。本文の詳細内容は限定的だが、業界全体の技術トレンドを網羅する内容と推察される。</p>
-          <p class="article-tags">
-▶ 广州车展&nbsp;&nbsp;▶ 新技术&nbsp;&nbsp;▶ 智能化&nbsp;&nbsp;▶ 电动化          </p>
-        </article>
-
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.autohome.com.cn/tech/202510/1309836.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              ゼロランが初のDシリーズ車型を発表——「半額」戦略で競合を狙い撃ち、技術的見どころを総まとめ
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            汽车之家-科技&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">零跑汽車（ゼロラン）が初のDシリーズ車型を発表し、競合モデルの「半額」を謳う高コスパ戦略を打ち出した。スマートドライビングを含む主要技術・装備の概要が紹介されており、ブランドの上位市場進出を目指す重要なモデルと位置付けられている。</p>
-          <p class="article-tags">
-▶ 零跑&nbsp;&nbsp;▶ Dシリーズ&nbsp;&nbsp;▶ コスパ&nbsp;&nbsp;▶ スマートドライビング&nbsp;&nbsp;▶ 新車発表          </p>
-        </article>
-
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.autohome.com.cn/news/202603/1313167.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              吉利銀河L7がOTAアップデート開始、クルーズ中の信号機カウントダウン表示機能を追加
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            汽车之家-新闻&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">吉利汽車の銀河L7がOTAアップデートを開始し、クルーズ走行中に前方信号機のカウントダウンを表示する新機能が追加された。この機能はADAS領域に属し、ドライバーの利便性と安全性を向上させるものである。今回のアップデートにより、同車のインテリジェント運転支援体験が強化された。</p>
-          <p class="article-tags">
-▶ OTA&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ 信号機認識&nbsp;&nbsp;▶ クルーズコントロール&nbsp;&nbsp;▶ 吉利銀河          </p>
-        </article>
-
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.dongchedi.com/article/7621750582210626073" target="_blank" rel="noopener noreferrer">
-              テスラオーナーは我慢強い？5年待って6.4万元で購入したFSDがまだ使えない
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            懂车帝&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">中国のテスラオーナーがFSD（完全自動運転）機能を5年間待ち続け、6.4万元を支払ったにもかかわらず依然として使用できない状況が続いている。テスラのFSDが中国市場でなかなか展開できないことへのユーザーの不満を取り上げた記事。</p>
-          <p class="article-tags">
-▶ FSD&nbsp;&nbsp;▶ Tesla&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ 中国市場          </p>
-        </article>
-
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://blog.csdn.net/GGAI_AI/article/details/159279792" target="_blank" rel="noopener noreferrer">
-              CPD搭載ブーム到来！「100万台量産標準」誕生、コックピット安全アップグレードをリードするのは誰か？
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-&nbsp;·&nbsp;2026-03-20          </p>
-          <p class="article-body-text">CPD（車内置き去り検知）技術の実現方式として直接認識と間接認識の2種類を解説し、ミリ波レーダーやUWBなど多技術連携によるスマートコックピット向けソリューションを紹介。CPD技術は子供の置き去り検知にとどまらず、全年齢層の生体サイン監視やドライバー疲労検知との統合へと拡張しつつある。自動車のインテリジェント化に伴うドメインコントローラー・中央演算ユニットへの移行トレンドとも高い親和性を持つ。</p>
-          <p class="article-tags">
-▶ CPD&nbsp;&nbsp;▶ スマートコックピット&nbsp;&nbsp;▶ ミリ波レーダー&nbsp;&nbsp;▶ UWB&nbsp;&nbsp;▶ 生体監視&nbsp;&nbsp;▶ 疲労検知&nbsp;&nbsp;▶ ドメインコントローラー          </p>
-        </article>
-
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.autohome.com.cn/tech/202509/1308927.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              2025年ミュンヘンモーターショー技術ハイライトまとめ
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            汽车之家-科技&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">2025年ミュンヘンモーターショーにおける各自動車メーカーの最新技術ハイライトをまとめた記事。電動化やADAS関連技術など多岐にわたる展示が予想される。本文の詳細内容が不足しているため、具体的な技術内容の分析は限定的となっている。</p>
-          <p class="article-tags">
-▶ モーターショー&nbsp;&nbsp;▶ 慕尼黑车展&nbsp;&nbsp;▶ 自動車技術&nbsp;&nbsp;▶ EV          </p>
-        </article>
-
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
+        <article class="article-t2">
+          <h2 class="headline-t2">
             <a href="https://www.dongchedi.com/article/7621748757068759577" target="_blank" rel="noopener noreferrer">
               自動運転の転換点が来た
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            懂车帝&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            懂车帝&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">記事タイトルは「自動運転の転換点が来た」であり、自動運転技術または市場が重要な変曲点を迎えていることを示唆している。本文の内容がタイトルのみであるため、具体的な技術・製品情報は確認できない。自動運転分野に関連する記事であることは明らかだが、詳細な情報が不足している。</p>
-          <p class="article-tags">
-▶ 自動運転&nbsp;&nbsp;▶ 転換点&nbsp;&nbsp;▶ 市場動向          </p>
-        </article>
-
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.dongchedi.com/article/7621740130017477144" target="_blank" rel="noopener noreferrer">
-              自動運転に新たな転換点が到来
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            懂车帝&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">記事のタイトルは自動運転業界における新たな転換点の到来を示唆しているが、本文の内容が極めて短く、具体的な技術・企業・事件に関する詳細情報が不足している。現時点では具体的な分析が困難な状況である。</p>
+          <p class="summary-t2">記事タイトルは「自動運転の転換点が来た」であり、自動運転技術または市場が重要な転換期を迎えていることを示唆している。本文の内容が非常に限られているため、具体的な技術・企業・イベントの詳細は不明である。テーマとしては自動運転業界に高い関連性を持つ。</p>
           <p class="article-tags">
 ▶ 自動運転&nbsp;&nbsp;▶ 転換点&nbsp;&nbsp;▶ 業界動向          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.dongchedi.com/article/7621724775849165337" target="_blank" rel="noopener noreferrer">
-              自動運転の転換点が来た？
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
+            <a href="https://blog.csdn.net/GGAI_AI/article/details/159279792" target="_blank" rel="noopener noreferrer">
+              CPD車載化の波が到来！「百万台量産標準」誕生、コックピット安全アップグレードをリードするのは誰か？
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            懂车帝&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">記事のタイトルは自動運転業界が重要な転換点を迎えていることを示唆しているが、本文の内容が不十分なため詳細な分析はできない。業界全体の動向に関する考察記事とみられる。</p>
-          <p class="article-tags">
-▶ 自動運転&nbsp;&nbsp;▶ 転換点&nbsp;&nbsp;▶ 业界动态          </p>
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
+&nbsp;·&nbsp;2026-03-20          </p>
+          <p class="summary-t3">CPD（車内人員検知）技術の車載化トレンドを分析した記事で、ミリ波レーダーやUWBなど複数技術の連携により、車内乗員の検知と安全対策を実現する仕組みを解説している。CPD技術は子供の車内置き去り検知から全年齢層の生体サイン監視へと拡張し、ドライバー疲労検知などと統合されてインテリジェントコックピットの基本安全機能となりつつある。自動車のスマート化における分散型アーキテクチャからドメインコントローラーへの移行トレンドとも高度に適合している。</p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.d1ev.com/news/qiye/187630" target="_blank" rel="noopener noreferrer">
-              理想汽車のAIアルゴリズム責任者が退職か？公式回応「通常の人員異動」
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
+            <a href="https://blog.csdn.net/GGAI_AI/article/details/159156085" target="_blank" rel="noopener noreferrer">
+              センサー大手が中国独資企業を設立、自動車・ロボット市場に注力
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">理想汽車（Li Auto）のAIアルゴリズム責任者である王轶伦氏が近く退職するとの情報が浮上し、同社は「通常の人員異動にあたる」と公式回応した。AIアルゴリズム人材の離脱は、理想汽車の自動運転・ADAS開発能力に影響を与える可能性がある。この人事異動により、同社AIチームの安定性に対する外部の注目が高まっている。</p>
-          <p class="article-tags">
-▶ 人事異動&nbsp;&nbsp;▶ AIアルゴリズム&nbsp;&nbsp;▶ 自動運転開発          </p>
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
+&nbsp;·&nbsp;2026-03-17          </p>
+          <p class="summary-t3">世界第4位の自動車センサー企業であるMelexis（迈来芯）が中国に独資企業を設立し、現地化戦略を本格強化する。30年以上の自動車センサー技術を持ち、中国の電動化・スマート化トレンドを取り込むとともに、ロボット分野への進出も積極的に推進する。</p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
+            <a href="https://blog.csdn.net/GGAI_AI/article/details/159113692" target="_blank" rel="noopener noreferrer">
+              業界初の機能安全三重認証取得、瑞発科が車載SerDesレースをリード
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
+&nbsp;·&nbsp;2026-03-16          </p>
+          <p class="summary-t3">瑞発科はTÜV RheinlandのASIL-D機能安全三重認証を業界に先駆けて取得し、チップ開発から量産・運用保守までの全ライフサイクルをカバーする最高レベルの安全プロセスを構築した。同社の車載SerDesチップは、車載カメラから自動運転プロセッサ、コックピット主要チップから車載ディスプレイ間の長距離・高帯域幅・低遅延映像信号伝送に活用されている。この認証取得により、Tier1サプライチェーンにおける競争優位性がさらに強化された。</p>
+        </article>
+
+
+
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
+            <a href="https://www.d1ev.com/news/shichang/259506" target="_blank" rel="noopener noreferrer">
+              調査：20万元以上の車に高度な自動運転機能がなければ購入しますか？
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            电车汇&nbsp;·&nbsp;情報源未確認
+          </p>
+          <p class="summary-t3">本記事は、20万元以上の車両に高度なADAS（スマートドライビング）機能が搭載されていない場合に消費者が購入するかどうかを調査するアンケート形式の内容である。中国の中高級車市場において、高度な自動運転支援機能が購買決定の重要な要素になりつつある実態を反映している。消費者の智能驾驶に対する意識や期待値を探る市場調査的な記事である。</p>
+        </article>
+
+
+
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
+            <a href="https://www.autohome.com.cn/tech/202510/1309836.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
+              誰が「半額」になった？零跑初のDシリーズ車種の技術的見どころ一覧
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            汽车之家-科技&nbsp;·&nbsp;情報源未確認
+          </p>
+          <p class="summary-t3">零跑汽車が初のDシリーズ車種を発表し、同クラス競合他社の「半額」を謳う高コスパ戦略を打ち出した。スマート運転支援を含む主要技術配置が紹介されており、中国EVおよびADAS市場における価格競争の激化を示している。零跑のコスト競争力が業界内で注目を集めている。</p>
+        </article>
+
+
+
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
+            <a href="https://www.autohome.com.cn/news/202603/1313167.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
+              吉利銀河L7がOTAアップデート開始、クルーズ中の信号機カウントダウン表示などを追加
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            汽车之家-新闻&nbsp;·&nbsp;情報源未確認
+          </p>
+          <p class="summary-t3">吉利銀河L7がOTAアップデートを実施し、クルーズ走行中の信号機カウントダウン表示などの新機能が追加された。今回のアップデートはADAS関連機能の最適化と新機能追加を含み、ドライバーの利便性向上を図っている。</p>
+        </article>
+
+
+
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
+            <a href="https://www.dongchedi.com/article/7621750582210626073" target="_blank" rel="noopener noreferrer">
+              テスラオーナー5年待ちで6.4万元のFSDがまだ使えない問題
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            懂车帝&nbsp;·&nbsp;情報源未確認
+          </p>
+          <p class="summary-t3">中国のテスラオーナーがFSD（完全自動運転）機能を5年間待ち続け、6.4万元を支払っても依然として利用できない状況が続いている。中国市場でのFSD展開には規制承認やデータコンプライアンスなど多くの障壁が存在し、ユーザーの不満が高まっている。</p>
+        </article>
+
+
+
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
+            <a href="https://www.autohome.com.cn/tech/202511/1310673.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
+              2025広州モーターショーの注目新技術を一枚の図で解説
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            汽车之家-科技&nbsp;·&nbsp;情報源未確認
+          </p>
+          <p class="summary-t3">2025年広州モーターショーの注目技術を図解形式でまとめた記事。広州モーターショーはADAS・自動運転・電動化など最新技術が多数発表される重要イベントであり、業界全体の技術動向を把握できる内容となっている。本文はテキスト情報が限定的なため、詳細な技術内容の分析は困難。</p>
+        </article>
+
+
+
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
+            <a href="https://www.autohome.com.cn/tech/202509/1308927.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
+              2025年ミュンヘンモーターショー技術ハイライトまとめ
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            汽车之家-科技&nbsp;·&nbsp;情報源未確認
+          </p>
+          <p class="summary-t3">2025年ミュンヘンモーターショーの技術ハイライトをまとめた記事。本文の詳細内容が不足しているため、具体的なADASや自動運転技術の展示内容を詳細に分析することは困難。ミュンヘンモーターショーは世界主要自動車メーカーが最新技術を披露する重要なプラットフォームである。</p>
+        </article>
+
+
+
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
+            <a href="https://www.dongchedi.com/article/7621763032724587032" target="_blank" rel="noopener noreferrer">
+              自動運転の転換点が来た
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            懂车帝&nbsp;·&nbsp;情報源未確認
+          </p>
+          <p class="summary-t3">記事は「自動運転の転換点が来た」というタイトルと同じ一文のみで構成されており、具体的な内容や分析は含まれていない。タイトルから自動運転業界における重要な転換期を示唆していると考えられるが、詳細情報は不明。</p>
+        </article>
+
+
+
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
+            <a href="https://www.dongchedi.com/article/7621740130017477144" target="_blank" rel="noopener noreferrer">
+              自動運転の新たな転換点が到来
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            懂车帝&nbsp;·&nbsp;情報源未確認
+          </p>
+          <p class="summary-t3">記事のタイトルは「自動運転の新たな転換点が到来」であり、自動運転分野において新たな変曲点を迎えていることを示唆している。しかし本文の内容が極めて少なく、具体的な技術や企業に関する詳細は不明である。ADAS・自動運転に関連するテーマではあるが、情報が不十分である。</p>
+        </article>
+
+
+
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
             <a href="https://www.autohome.com.cn/tech/202509/1308998.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              中国サプライチェーンを採用、技術を全面強化——BMW新型iX3技術解説
+              中国サプライチェーンを採用、技術アップグレードで完全武装——BMW新型iX3技術解説
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            汽车之家-科技&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            汽车之家-科技&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">本記事はBMW新型iX3の技術アップグレードを解説し、中国サプライチェーンの積極的な活用戦略に焦点を当てている。新型iX3はADASを含むインテリジェント化・電動化において全面的な強化が施され、中国現地サプライヤーとの連携を深めている。中国市場における競争力強化を目的とした技術戦略が分析されている。</p>
-          <p class="article-tags">
-▶ BMW&nbsp;&nbsp;▶ iX3&nbsp;&nbsp;▶ 中国サプライチェーン&nbsp;&nbsp;▶ EV&nbsp;&nbsp;▶ ADAS          </p>
+          <p class="summary-t3">BMWの新型iX3について、中国サプライチェーンの積極採用と全面的な技術アップグレードの内容を解説した記事。スマート化・電動化の両面で大幅な強化が図られており、BMWの中国市場向けローカライズ戦略の深化を示している。ADAS関連技術も含まれる可能性があるが、記事本文の詳細が限られているため周辺情報として評価。</p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
             <a href="https://blog.csdn.net/GGAI_AI/article/details/159488490" target="_blank" rel="noopener noreferrer">
-              香港株式市場初のHUD銘柄誕生！泽景股份がIPO、国産自動車電子が世界進出へ
+              香港株式市場にHUD分野初のIPO誕生！泽景股份上場、国産自動車電子がグローバル展開へ
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-26          </p>
-          <p class="article-body-text">泽景股份が香港株式市場に上場し、HUD分野初の香港上場企業となった。AR HUD、CMS、P-HUDなどの革新的な視覚インタラクション技術を搭載したInno·Vision座舱IV1システムを展開し、光学設計からソフトウェアアルゴリズムまでの全チェーン自社開発を完了している。今回のIPOは国産自動車電子メーカーのグローバル展開の第一歩として注目される。</p>
-          <p class="article-tags">
-▶ HUD&nbsp;&nbsp;▶ AR HUD&nbsp;&nbsp;▶ CMS&nbsp;&nbsp;▶ 座舱&nbsp;&nbsp;▶ IPO&nbsp;&nbsp;▶ 汽车电子&nbsp;&nbsp;▶ HMI          </p>
+          <p class="summary-t3">泽景股份が香港株式市場に上場し、HUD分野初の上場企業となった。同社はAR HUD・CMS・P-HUDなどの革新的視覚インタラクション技術を搭載したInno·Vision座舱IV1を発表し、4段階の距離層による視覚体験で次世代コックピットを定義した。光学設計からHMI設計まで全技術チェーンの自社開発を完了し、技術的参入障壁を構築している。</p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
             <a href="https://blog.csdn.net/GGAI_AI/article/details/159460433" target="_blank" rel="noopener noreferrer">
-              急増300%超！スマートカーが「ストレージ超サイクル」に直面、国内メーカーに黄金の機会
+              300%超の急増！スマートカーが「ストレージ超サイクル」に直面、国産メーカーに黄金機会
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-25          </p>
-          <p class="article-body-text">蘇州で開催された車載ストレージ革新エコシステム交流会において、OEMやTier1関係者が車載ストレージチップの需給不均衡解消に向けた産業チェーン連携の重要性を議論した。国産車載ストレージチップは「中低端代替」から「高端突破」への転換が期待されており、スマートカー産業チェーンのサプライチェーン自主化に向けた取り組みが加速している。</p>
-          <p class="article-tags">
-▶ 車載ストレージ&nbsp;&nbsp;▶ サプライチェーン&nbsp;&nbsp;▶ 半導体&nbsp;&nbsp;▶ スマートカー&nbsp;&nbsp;▶ 国産化          </p>
+          <p class="summary-t3">蘇州で開催された車載ストレージ革新エコシステム交流会で、OEMやTier1関係者が車載ストレージチップの需給バランス問題について議論した。スマートカー向けストレージ需要が300%超の急増を見せ、国産メーカーに大きなビジネスチャンスが到来している。今後、国産車載ストレージチップは中低端代替から高端突破へのシフトが期待されている。</p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
             <a href="https://www.d1ev.com/news/qiye/271939" target="_blank" rel="noopener noreferrer">
               テスラの成功は、誰の失敗か？
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            电车汇&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">本記事はテスラの成功が自動車業界の他のプレイヤーに与える影響を考察している。テスラの台頭が従来の自動車メーカーや新興EV企業に与える競争的プレッシャーを分析する内容と見られる。タイトルの問いかけを通じて業界勢力図の変化について読者に問題提起している。</p>
-          <p class="article-tags">
-▶ テスラ&nbsp;&nbsp;▶ EV&nbsp;&nbsp;▶ 競争分析&nbsp;&nbsp;▶ 自動車業界          </p>
+          <p class="summary-t3">本記事はテスラの成功が自動車業界の他のプレーヤーに与える影響を考察し、テスラの台頭によって敗者となったのは誰かを分析している。電動車市場の競争構造に触れており、自動運転・スマートカー分野の競争にも間接的に関連する内容である。</p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.d1ev.com/news/zhanhui/196705" target="_blank" rel="noopener noreferrer">
-              2023年第3回深圳国際先進自動車技術展示会が12月6〜8日に深圳で開催予定
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
+            <a href="https://www.d1ev.com/news/qiye/187630" target="_blank" rel="noopener noreferrer">
+              理想汽車のAIアルゴリズム責任者が近く退職か？公式回応：通常の人員異動
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            电车汇&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            电车汇&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">2023年第3回深圳国際先進自動車技術展示会が12月6日から8日にかけて深圳で開催される。先進自動車技術に特化した業界の重要な交流プラットフォームである。具体的な出展企業や技術展示の詳細は未公表。</p>
-          <p class="article-tags">
-▶ 展示会&nbsp;&nbsp;▶ 自動車技術&nbsp;&nbsp;▶ 深圳          </p>
+          <p class="summary-t3">理想汽車（Li Auto）のAIアルゴリズム責任者である王轶伦氏が近く退職すると報じられた。同社の公式回応は「通常の人員異動である」としている。この人事変動は理想汽車の自動運転・AI開発チームに影響を与える可能性がある。</p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
             <a href="https://www.autohome.com.cn/tech/202601/1311892.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              自動車界の「活版印刷」？長城汽車の帰元プラットフォームに秘められた技術の実態
+              自動車界の「活版印刷」？長城汽車「帰元プラットフォーム」に秘められた技術の実態
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            汽车之家-科技&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            汽车之家-科技&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">長城汽車が発表した「帰元」プラットフォームを取り上げ、そのモジュール式アーキテクチャの設計思想を「活版印刷」に例えて解説する記事。プラットフォームの技術的な革新性と長城傘下の車種への応用可能性を分析している。記事本文が限定的なため詳細な技術内容の判定は難しいが、EV・スマートカー関連の基盤技術として位置づけられている。</p>
-          <p class="article-tags">
-▶ プラットフォーム&nbsp;&nbsp;▶ モジュラーアーキテクチャ&nbsp;&nbsp;▶ 長城汽車&nbsp;&nbsp;▶ 帰元          </p>
+          <p class="summary-t3">長城汽車の帰元プラットフォームを「活版印刷」に例え、そのモジュール化・柔軟な組み合わせが可能なアーキテクチャの特徴を分析した記事。プラットフォームが持つ実質的な技術的価値と、車両開発における応用可能性を探っている。ADAS直接関連の内容は限定的だが、プラットフォームアーキテクチャとして自動運転機能統合の基盤となり得る。</p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t3">
+          <h2 class="headline-t3">
             <a href="https://www.autohome.com.cn/news/202603/1313165.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              未発売ながら「神話的」と称される智界V9、高級MPV市場の勢力図を塗り替えられるか？
+              未発売で「神話」化した智界V9、高級MPV市場の勢力図を塗り替えられるか？
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            汽车之家-新闻&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            汽车之家-新闻&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">智界V9は華為と奇瑞が共同開発した高級MPVで、発売前からすでに大きな注目を集めている。华为の鸿蒙智行エコシステムを搭載し、スマートドライビングとインテリジェントコックピット機能を備える。本記事では同車が高級MPV市場の競争構図を変えられるかどうかを分析している。</p>
-          <p class="article-tags">
-▶ 高級MPV&nbsp;&nbsp;▶ 华为鸿蒙智行&nbsp;&nbsp;▶ 智能驾驶&nbsp;&nbsp;▶ 智能座舱          </p>
+          <p class="summary-t3">華為と奇瑞が共同開発した高級MPV「智界V9」が正式発売前から市場で大きな注目を集めている。本記事では同車種が高級MPV市場の競争構図を再編できるかどうかを検討し、スマート化機能や競争力について分析している。</p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://auto.gasgoo.com/news/202603/27I70451500C409.shtml" target="_blank" rel="noopener noreferrer">
-              キーサイト・テクノロジーズが車載ネットワークテストソリューションを発表
+
+        <article class="article-t4">
+          <h2 class="headline-t4">
+            <a href="https://www.d1ev.com/news/zhanhui/196705" target="_blank" rel="noopener noreferrer">
+              2023年第3回深セン国際先進自動車技術展示会が12月6〜8日に深センで開催予定
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            盖世汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            电车汇&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">キーサイト・テクノロジーズが車載ネットワーク向けテストソリューションを発表した。車載イーサネットやCANなど車内通信ネットワークのテストニーズに対応するもので、自動車業界のネットワーク通信品質確保を支援する。ADASや自動運転システムの基盤となる通信インフラのテストに関連する周辺技術である。</p>
-          <p class="article-tags">
-▶ 車載ネットワーク&nbsp;&nbsp;▶ テストソリューション&nbsp;&nbsp;▶ 車載イーサネット          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t4">
+          <h2 class="headline-t4">
             <a href="https://www.autohome.com.cn/news/202603/1313172.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              与众08が正式に予約販売開始、予約価格23.99万元から
+              与衆08が正式予約販売開始、予約価格23.99万元から
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            汽车之家-新闻&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            汽车之家-新闻&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">与众（ヨーシュ）08が正式に予約販売を開始し、予約価格は23.99万元からとなっている。機能・装備は中国ローカル市場向けに最適化されており、本土化設定が特徴となっている。</p>
-          <p class="article-tags">
-▶ 新車発表&nbsp;&nbsp;▶ 予約販売&nbsp;&nbsp;▶ ローカライズ          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t4">
+          <h2 class="headline-t4">
+            <a href="https://www.autohome.com.cn/news/202603/1313163.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
+              小鹏汽車が4億元の黒字転換も株価は8%急落
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            汽车之家-新闻&nbsp;·&nbsp;情報源未確認
+          </p>
+        </article>
+
+
+
+
+        <article class="article-t4">
+          <h2 class="headline-t4">
             <a href="https://blog.csdn.net/GGAI_AI/article/details/159155892" target="_blank" rel="noopener noreferrer">
-              スマートコックピット需要拡大の中、車両内装大手がA+H株式上場を目指す
+              スマートコックピット高度化の波に乗る車両内装大手がA+H株式上場を目指す、粗利率と競争課題の解決へ
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-17          </p>
-          <p class="article-body-text">新泉股份は自動車内外装部品の大手メーカーで、A株とH株の同時上場を目指している。主要製品はインストルメントパネル、ドアパネル、バンパーアッセンブリーなどで、テスラ・BYD・理想・大衆などの国内外OEMに納入している。前五大顧客への売上集中度は2025年第3四半期までに76.5%に達している。</p>
-          <p class="article-tags">
-▶ スマートコックピット&nbsp;&nbsp;▶ 内装部品&nbsp;&nbsp;▶ IPO&nbsp;&nbsp;▶ サプライチェーン          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t4">
+          <h2 class="headline-t4">
             <a href="https://blog.csdn.net/GGAI_AI/article/details/158695323" target="_blank" rel="noopener noreferrer">
-              インテリジェントシャシーが急拡大！磁気粘性流体サスペンションが黄金期を迎え、中国メーカーが産業化をリード
+              スマートシャシー急拡大！磁気粘性流体サスペンションが黄金期を迎え、中国大手が産業化を牽引
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            高工智能汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            高工智能汽车&nbsp;·&nbsp;情報源未確認
 &nbsp;·&nbsp;2026-03-05          </p>
-          <p class="article-body-text">磁気粘性流体サスペンション技術が30以上の高級・超高級車プラットフォームに採用され、キャデラック・エスカレードIQ、ランドローバー・ディスカバリースポーツ、フォード・マスタングなど海外100車種以上に長期搭載されている。また奇瑞iCAR V27など主流価格帯の車種にも展開し、純電・増程・燃油の三大エネルギータイプをカバーする。従来の機械バルブ設計を廃し、電気信号と磁場信号の変換によるダンピング調整を実現し、応答速度と感度を大幅に向上させた。</p>
-          <p class="article-tags">
-▶ 智能底盘&nbsp;&nbsp;▶ 磁流变悬架&nbsp;&nbsp;▶ 底盘技术&nbsp;&nbsp;▶ 豪华车          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://autodata.gasgoo.com/information/imView/articleDetails/2037357818263134208" target="_blank" rel="noopener noreferrer">
-              具身知能（エンボディドAI）の初の業界標準が発表
+
+        <article class="article-t4">
+          <h2 class="headline-t4">
+            <a href="https://auto.gasgoo.com/news/202603/27I70451516C501.shtml" target="_blank" rel="noopener noreferrer">
+              ゼロランオート、熱管理専門子会社を設立し自主制御能力を強化
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            盖世汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            盖世汽车&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">具身知能（エンボディドAI）分野で初めての業界標準が発表された。具身知能はロボットとAIを融合した技術領域であり、自動運転との技術的関連性は一部あるものの、直接的なADAS分野のニュースではない。記事の詳細内容は限られている。</p>
-          <p class="article-tags">
-▶ 具身智能&nbsp;&nbsp;▶ 行业标准&nbsp;&nbsp;▶ 机器人&nbsp;&nbsp;▶ AI          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t4">
+          <h2 class="headline-t4">
+            <a href="https://autodata.gasgoo.com/information/imView/articleDetails/2037357818263134208" target="_blank" rel="noopener noreferrer">
+              身体知能（エンボディドAI）分野で初の業界標準が発表
+            </a>
+          </h2>
+          <hr class="article-rule">
+          <p class="article-byline">
+            盖世汽车&nbsp;·&nbsp;情報源未確認
+          </p>
+        </article>
+
+
+
+
+        <article class="article-t4">
+          <h2 class="headline-t4">
             <a href="https://auto.gasgoo.com/news/202603/27I70451503C409.shtml" target="_blank" rel="noopener noreferrer">
               ポルシェ、シフト・バイ・ワイヤシステムの特許を申請
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            盖世汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            盖世汽车&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">ポルシェがシフト・バイ・ワイヤ（線控換挡）システムに関する特許を申請した。同技術は車両の電子制御システムの一部であるが、ADASとの直接的な関連性は低い。</p>
-          <p class="article-tags">
-▶ 线控换挡&nbsp;&nbsp;▶ 专利&nbsp;&nbsp;▶ 电子控制          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://auto.gasgoo.com/news/202603/27I70451499C501.shtml" target="_blank" rel="noopener noreferrer">
-              アナリスト、テスラの販売予測を169万台に下方修正
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            盖世汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">アナリストがテスラの販売台数予測を169万台に引き下げた。この報道は主に販売数量の予測修正に関するものであり、ADAS技術との直接的な関連性は低い。</p>
-          <p class="article-tags">
-▶ テスラ&nbsp;&nbsp;▶ 販売予測&nbsp;&nbsp;▶ EV          </p>
-        </article>
 
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
+        <article class="article-t4">
+          <h2 class="headline-t4">
             <a href="https://www.autohome.com.cn/tech/202603/1313044.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              メディアが伝えなかった新型BMW i3の技術詳細
+              メディアが伝えない新型BMW i3の技術詳細
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            汽车之家-科技&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            汽车之家-科技&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">新型BMW i3の技術詳細に関する記事だが、本文の内容が不足しているため具体的なADAS関連情報は確認できない。BMW i3は電気自動車であり、一部の運転支援機能を搭載している可能性はあるが、ADAS関連度は低いと判断される。</p>
-          <p class="article-tags">
-▶ BMW&nbsp;&nbsp;▶ EV&nbsp;&nbsp;▶ i3          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.autohome.com.cn/tech/202510/1309551.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              ピレリグローバルCTOに聞く：自動車産業変革期におけるタイヤサプライヤーの役割
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            汽车之家-科技&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">本記事はピレリのグローバルCTOへのインタビューで、自動車産業の変革期におけるタイヤサプライヤーの役割と貢献方法について論じている。電動化・知能化が進む自動車業界においてタイヤメーカーがどのように対応するかが焦点となっている。ADAS技術との直接的な関連性は低い。</p>
-          <p class="article-tags">
-▶ タイヤ&nbsp;&nbsp;▶ サプライヤー&nbsp;&nbsp;▶ 自動車産業変革&nbsp;&nbsp;▶ EV          </p>
-        </article>
 
-
-
-        <article class="article-item">
-          <h3 class="article-headline">
+        <article class="article-t4">
+          <h2 class="headline-t4">
             <a href="https://www.autohome.com.cn/news/202603/1313179.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              比亚迪2026年型シール06GT/シール06DM-iツーリングが4月2日に発売予定、実車画像流出
+              BYD 2026年型シール06GT/シール06DM-iツーリング版が4月2日に発売予定、実車画像が公開
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            汽车之家-新闻&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            汽车之家-新闻&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">比亚迪の2026年型シール06GTおよびシール06DM-iツーリングが4月2日に正式発売される予定で、実車画像が公開された。記事は主に新モデルの発売日程と外観情報に関するもので、ADAS・自動運転技術に関する詳細な言及はない。</p>
-          <p class="article-tags">
-▶ 比亚迪&nbsp;&nbsp;▶ 新車発売&nbsp;&nbsp;▶ 海豹06          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t4">
+          <h2 class="headline-t4">
             <a href="https://www.autohome.com.cn/news/202603/1313171.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
               吉利博越REVと博越L「小蓝灯」版が3月31日に発売予定
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            汽车之家-新闻&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            汽车之家-新闻&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">吉利汽車の博越REVと博越L小蓝灯版が3月31日に正式発売される予定。「小蓝灯」版はADAS関連機能を搭載した可能性があるが、記事の内容が非常に短く具体的な技術情報は不明。製品発売情報のみの簡単なニュース。</p>
-          <p class="article-tags">
-▶ 吉利&nbsp;&nbsp;▶ 新車発売&nbsp;&nbsp;▶ 博越          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t4">
+          <h2 class="headline-t4">
             <a href="https://www.autohome.com.cn/news/202603/1313170.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              15.19万元から発売：全グレード標準搭載の雲輦-C＋急速充電技術、宋Ultra EVが正式発売
+              宋Ultra EV正式発売、15.19万元から、全グレードに雲輦-Cとフラッシュ充電技術を標準装備
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            汽车之家-新闻&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            汽车之家-新闻&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">比亜迪の宋Ultra EVが正式に発売され、価格は15.19万元からとなっている。全グレードに雲輦-C（インテリジェントシャーシ制御システム）と急速充電技術を標準搭載している。ADASや自動運転に関する具体的な内容は本記事の主題ではなく、EV・シャーシ技術が中心となっている。</p>
-          <p class="article-tags">
-▶ 比亚迪&nbsp;&nbsp;▶ 宋Ultra EV&nbsp;&nbsp;▶ 云辇-C&nbsp;&nbsp;▶ 闪充&nbsp;&nbsp;▶ EV          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t4">
+          <h2 class="headline-t4">
             <a href="https://www.autohome.com.cn/news/202603/1313169.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              智己LS8、予約優待価格25.98万元から発売―線控四輪操舵/エアサス、EV航続430km
+              智己LS8、予約優待価格25.98万元から発売—四輪操舵・エアサス搭載、EV航続430km
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            汽车之家-新闻&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            汽车之家-新闻&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">智己LS8が25.98万元からの予約優待価格で発表され、線控四輪操舵システムとエアサスペンション、純電気航続距離430kmを主な特徴とする。記事はシャシー技術と電動性能が中心であり、ADAS関連の言及はない。</p>
-          <p class="article-tags">
-▶ 智己&nbsp;&nbsp;▶ EV&nbsp;&nbsp;▶ 四輪操舵&nbsp;&nbsp;▶ エアサスペンション          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
+
+        <article class="article-t4">
+          <h2 class="headline-t4">
             <a href="https://www.autohome.com.cn/news/202603/1313168.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              6.58万元から——零跑A10が正式発売、優等生かつスポーツ特技生
+              零跑A10が正式発売、6.58万元から——学力も運動能力も兼ね備えた万能モデル
             </a>
-          </h3>
+          </h2>
           <hr class="article-rule">
           <p class="article-byline">
-            汽车之家-新闻&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+            汽车之家-新闻&nbsp;·&nbsp;情報源未確認
           </p>
-          <p class="article-body-text">零跑汽車の新モデル「A10」が6.58万元から正式発売された。エントリークラスの車種として学業優秀かつ運動特技を持つという独自のポジショニングで市場に投入されたが、ADAS関連の具体的な内容は記事に含まれていない。</p>
-          <p class="article-tags">
-▶ 零跑&nbsp;&nbsp;▶ 新車発売&nbsp;&nbsp;▶ エントリークラスEV          </p>
         </article>
 
 
 
-        <article class="article-item">
-          <h3 class="article-headline">
-            <a href="https://www.autohome.com.cn/news/202603/1313163.html#pvareaid=102624" target="_blank" rel="noopener noreferrer">
-              小鹏が4億元の黒字達成も株価が8%急落
-            </a>
-          </h3>
-          <hr class="article-rule">
-          <p class="article-byline">
-            汽车之家-新闻&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
-          </p>
-          <p class="article-body-text">小鹏汽車が約4億元の利益を計上したが、株価は8%の急落となった。財務結果に対して市場の反応はネガティブで、投資家の信頼が揺らいでいる。</p>
-          <p class="article-tags">
-▶ 小鹏汽车&nbsp;&nbsp;▶ 财报&nbsp;&nbsp;▶ 股价          </p>
-        </article>
 
-      </div>
-
-    </section>
-
-    <!-- ══════════════════════════════
-         VIDEO SECTION
-    ══════════════════════════════ -->
-    <section aria-labelledby="video-heading">
-      <div class="section-header">
-        <hr class="section-hr-top">
-        <span class="section-title" id="video-heading">▌ 動画通信員リポート（B站）</span>
-        <hr class="section-hr-bottom">
-      </div>
-      <p class="video-note">※ 本欄は動画メディアからの現場リポートです</p>
-
-      <div class="video-grid">
-        <div class="video-card">
-          <div class="video-embed-wrapper">
-            <iframe
-              src="https://player.bilibili.com/player.html?bvid=BV1zKX8BLEBE&autoplay=0&high_quality=1"
-              scrolling="no"
-              frameborder="0"
-              allowfullscreen="true"
-              loading="lazy">
-            </iframe>
-          </div>
-          <hr class="video-rule">
-          <div class="video-meta">
-            <a class="video-title" href="https://www.bilibili.com/video/BV1zKX8BLEBE" target="_blank" rel="noopener noreferrer">
-              天神之眼5.0アクティブセーフティ全面アップグレード、CCTVニュースが実際のテストをライブ中継
-            </a>
-            <div class="video-footer">
-              <span class="video-author">比亚迪DiLink</span>
-              <span class="video-score">スコア: 9.5</span>
-            </div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-embed-wrapper">
-            <iframe
-              src="https://player.bilibili.com/player.html?bvid=BV1BTX8ByEnL&autoplay=0&high_quality=1"
-              scrolling="no"
-              frameborder="0"
-              allowfullscreen="true"
-              loading="lazy">
-            </iframe>
-          </div>
-          <hr class="video-rule">
-          <div class="video-meta">
-            <a class="video-title" href="https://www.bilibili.com/video/BV1BTX8ByEnL" target="_blank" rel="noopener noreferrer">
-              CCTVニュースが「城中村」NOAをライブ体験！天神之眼5.0はベテランドライバーのように安定走行できるか？
-            </a>
-            <div class="video-footer">
-              <span class="video-author">比亚迪DiLink</span>
-              <span class="video-score">スコア: 9.5</span>
-            </div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-embed-wrapper">
-            <iframe
-              src="https://player.bilibili.com/player.html?bvid=BV1k4Q6BmEzD&autoplay=0&high_quality=1"
-              scrolling="no"
-              frameborder="0"
-              allowfullscreen="true"
-              loading="lazy">
-            </iframe>
-          </div>
-          <hr class="video-rule">
-          <div class="video-meta">
-            <a class="video-title" href="https://www.bilibili.com/video/BV1k4Q6BmEzD" target="_blank" rel="noopener noreferrer">
-              小鹏（Xpeng）VLA2.0 上海市街地実走体験
-            </a>
-            <div class="video-footer">
-              <span class="video-author">数据里奥斯</span>
-              <span class="video-score">スコア: 9.0</span>
-            </div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-embed-wrapper">
-            <iframe
-              src="https://player.bilibili.com/player.html?bvid=BV18bXnBBEje&autoplay=0&high_quality=1"
-              scrolling="no"
-              frameborder="0"
-              allowfullscreen="true"
-              loading="lazy">
-            </iframe>
-          </div>
-          <hr class="video-rule">
-          <div class="video-meta">
-            <a class="video-title" href="https://www.bilibili.com/video/BV18bXnBBEje" target="_blank" rel="noopener noreferrer">
-              全行程ノーインターベンション？！智界R7 都市部ナビゲーションパイロット実走テスト
-            </a>
-            <div class="video-footer">
-              <span class="video-author">小民汽车观</span>
-              <span class="video-score">スコア: 9.0</span>
-            </div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-embed-wrapper">
-            <iframe
-              src="https://player.bilibili.com/player.html?bvid=BV1rNAnznEE7&autoplay=0&high_quality=1"
-              scrolling="no"
-              frameborder="0"
-              allowfullscreen="true"
-              loading="lazy">
-            </iframe>
-          </div>
-          <hr class="video-rule">
-          <div class="video-meta">
-            <a class="video-title" href="https://www.bilibili.com/video/BV1rNAnznEE7" target="_blank" rel="noopener noreferrer">
-              FSDついに登場！緊急介入：極限危険シーン！北京での通勤における自動運転の詳細レビュー【全ネット最深入解説】
-            </a>
-            <div class="video-footer">
-              <span class="video-author">计算机-刘经纬教授</span>
-              <span class="video-score">スコア: 9.0</span>
-            </div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-embed-wrapper">
-            <iframe
-              src="https://player.bilibili.com/player.html?bvid=BV1EZXPByESi&autoplay=0&high_quality=1"
-              scrolling="no"
-              frameborder="0"
-              allowfullscreen="true"
-              loading="lazy">
-            </iframe>
-          </div>
-          <hr class="video-rule">
-          <div class="video-meta">
-            <a class="video-title" href="https://www.bilibili.com/video/BV1EZXPByESi" target="_blank" rel="noopener noreferrer">
-              壁に衝突？車に道を譲らない？？信号無視？頻繁な介入？！一発撮りで2026年款「雲海卓馭」都市ナビゲーション機能を徹底検証！
-            </a>
-            <div class="video-footer">
-              <span class="video-author">欧总试玩</span>
-              <span class="video-score">スコア: 8.5</span>
-            </div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-embed-wrapper">
-            <iframe
-              src="https://player.bilibili.com/player.html?bvid=BV1KwQrB9ED9&autoplay=0&high_quality=1"
-              scrolling="no"
-              frameborder="0"
-              allowfullscreen="true"
-              loading="lazy">
-            </iframe>
-          </div>
-          <hr class="video-rule">
-          <div class="video-meta">
-            <a class="video-title" href="https://www.bilibili.com/video/BV1KwQrB9ED9" target="_blank" rel="noopener noreferrer">
-              宝駿享境 100TOPSコンピューティングパワー・高悟性エンドツーエンド1.0 都市NOA日常走行（精密編集版）
-            </a>
-            <div class="video-footer">
-              <span class="video-author">开着享境在路上</span>
-              <span class="video-score">スコア: 8.5</span>
-            </div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-embed-wrapper">
-            <iframe
-              src="https://player.bilibili.com/player.html?bvid=BV1XkQmBSEr4&autoplay=0&high_quality=1"
-              scrolling="no"
-              frameborder="0"
-              allowfullscreen="true"
-              loading="lazy">
-            </iframe>
-          </div>
-          <hr class="video-rule">
-          <div class="video-meta">
-            <a class="video-title" href="https://www.bilibili.com/video/BV1XkQmBSEr4" target="_blank" rel="noopener noreferrer">
-              問界M5を探訪レビュー：5大アップグレードでより人気の選択肢になるか？
-            </a>
-            <div class="video-footer">
-              <span class="video-author">巴渝车网</span>
-              <span class="video-score">スコア: 8.5</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      </div><!-- /.news-grid -->
     </section>
 
     <!-- ── Footer ── -->
