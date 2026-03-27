@@ -1,12 +1,16 @@
 """HTML report generator using Jinja2."""
 from __future__ import annotations
 
-import os
 from datetime import datetime
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+from src.generator.tier_assign import assign_tiers
+
+
+_MOMENTA_KEYWORDS = {"momenta", "モメンタ"}
+_MOMENTA_BONUS = 1.5
 
 _TEMPLATES_DIR = Path(__file__).parent / "templates"
 
@@ -48,9 +52,6 @@ def generate_report(
     ]
 
     # Sort by relevance descending, with a bonus for Momenta-related articles
-    _MOMENTA_KEYWORDS = {"momenta", "モメンタ"}
-    _MOMENTA_BONUS = 1.5
-
     def _sort_score(a: dict) -> float:
         base = a.get("relevance_score", 0)
         text = " ".join([
@@ -64,24 +65,9 @@ def generate_report(
 
     normalised.sort(key=_sort_score, reverse=True)
 
-    # Keep only the top 24 articles — fills exactly 7 complete grid rows, zero gaps
-    normalised = normalised[:24]
-
-    # Assign tiers by position (not score) to guarantee visual balance:
-    #   T1: 1 article  (span 6 × 1 = 1 row)
-    #   T2: 2 articles (span 3 × 2 = 1 row)
-    #   T3: 9 articles (span 2 × 9 = 3 rows)
-    #   T4: 12 articles (span 1 × 12 = 2 rows)
-    _TIER_CUTS = [1, 3, 12]  # positions where tier changes (exclusive upper bound)
-    for i, a in enumerate(normalised):
-        if i < _TIER_CUTS[0]:
-            a["tier"] = 1
-        elif i < _TIER_CUTS[1]:
-            a["tier"] = 2
-        elif i < _TIER_CUTS[2]:
-            a["tier"] = 3
-        else:
-            a["tier"] = 4
+    # Assign tiers dynamically based on score distribution.
+    # assign_tiers selects 18–30 articles and guarantees grid has no gaps.
+    normalised = assign_tiers(normalised)
 
     # Normalise videos to plain dicts, keep top 8 by relevance
     normalised_videos = sorted(
