@@ -202,6 +202,87 @@
       .columns { column-count: 1; }
     }
 
+    /* ════════════════════════════════
+       HERO ARTICLE (lead story)
+    ════════════════════════════════ */
+    .hero-section {
+      margin-bottom: 0;
+    }
+
+    .hero-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-variant: small-caps;
+      color: #8b1a1a;
+      margin-bottom: 8px;
+    }
+
+    .hero-headline {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+      margin-bottom: 10px;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-headline a {
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+
+    .hero-headline a:hover {
+      color: #8b1a1a;
+    }
+
+    .hero-rule {
+      border: none;
+      border-top: 2px solid #1a1a1a;
+      margin: 8px 0 6px;
+    }
+
+    .hero-byline {
+      font-size: 0.72rem;
+      font-variant: small-caps;
+      letter-spacing: 0.07em;
+      color: #555;
+      margin-bottom: 12px;
+    }
+
+    .hero-body {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      text-align: justify;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      max-width: 72ch;
+    }
+
+    .hero-tags {
+      font-size: 0.75rem;
+      color: #8b1a1a;
+      margin-bottom: 0;
+    }
+
+    .hero-divider {
+      border: none;
+      border-top: 3px double #1a1a1a;
+      margin: 20px 0 18px;
+    }
+
+    /* Secondary section label */
+    .secondary-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 12px;
+      font-variant: small-caps;
+    }
+
     .article-item {
       break-inside: avoid;
       margin-bottom: 1.5rem;
@@ -385,7 +466,7 @@
       </div>
       <div class="masthead-right">
         {{ generated_at }}<br>
-        {{ articles | length }} 件の記事
+        {{ total_articles }} 件の記事
       </div>
     </div>
     <div class="masthead-subtitle">中国自動運転産業インテリジェンス</div>
@@ -426,10 +507,48 @@
         <hr class="section-hr-bottom">
       </div>
 
+      {% if hero %}
+      <!-- Hero: lead story -->
+      <div class="hero-section">
+        <p class="hero-label">◈ 本週の主要記事</p>
+
+        {% if hero.credibility_score >= 8 %}
+          {% set hero_cred = "公式発表" %}
+        {% elif hero.credibility_score >= 6 %}
+          {% set hero_cred = "報道" %}
+        {% elif hero.credibility_score >= 4 %}
+          {% set hero_cred = "評価・レポート" %}
+        {% else %}
+          {% set hero_cred = "情報源未確認" %}
+        {% endif %}
+
+        <h2 class="hero-headline">
+          <a href="{{ hero.url }}" target="_blank" rel="noopener noreferrer">
+            {{ hero.title_ja if hero.title_ja else hero.title }}
+          </a>
+        </h2>
+        <hr class="hero-rule">
+        <p class="hero-byline">
+          {{ hero.source }}&nbsp;·&nbsp;{{ hero_cred }}&nbsp;·&nbsp;関連度 {{ "%.1f"|format(hero.relevance_score) }}
+          {% if hero.published_at %}&nbsp;·&nbsp;{{ hero.published_at[:10] }}{% endif %}
+        </p>
+        <p class="hero-body">{{ hero.summary_ja if hero.summary_ja else "" }}</p>
+        {% if hero.tags %}
+        <p class="hero-tags">
+          {% for tag in hero.tags %}▶ {{ tag }}{% if not loop.last %}&nbsp;&nbsp;{% endif %}{% endfor %}
+        </p>
+        {% endif %}
+      </div>
+
+      <hr class="hero-divider">
+      {% endif %}
+
+      <!-- Secondary articles in columns -->
+      {% if articles %}
+      <p class="secondary-label">その他の注目記事 — {{ articles | length }} 件</p>
       <div class="columns">
         {% for article in articles %}
 
-        {# Credibility label #}
         {% if article.credibility_score >= 8 %}
           {% set cred_label = "公式発表" %}
         {% elif article.credibility_score >= 6 %}
@@ -461,6 +580,8 @@
 
         {% endfor %}
       </div>
+      {% endif %}
+
     </section>
 
     <!-- ══════════════════════════════

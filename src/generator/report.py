@@ -50,6 +50,10 @@ def generate_report(
     # Sort by relevance descending
     normalised.sort(key=lambda a: a.get("relevance_score", 0), reverse=True)
 
+    # Split: first article is the hero, rest are secondary
+    hero = normalised[0] if normalised else None
+    secondary = normalised[1:] if len(normalised) > 1 else []
+
     # Normalise videos to plain dicts, keep top 8 by relevance
     normalised_videos = sorted(
         [v if isinstance(v, dict) else v.__dict__ for v in (videos or [])],
@@ -64,7 +68,9 @@ def generate_report(
     html = template.render(
         week_label=week_label,
         generated_at=generated_at,
-        articles=normalised,
+        hero=hero,
+        articles=secondary,
+        total_articles=len(normalised),
         executive_summary=executive_summary,
         videos=normalised_videos,
     )
