@@ -1,0 +1,32 @@
+rss:
+  # Only 36氪 RSS is live; other Chinese auto RSS feeds are all 404/dead
+  - name: "36氪"
+    url: "https://36kr.com/feed"
+    keywords: ["智驾", "自动驾驶", "ADAS", "辅助驾驶", "NOA", "智能驾驶", "激光雷达"]
+
+web:
+  # Selector verified 2026-03-27: div.quicknews contains 40+ latest news <a> links
+  - name: "盖世汽车"
+    url: "https://auto.gasgoo.com/"
+    article_selector: "div.quicknews a"
+    title_selector: "a"
+    link_selector: "a"
+
+bilibili:
+  keywords:
+    # Official ADAS tech
+    - "智能驾驶 2025"
+    - "ADAS 自动驾驶"
+    - "NOA 城市领航"
+    - "华为ADS 问界"
+    - "比亚迪天神之眼"
+    - "小鹏XNGP"
+    # Reviews & KOLs
+    - "智驾测评"
+    - "自动驾驶 体验"
+    - "辅助驾驶 事故"
+    # Incident & rumor
+    - "特斯拉 碰撞 自动驾驶"
+    - "智能驾驶 失误 紧急"
+    - "汽车工程师 内部"
+  max_per_keyword: 6

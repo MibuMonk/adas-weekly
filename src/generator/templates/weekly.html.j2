@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中国ADAS週報 — {{ week_label }}</title>
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Base ── */
+    body {
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+      background: #f4f0e8;
+      color: #1a1a1a;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    a {
+      color: #8b1a1a;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #8b1a1a;
+    }
+
+    /* ── Page wrapper ── */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+    }
+
+    /* ════════════════════════════════
+       MASTHEAD
+    ════════════════════════════════ */
+    .masthead {
+      background: #1a1a1a;
+      color: #f4f0e8;
+      padding: 18px 28px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .masthead-left {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a0a0a0;
+      line-height: 1.5;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .masthead-center {
+      text-align: center;
+      flex: 1;
+    }
+
+    .masthead-title {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #f4f0e8;
+      line-height: 1;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+    }
+
+    .masthead-right {
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: #a0a0a0;
+      text-align: right;
+      flex-shrink: 0;
+      white-space: nowrap;
+      line-height: 1.5;
+    }
+
+    /* Subtitle bar below masthead */
+    .masthead-subtitle {
+      background: #f4f0e8;
+      text-align: center;
+      font-style: italic;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      color: #1a1a1a;
+      padding: 6px 0 8px;
+      border-bottom: 3px solid #8b1a1a;
+    }
+
+    /* ── Dateline strip ── */
+    .dateline {
+      text-align: center;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #4a4a4a;
+      padding: 7px 0;
+      border-top: 1px solid #999;
+      border-bottom: 1px solid #999;
+      margin-bottom: 22px;
+    }
+
+    /* ════════════════════════════════
+       EXECUTIVE SUMMARY
+    ════════════════════════════════ */
+    .exec-wrapper {
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    /* Double border: outer box + inner inset */
+    .exec-outer {
+      border: 2px solid #1a1a1a;
+      padding: 4px;
+    }
+
+    .exec-inner {
+      border: 1px solid #1a1a1a;
+      padding: 18px 24px 16px;
+    }
+
+    .exec-heading {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-variant: small-caps;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+    }
+
+    .exec-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .exec-list li {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      padding: 8px 0;
+      border-bottom: 1px solid #ccc;
+      color: #1a1a1a;
+    }
+
+    .exec-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .exec-list li::before {
+      content: "◆ ";
+      color: #8b1a1a;
+      font-size: 0.65rem;
+    }
+
+    /* ════════════════════════════════
+       SECTION HEADERS
+    ════════════════════════════════ */
+    .section-header {
+      margin: 28px 0 16px;
+    }
+
+    .section-hr-top {
+      border: none;
+      border-top: 2px solid #1a1a1a;
+      margin-bottom: 5px;
+    }
+
+    .section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-variant: small-caps;
+      color: #1a1a1a;
+      display: inline-block;
+      padding: 3px 0;
+    }
+
+    .section-hr-bottom {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      margin-top: 5px;
+    }
+
+    /* ════════════════════════════════
+       ARTICLE COLUMNS
+    ════════════════════════════════ */
+    .columns {
+      column-count: 3;
+      column-gap: 2rem;
+      column-rule: 1px solid #999;
+    }
+
+    @media (max-width: 768px) {
+      .columns { column-count: 1; }
+    }
+
+    .article-item {
+      break-inside: avoid;
+      margin-bottom: 1.5rem;
+    }
+
+    .article-headline {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.2;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+      margin-bottom: 5px;
+    }
+
+    .article-headline a {
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+
+    .article-headline a:hover {
+      color: #8b1a1a;
+      text-decoration: none;
+    }
+
+    .article-rule {
+      border: none;
+      border-top: 1px solid #bbb;
+      margin: 5px 0 4px;
+    }
+
+    .article-byline {
+      font-size: 0.7rem;
+      font-variant: small-caps;
+      letter-spacing: 0.06em;
+      color: #666;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .article-body-text {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      text-align: justify;
+      color: #1a1a1a;
+      margin-bottom: 7px;
+    }
+
+    .article-tags {
+      font-size: 0.7rem;
+      color: #8b1a1a;
+      line-height: 1.6;
+    }
+
+    /* ════════════════════════════════
+       VIDEO SECTION
+    ════════════════════════════════ */
+    .video-note {
+      font-style: italic;
+      font-size: 0.78rem;
+      color: #555;
+      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .video-grid { grid-template-columns: 1fr; }
+    }
+
+    .video-card {
+      border: 1px solid #333;
+    }
+
+    .video-embed-wrapper {
+      position: relative;
+      padding-top: 56.25%;
+      background: #0d0d0d;
+    }
+
+    .video-embed-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-rule {
+      border: none;
+      border-top: 1px solid #333;
+    }
+
+    .video-meta {
+      padding: 10px 12px 12px;
+    }
+
+    .video-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #8b1a1a;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+      line-height: 1.4;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .video-title:hover {
+      text-decoration: underline;
+    }
+
+    .video-footer {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .video-author {
+      font-size: 0.75rem;
+      font-variant: small-caps;
+      letter-spacing: 0.05em;
+      color: #666;
+    }
+
+    .video-score {
+      font-size: 0.68rem;
+      color: #555;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* ════════════════════════════════
+       FOOTER
+    ════════════════════════════════ */
+    .site-footer {
+      border-top: 1px solid #999;
+      padding: 18px 0 24px;
+      text-align: center;
+      font-size: 0.72rem;
+      color: #777;
+      margin-top: 36px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Masthead responsive ── */
+    @media (max-width: 640px) {
+      .masthead {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+        padding: 14px 16px 12px;
+      }
+
+      .masthead-left,
+      .masthead-right {
+        text-align: center;
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════
+       MASTHEAD
+  ══════════════════════════════ -->
+  <header>
+    <div class="masthead">
+      <div class="masthead-left">
+        VOL.1&nbsp;NO.{{ week_label | replace("第", "") | replace("週", "") | replace("W", "") | truncate(4, true, "") }}<br>
+        中国版
+      </div>
+      <div class="masthead-center">
+        <h1 class="masthead-title">中国ADAS週報</h1>
+      </div>
+      <div class="masthead-right">
+        {{ generated_at }}<br>
+        {{ articles | length }} 件の記事
+      </div>
+    </div>
+    <div class="masthead-subtitle">中国自動運転産業インテリジェンス</div>
+  </header>
+
+  <div class="page">
+
+    <!-- ── Dateline strip ── -->
+    <div class="dateline">
+      「{{ week_label }}」&nbsp;&nbsp;·&nbsp;&nbsp;本紙特別版&nbsp;&nbsp;·&nbsp;&nbsp;Powered by Momenta Intelligence
+    </div>
+
+    <!-- ══════════════════════════════
+         EXECUTIVE SUMMARY
+    ══════════════════════════════ -->
+    <section aria-labelledby="exec-heading">
+      <div class="exec-wrapper">
+        <div class="exec-outer">
+          <div class="exec-inner">
+            <p class="exec-heading" id="exec-heading">■ 今週の三大トピック</p>
+            <ul class="exec-list">
+              {% for point in executive_summary %}
+              <li>{{ point }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         ARTICLES SECTION
+    ══════════════════════════════ -->
+    <section aria-labelledby="articles-heading">
+      <div class="section-header">
+        <hr class="section-hr-top">
+        <span class="section-title" id="articles-heading">▌ ADAS動向</span>
+        <hr class="section-hr-bottom">
+      </div>
+
+      <div class="columns">
+        {% for article in articles %}
+
+        {# Credibility label #}
+        {% if article.credibility_score >= 8 %}
+          {% set cred_label = "公式発表" %}
+        {% elif article.credibility_score >= 6 %}
+          {% set cred_label = "報道" %}
+        {% elif article.credibility_score >= 4 %}
+          {% set cred_label = "評価・レポート" %}
+        {% else %}
+          {% set cred_label = "情報源未確認" %}
+        {% endif %}
+
+        <article class="article-item">
+          <h3 class="article-headline">
+            <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer">
+              {{ article.title_ja if article.title_ja else article.title }}
+            </a>
+          </h3>
+          <hr class="article-rule">
+          <p class="article-byline">
+            {{ article.source }}&nbsp;·&nbsp;{{ cred_label }}&nbsp;·&nbsp;スコア {{ "%.1f"|format(article.credibility_score) }}
+            {% if article.published_at %}&nbsp;·&nbsp;{{ article.published_at[:10] }}{% endif %}
+          </p>
+          <p class="article-body-text">{{ article.summary_ja if article.summary_ja else "" }}</p>
+          {% if article.tags %}
+          <p class="article-tags">
+            {% for tag in article.tags %}▶ {{ tag }}{% if not loop.last %}&nbsp;&nbsp;{% endif %}{% endfor %}
+          </p>
+          {% endif %}
+        </article>
+
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         VIDEO SECTION
+    ══════════════════════════════ -->
+    {% if videos %}
+    <section aria-labelledby="video-heading">
+      <div class="section-header">
+        <hr class="section-hr-top">
+        <span class="section-title" id="video-heading">▌ 動画通信員リポート（B站）</span>
+        <hr class="section-hr-bottom">
+      </div>
+      <p class="video-note">※ 本欄は動画メディアからの現場リポートです</p>
+
+      <div class="video-grid">
+        {% for v in videos %}
+        <div class="video-card">
+          <div class="video-embed-wrapper">
+            <iframe
+              src="{{ v.embed_url }}"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              loading="lazy">
+            </iframe>
+          </div>
+          <hr class="video-rule">
+          <div class="video-meta">
+            <a class="video-title" href="{{ v.url }}" target="_blank" rel="noopener noreferrer">
+              {{ v.title_ja or v.title }}
+            </a>
+            <div class="video-footer">
+              <span class="video-author">{{ v.author }}</span>
+              <span class="video-score">スコア: {{ "%.1f"|format(v.relevance_score) }}</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ── Footer ── -->
+    <footer class="site-footer">
+      &copy; 2026 Momenta Intelligence &mdash; 中国ADAS週報 &mdash; 無断転載禁止
+    </footer>
+
+  </div><!-- /.page -->
+
+</body>
+</html>
