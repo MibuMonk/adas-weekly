@@ -64,18 +64,24 @@ def generate_report(
 
     normalised.sort(key=_sort_score, reverse=True)
 
-    def _assign_tier(score: float) -> int:
-        if score >= 8.5:   return 1
-        if score >= 7.0:   return 2
-        if score >= 5.0:   return 3
-        return 4
+    # Keep only the top 25 articles — rest discarded
+    normalised = normalised[:25]
 
-    for a in normalised:
-        a["tier"] = _assign_tier(_sort_score(a))
-
-    # Force the lead article to Tier 1 regardless of score
-    if normalised:
-        normalised[0]["tier"] = 1
+    # Assign tiers by position (not score) to guarantee visual balance:
+    #   T1: 1 article  — full-width lead
+    #   T2: 3 articles — half-width features
+    #   T3: 8 articles — third-width secondary
+    #   T4: rest       — brief column items
+    _TIER_CUTS = [1, 4, 12]  # positions where tier changes (exclusive upper bound)
+    for i, a in enumerate(normalised):
+        if i < _TIER_CUTS[0]:
+            a["tier"] = 1
+        elif i < _TIER_CUTS[1]:
+            a["tier"] = 2
+        elif i < _TIER_CUTS[2]:
+            a["tier"] = 3
+        else:
+            a["tier"] = 4
 
     # Normalise videos to plain dicts, keep top 8 by relevance
     normalised_videos = sorted(
