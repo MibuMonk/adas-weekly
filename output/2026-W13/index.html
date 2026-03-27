@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中国ADAS週報 — 2026年3月第4週</title>
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Base ── */
+    body {
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+      background: #f4f0e8;
+      color: #1a1a1a;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    a {
+      color: #8b1a1a;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #8b1a1a;
+    }
+
+    /* ── Page wrapper ── */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+    }
+
+    /* ════════════════════════════════
+       MASTHEAD
+    ════════════════════════════════ */
+    .masthead {
+      background: #1a1a1a;
+      color: #f4f0e8;
+      padding: 18px 28px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .masthead-left {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a0a0a0;
+      line-height: 1.5;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .masthead-center {
+      text-align: center;
+      flex: 1;
+    }
+
+    .masthead-title {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #f4f0e8;
+      line-height: 1;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+    }
+
+    .masthead-right {
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: #a0a0a0;
+      text-align: right;
+      flex-shrink: 0;
+      white-space: nowrap;
+      line-height: 1.5;
+    }
+
+    /* Subtitle bar below masthead */
+    .masthead-subtitle {
+      background: #f4f0e8;
+      text-align: center;
+      font-style: italic;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      color: #1a1a1a;
+      padding: 6px 0 8px;
+      border-bottom: 3px solid #8b1a1a;
+    }
+
+    /* ── Dateline strip ── */
+    .dateline {
+      text-align: center;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #4a4a4a;
+      padding: 7px 0;
+      border-top: 1px solid #999;
+      border-bottom: 1px solid #999;
+      margin-bottom: 22px;
+    }
+
+    /* ════════════════════════════════
+       EXECUTIVE SUMMARY
+    ════════════════════════════════ */
+    .exec-wrapper {
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    /* Double border: outer box + inner inset */
+    .exec-outer {
+      border: 2px solid #1a1a1a;
+      padding: 4px;
+    }
+
+    .exec-inner {
+      border: 1px solid #1a1a1a;
+      padding: 18px 24px 16px;
+    }
+
+    .exec-heading {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-variant: small-caps;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+    }
+
+    .exec-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .exec-list li {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      padding: 8px 0;
+      border-bottom: 1px solid #ccc;
+      color: #1a1a1a;
+    }
+
+    .exec-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .exec-list li::before {
+      content: "◆ ";
+      color: #8b1a1a;
+      font-size: 0.65rem;
+    }
+
+    /* ════════════════════════════════
+       SECTION HEADERS
+    ════════════════════════════════ */
+    .section-header {
+      margin: 28px 0 16px;
+    }
+
+    .section-hr-top {
+      border: none;
+      border-top: 2px solid #1a1a1a;
+      margin-bottom: 5px;
+    }
+
+    .section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-variant: small-caps;
+      color: #1a1a1a;
+      display: inline-block;
+      padding: 3px 0;
+    }
+
+    .section-hr-bottom {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      margin-top: 5px;
+    }
+
+    /* ════════════════════════════════
+       ARTICLE COLUMNS
+    ════════════════════════════════ */
+    .columns {
+      column-count: 3;
+      column-gap: 2rem;
+      column-rule: 1px solid #999;
+    }
+
+    @media (max-width: 768px) {
+      .columns { column-count: 1; }
+    }
+
+    .article-item {
+      break-inside: avoid;
+      margin-bottom: 1.5rem;
+    }
+
+    .article-headline {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.2;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+      margin-bottom: 5px;
+    }
+
+    .article-headline a {
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+
+    .article-headline a:hover {
+      color: #8b1a1a;
+      text-decoration: none;
+    }
+
+    .article-rule {
+      border: none;
+      border-top: 1px solid #bbb;
+      margin: 5px 0 4px;
+    }
+
+    .article-byline {
+      font-size: 0.7rem;
+      font-variant: small-caps;
+      letter-spacing: 0.06em;
+      color: #666;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .article-body-text {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      text-align: justify;
+      color: #1a1a1a;
+      margin-bottom: 7px;
+    }
+
+    .article-tags {
+      font-size: 0.7rem;
+      color: #8b1a1a;
+      line-height: 1.6;
+    }
+
+    /* ════════════════════════════════
+       VIDEO SECTION
+    ════════════════════════════════ */
+    .video-note {
+      font-style: italic;
+      font-size: 0.78rem;
+      color: #555;
+      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .video-grid { grid-template-columns: 1fr; }
+    }
+
+    .video-card {
+      border: 1px solid #333;
+    }
+
+    .video-embed-wrapper {
+      position: relative;
+      padding-top: 56.25%;
+      background: #0d0d0d;
+    }
+
+    .video-embed-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-rule {
+      border: none;
+      border-top: 1px solid #333;
+    }
+
+    .video-meta {
+      padding: 10px 12px 12px;
+    }
+
+    .video-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #8b1a1a;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+      line-height: 1.4;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .video-title:hover {
+      text-decoration: underline;
+    }
+
+    .video-footer {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .video-author {
+      font-size: 0.75rem;
+      font-variant: small-caps;
+      letter-spacing: 0.05em;
+      color: #666;
+    }
+
+    .video-score {
+      font-size: 0.68rem;
+      color: #555;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* ════════════════════════════════
+       FOOTER
+    ════════════════════════════════ */
+    .site-footer {
+      border-top: 1px solid #999;
+      padding: 18px 0 24px;
+      text-align: center;
+      font-size: 0.72rem;
+      color: #777;
+      margin-top: 36px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Masthead responsive ── */
+    @media (max-width: 640px) {
+      .masthead {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+        padding: 14px 16px 12px;
+      }
+
+      .masthead-left,
+      .masthead-right {
+        text-align: center;
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════
+       MASTHEAD
+  ══════════════════════════════ -->
+  <header>
+    <div class="masthead">
+      <div class="masthead-left">
+        VOL.1&nbsp;NO.2026年3月4<br>
+        中国版
+      </div>
+      <div class="masthead-center">
+        <h1 class="masthead-title">中国ADAS週報</h1>
+      </div>
+      <div class="masthead-right">
+        2026年03月27日 13:45 JST<br>
+        8 件の記事
+      </div>
+    </div>
+    <div class="masthead-subtitle">中国自動運転産業インテリジェンス</div>
+  </header>
+
+  <div class="page">
+
+    <!-- ── Dateline strip ── -->
+    <div class="dateline">
+      「2026年3月第4週」&nbsp;&nbsp;·&nbsp;&nbsp;本紙特別版&nbsp;&nbsp;·&nbsp;&nbsp;Powered by Momenta Intelligence
+    </div>
+
+    <!-- ══════════════════════════════
+         EXECUTIVE SUMMARY
+    ══════════════════════════════ -->
+    <section aria-labelledby="exec-heading">
+      <div class="exec-wrapper">
+        <div class="exec-outer">
+          <div class="exec-inner">
+            <p class="exec-heading" id="exec-heading">■ 今週の三大トピック</p>
+            <ul class="exec-list">
+              <li>RoboSenseがQ4初の黒字化、LiDAR91.2万台・合資向けシェア70%超</li>
+              <li>Uber・Pony.ai・Verneがロボタクシー商用サービスを共同展開</li>
+              <li>Pony.aiが3社間提携締結、自動運転商用化を加速</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         ARTICLES SECTION
+    ══════════════════════════════ -->
+    <section aria-labelledby="articles-heading">
+      <div class="section-header">
+        <hr class="section-hr-top">
+        <span class="section-title" id="articles-heading">▌ ADAS動向</span>
+        <hr class="section-hr-bottom">
+      </div>
+
+      <div class="columns">
+
+
+        <article class="article-item">
+          <h3 class="article-headline">
+            <a href="https://auto.gasgoo.com/news/202603/27I70451498C601.shtml" target="_blank" rel="noopener noreferrer">
+              Uber・Pony.ai・Verneがロボタクシーサービスを共同展開
+            </a>
+          </h3>
+          <hr class="article-rule">
+          <p class="article-byline">
+            盖世汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+          </p>
+          <p class="article-body-text">Uber、Pony.ai（小馬智行）、Verneの3社が共同でロボタクシーサービスを開始する。この提携は自動運転技術のコマーシャル化における重要な一歩であり、自動運転プラットフォームとライドシェアサービスの統合を示している。</p>
+          <p class="article-tags">
+▶ robotaxi&nbsp;&nbsp;▶ 自動運転&nbsp;&nbsp;▶ 商業化&nbsp;&nbsp;▶ ライドシェア          </p>
+        </article>
+
+
+
+        <article class="article-item">
+          <h3 class="article-headline">
+            <a href="https://36kr.com/p/3739712915816457?f=rss" target="_blank" rel="noopener noreferrer">
+              RoboSense、四半期初の黒字化達成――2025年ロボット製品販売台数が25倍超に急増
+            </a>
+          </h3>
+          <hr class="article-rule">
+          <p class="article-byline">
+            36氪&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+&nbsp;·&nbsp;2026-03-26          </p>
+          <p class="article-body-text">RoboSense（速腾聚创）は2025年通期で売上高約19.41億元、LiDAR総販売台数91.2万台を記録し、第4四半期に初の四半期黒字（純利益1.04億元）を達成した。ADAS事業では年間35社・167車種の受注を獲得し、合資ブランド向けLiDAR市場シェアは70%超で首位。Robotaxi分野では百度Apollo、DiDi自動運転、WeRide、Pony.aiなど業界上位90%以上の企業と提携している。</p>
+          <p class="article-tags">
+▶ LiDAR&nbsp;&nbsp;▶ ADAS&nbsp;&nbsp;▶ Robotaxi&nbsp;&nbsp;▶ ロボット&nbsp;&nbsp;▶ 自動運転          </p>
+        </article>
+
+
+
+        <article class="article-item">
+          <h3 class="article-headline">
+            <a href="https://autodata.gasgoo.com/information/imView/articleDetails/2037331443061903360" target="_blank" rel="noopener noreferrer">
+              小馬智行など3社が提携
+            </a>
+          </h3>
+          <hr class="article-rule">
+          <p class="article-byline">
+            盖世汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+          </p>
+          <p class="article-body-text">自動運転企業の小馬智行（Pony.ai）が他2社と三者間協力を締結した。記事の内容が非常に短く、具体的な提携内容の詳細は不明である。小馬智行は自動運転分野の主要企業であり、本提携は業界から注目されている。</p>
+          <p class="article-tags">
+▶ 自動運転&nbsp;&nbsp;▶ 提携&nbsp;&nbsp;▶ Pony.ai          </p>
+        </article>
+
+
+
+        <article class="article-item">
+          <h3 class="article-headline">
+            <a href="https://autodata.gasgoo.com/information/imView/articleDetails/2037331501949931520" target="_blank" rel="noopener noreferrer">
+              オートリブと楚能汽車が孝感で契約締結
+            </a>
+          </h3>
+          <hr class="article-rule">
+          <p class="article-byline">
+            盖世汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+          </p>
+          <p class="article-body-text">世界大手自動車安全システムサプライヤーのオートリブ（Autoliv）が、中国の楚能汽車と孝感にて契約を締結した。オートリブはADAS関連センサーや安全システムも手掛けており、今後の協力内容が注目される。詳細な契約内容は記事内では開示されていない。</p>
+          <p class="article-tags">
+▶ Autoliv&nbsp;&nbsp;▶ サプライチェーン&nbsp;&nbsp;▶ 自動車安全          </p>
+        </article>
+
+
+
+        <article class="article-item">
+          <h3 class="article-headline">
+            <a href="https://auto.gasgoo.com/news/202603/27I70451500C409.shtml" target="_blank" rel="noopener noreferrer">
+              キーサイト・テクノロジーが車載ネットワークテストソリューションを発表
+            </a>
+          </h3>
+          <hr class="article-rule">
+          <p class="article-byline">
+            盖世汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+          </p>
+          <p class="article-body-text">キーサイト・テクノロジー（是德科技）が車載ネットワーク向けのテストソリューションを新たに発表した。自動車電子システムの通信ネットワークをテストするためのソリューションで、車載ネットワークインフラのテスト分野に位置づけられる。ADASと直接的な関連はないが、自動車電子開発の周辺技術として関係性がある。</p>
+          <p class="article-tags">
+▶ 車載ネットワーク&nbsp;&nbsp;▶ テストソリューション&nbsp;&nbsp;▶ 自動車電子          </p>
+        </article>
+
+
+
+        <article class="article-item">
+          <h3 class="article-headline">
+            <a href="https://auto.gasgoo.com/news/202603/27I70451503C409.shtml" target="_blank" rel="noopener noreferrer">
+              ポルシェ、ワイヤー制御シフトシステムの特許を申請
+            </a>
+          </h3>
+          <hr class="article-rule">
+          <p class="article-byline">
+            盖世汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+          </p>
+          <p class="article-body-text">ポルシェがワイヤー制御（バイ・ワイヤー）シフトシステムに関する特許を申請した。同技術はシャシー電子制御領域に属するが、ADASとの直接的な関連性は低い。</p>
+          <p class="article-tags">
+▶ 线控技术&nbsp;&nbsp;▶ 专利&nbsp;&nbsp;▶ 底盘电控          </p>
+        </article>
+
+
+
+        <article class="article-item">
+          <h3 class="article-headline">
+            <a href="https://auto.gasgoo.com/news/202603/27I70451492C108.shtml" target="_blank" rel="noopener noreferrer">
+              小鹏匯天の空飛ぶクルマ、コア動力システムの量産ラインオフ
+            </a>
+          </h3>
+          <hr class="article-rule">
+          <p class="article-byline">
+            盖世汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+          </p>
+          <p class="article-body-text">小鹏汽車傘下の飛行自動車企業・匯天が、空飛ぶクルマのコア動力システムの量産ラインオフを達成した。飛行自動車分野における重要なマイルストーンであるが、ADASや自動運転技術との直接的な関連性は低い。</p>
+          <p class="article-tags">
+▶ 飛行自動車&nbsp;&nbsp;▶ eVTOL&nbsp;&nbsp;▶ 量産&nbsp;&nbsp;▶ 動力システム          </p>
+        </article>
+
+
+
+        <article class="article-item">
+          <h3 class="article-headline">
+            <a href="https://auto.gasgoo.com/news/202603/27I70451490C501.shtml" target="_blank" rel="noopener noreferrer">
+              小鹏汽車がメキシコに進出、3年戦略でラテンアメリカ市場を開拓
+            </a>
+          </h3>
+          <hr class="article-rule">
+          <p class="article-byline">
+            盖世汽车&nbsp;·&nbsp;情報源未確認&nbsp;·&nbsp;スコア 0.0
+          </p>
+          <p class="article-body-text">小鹏汽車（XPENG）はメキシコ市場への参入を発表し、ラテンアメリカ市場を開拓するための3年間の戦略計画を策定した。同社の海外展開加速の一環として、中南米地域を重要な拡張ターゲットと位置付けている。</p>
+          <p class="article-tags">
+▶ 海外展開&nbsp;&nbsp;▶ メキシコ&nbsp;&nbsp;▶ ラテンアメリカ&nbsp;&nbsp;▶ 小鹏汽車          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         VIDEO SECTION
+    ══════════════════════════════ -->
+    <section aria-labelledby="video-heading">
+      <div class="section-header">
+        <hr class="section-hr-top">
+        <span class="section-title" id="video-heading">▌ 動画通信員リポート（B站）</span>
+        <hr class="section-hr-bottom">
+      </div>
+      <p class="video-note">※ 本欄は動画メディアからの現場リポートです</p>
+
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-embed-wrapper">
+            <iframe
+              src="https://player.bilibili.com/player.html?bvid=BV1zKX8BLEBE&autoplay=0&high_quality=1"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              loading="lazy">
+            </iframe>
+          </div>
+          <hr class="video-rule">
+          <div class="video-meta">
+            <a class="video-title" href="https://www.bilibili.com/video/BV1zKX8BLEBE" target="_blank" rel="noopener noreferrer">
+              天神之眼5.0アクティブセーフティ全面アップグレード、CCTVニュースが実走テストをライブ配信
+            </a>
+            <div class="video-footer">
+              <span class="video-author">比亚迪DiLink</span>
+              <span class="video-score">スコア: 9.5</span>
+            </div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed-wrapper">
+            <iframe
+              src="https://player.bilibili.com/player.html?bvid=BV1BTX8ByEnL&autoplay=0&high_quality=1"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              loading="lazy">
+            </iframe>
+          </div>
+          <hr class="video-rule">
+          <div class="video-meta">
+            <a class="video-title" href="https://www.bilibili.com/video/BV1BTX8ByEnL" target="_blank" rel="noopener noreferrer">
+              央視ニュースが生中継で「城中村」NOAを体験！天神之眼5.0はベテランドライバーのように安定走行できるか？
+            </a>
+            <div class="video-footer">
+              <span class="video-author">比亚迪DiLink</span>
+              <span class="video-score">スコア: 9.5</span>
+            </div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed-wrapper">
+            <iframe
+              src="https://player.bilibili.com/player.html?bvid=BV18bXnBBEje&autoplay=0&high_quality=1"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              loading="lazy">
+            </iframe>
+          </div>
+          <hr class="video-rule">
+          <div class="video-meta">
+            <a class="video-title" href="https://www.bilibili.com/video/BV18bXnBBEje" target="_blank" rel="noopener noreferrer">
+              全行程ノーインターベンション？！智界R7 市街地ナビゲーションパイロット実走テスト
+            </a>
+            <div class="video-footer">
+              <span class="video-author">小民汽车观</span>
+              <span class="video-score">スコア: 9.0</span>
+            </div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed-wrapper">
+            <iframe
+              src="https://player.bilibili.com/player.html?bvid=BV1rNAnznEE7&autoplay=0&high_quality=1"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              loading="lazy">
+            </iframe>
+          </div>
+          <hr class="video-rule">
+          <div class="video-meta">
+            <a class="video-title" href="https://www.bilibili.com/video/BV1rNAnznEE7" target="_blank" rel="noopener noreferrer">
+              FSDついに来た！緊急介入：極限危険状況！中国版FSDの智能運転の詳細99%の人が知らない！北京での通勤リアル智能運転動画解説
+            </a>
+            <div class="video-footer">
+              <span class="video-author">计算机-刘经纬教授</span>
+              <span class="video-score">スコア: 9.0</span>
+            </div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed-wrapper">
+            <iframe
+              src="https://player.bilibili.com/player.html?bvid=BV1KwQrB9ED9&autoplay=0&high_quality=1"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              loading="lazy">
+            </iframe>
+          </div>
+          <hr class="video-rule">
+          <div class="video-meta">
+            <a class="video-title" href="https://www.bilibili.com/video/BV1KwQrB9ED9" target="_blank" rel="noopener noreferrer">
+              宝駿享境 100T算力・高悟性エンド・ツー・エンド1.0 都市NOA日常走行（2026年3月24日・精製版）
+            </a>
+            <div class="video-footer">
+              <span class="video-author">开着享境在路上</span>
+              <span class="video-score">スコア: 8.5</span>
+            </div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed-wrapper">
+            <iframe
+              src="https://player.bilibili.com/player.html?bvid=BV1XkQmBSEr4&autoplay=0&high_quality=1"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              loading="lazy">
+            </iframe>
+          </div>
+          <hr class="video-rule">
+          <div class="video-meta">
+            <a class="video-title" href="https://www.bilibili.com/video/BV1XkQmBSEr4" target="_blank" rel="noopener noreferrer">
+              問界M5を試乗レポート：5大アップグレードでさらに人気モデルになるか？
+            </a>
+            <div class="video-footer">
+              <span class="video-author">巴渝车网</span>
+              <span class="video-score">スコア: 8.5</span>
+            </div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed-wrapper">
+            <iframe
+              src="https://player.bilibili.com/player.html?bvid=BV1k4Q6BmEzD&autoplay=0&high_quality=1"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              loading="lazy">
+            </iframe>
+          </div>
+          <hr class="video-rule">
+          <div class="video-meta">
+            <a class="video-title" href="https://www.bilibili.com/video/BV1k4Q6BmEzD" target="_blank" rel="noopener noreferrer">
+              シャオペンVLA2.0上海市街地実走体験
+            </a>
+            <div class="video-footer">
+              <span class="video-author">数据里奥斯</span>
+              <span class="video-score">スコア: 8.5</span>
+            </div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed-wrapper">
+            <iframe
+              src="https://player.bilibili.com/player.html?bvid=BV1HPXFBNE8F&autoplay=0&high_quality=1"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              loading="lazy">
+            </iframe>
+          </div>
+          <hr class="video-rule">
+          <div class="video-meta">
+            <a class="video-title" href="https://www.bilibili.com/video/BV1HPXFBNE8F" target="_blank" rel="noopener noreferrer">
+              小鵬VLA2.0 朝のラッシュアワー 第一視点ノーカット映像
+            </a>
+            <div class="video-footer">
+              <span class="video-author">一团花椒</span>
+              <span class="video-score">スコア: 8.5</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="site-footer">
+      &copy; 2026 Momenta Intelligence &mdash; 中国ADAS週報 &mdash; 無断転載禁止
+    </footer>
+
+  </div><!-- /.page -->
+
+</body>
+</html>

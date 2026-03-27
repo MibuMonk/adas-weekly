@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中国ADAS週報 — 2026年3月第4週</title>
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Hiragino Kaku Gothic ProN",
+                   "Meiryo", sans-serif;
+      background: #f0f2f8;
+      color: #1a1f36;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    a { color: #4f8ef7; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px 48px;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      background: linear-gradient(135deg, #1a1f36 0%, #2a3160 100%);
+      color: #fff;
+      padding: 40px 0 32px;
+      margin-bottom: 36px;
+    }
+
+    .site-header .container {
+      padding-bottom: 0;
+    }
+
+    .header-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #8fa8d8;
+      margin-bottom: 8px;
+    }
+
+    .header-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+
+    .header-week {
+      font-size: 1.1rem;
+      color: #a8c0f0;
+      font-weight: 400;
+    }
+
+    .header-meta {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #6b82b8;
+    }
+
+    /* ── Section titles ── */
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #e2e6f0;
+    }
+
+    /* ── Executive Summary ── */
+    .exec-summary {
+      background: #fff;
+      border-left: 4px solid #4f8ef7;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin-bottom: 36px;
+      box-shadow: 0 1px 6px rgba(26,31,54,0.07);
+    }
+
+    .exec-summary ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .exec-summary ul li {
+      padding: 7px 0 7px 20px;
+      position: relative;
+      font-size: 0.97rem;
+      color: #2d3555;
+      border-bottom: 1px solid #f0f2f8;
+    }
+
+    .exec-summary ul li:last-child {
+      border-bottom: none;
+    }
+
+    .exec-summary ul li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #4f8ef7;
+      font-size: 0.85rem;
+      top: 9px;
+    }
+
+    /* ── Article cards ── */
+    .articles-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 48px;
+    }
+
+    .article-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 22px 24px;
+      box-shadow: 0 1px 6px rgba(26,31,54,0.07);
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+    }
+
+    .article-card:hover {
+      box-shadow: 0 4px 18px rgba(26,31,54,0.13);
+      transform: translateY(-1px);
+    }
+
+    /* card header row */
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .card-title-wrap {
+      flex: 1;
+    }
+
+    .card-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      line-height: 1.45;
+      color: #1a1f36;
+      margin-bottom: 4px;
+    }
+
+    .card-title a {
+      color: inherit;
+    }
+
+    .card-title a:hover {
+      color: #4f8ef7;
+      text-decoration: none;
+    }
+
+    .card-meta {
+      font-size: 12px;
+      color: #9ca3af;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .card-meta .source {
+      font-weight: 600;
+      color: #6b7280;
+    }
+
+    /* Relevance badge */
+    .relevance-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .relevance-badge.high {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .relevance-badge.mid {
+      background: #fef9c3;
+      color: #854d0e;
+    }
+
+    .relevance-badge.low {
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+
+    .relevance-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .high .relevance-dot  { background: #22c55e; }
+    .mid .relevance-dot   { background: #eab308; }
+    .low .relevance-dot   { background: #9ca3af; }
+
+    /* summary */
+    .card-summary {
+      font-size: 0.92rem;
+      color: #374151;
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+
+    /* tags */
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 9px;
+      border-radius: 4px;
+      background: #eff2ff;
+      color: #3b5bdb;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      border-top: 1px solid #e2e6f0;
+      padding-top: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    .site-footer .brand {
+      font-weight: 700;
+      color: #4f8ef7;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .header-title { font-size: 1.5rem; }
+      .card-header { flex-direction: column; gap: 8px; }
+      .article-card { padding: 16px; }
+      .exec-summary { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HEADER ══ -->
+  <header class="site-header">
+    <div class="container">
+      <p class="header-eyebrow">Momenta ADAS Intelligence</p>
+      <h1 class="header-title">中国ADAS週報</h1>
+      <p class="header-week">2026年3月第4週</p>
+      <p class="header-meta">7 件の記事を収録</p>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- ══ EXECUTIVE SUMMARY ══ -->
+    <section aria-labelledby="exec-title">
+      <h2 class="section-title" id="exec-title">今週のハイライト</h2>
+      <div class="exec-summary">
+        <ul>
+          <li>ファーウェイ乾崑ADS 3.0・BYD天神之眼が相次ぎ量産開始、高度ADASが15万元台に普及</li>
+          <li>中国ADAS普及率が41%突破、エンドツーエンドモデルへの移行が業界全体で加速</li>
+          <li>NVIDIAチップ不足を契機に国産半導体採用が拡大、地平線・黒芝麻が急成長</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══ MAIN ARTICLES ══ -->
+    <section aria-labelledby="articles-title">
+      <h2 class="section-title" id="articles-title">注目記事（7件）</h2>
+      <div class="articles-grid">
+
+
+        <article class="article-card">
+          <div class="card-header">
+            <div class="card-title-wrap">
+              <h3 class="card-title">
+                <a href="https://www.zhidx.com/p/123456.html" target="_blank" rel="noopener noreferrer">
+                  ファーウェイ、地図不要の全シーン自動運転「乾崑ADS 3.0」を正式発表
+                </a>
+              </h3>
+              <div class="card-meta">
+                <span class="source">智驾网</span>
+                <span>2026-03-25</span>
+              </div>
+            </div>
+            <span class="relevance-badge high">
+              <span class="relevance-dot"></span>
+              9.5
+            </span>
+          </div>
+
+          <p class="card-summary">ファーウェイは自動車向けソリューション「乾崑ADS 3.0」を発表した。高精度マップなしで全国規模の自動運転を実現し、都市部NOAのカバレッジが95%以上に達する。エンドツーエンドの大規模モデルアーキテクチャを採用し、前世代比で応答速度が40%向上した。</p>
+
+          <div class="card-tags">
+            <span class="tag">ADS 3.0</span>
+            <span class="tag">華為</span>
+            <span class="tag">NOA</span>
+            <span class="tag">エンドツーエンド</span>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <div class="card-header">
+            <div class="card-title-wrap">
+              <h3 class="card-title">
+                <a href="https://36kr.com/p/3210987654" target="_blank" rel="noopener noreferrer">
+                  BYD「天神之眼」が量産開始——自社製LiDAR搭載で価格15万元台を実現
+                </a>
+              </h3>
+              <div class="card-meta">
+                <span class="source">36氪</span>
+                <span>2026-03-24</span>
+              </div>
+            </div>
+            <span class="relevance-badge high">
+              <span class="relevance-dot"></span>
+              9.2
+            </span>
+          </div>
+
+          <p class="card-summary">BYDは高度運転支援システム「天神之眼」の量産を開始した。自社開発LiDARを搭載し、搭載モデルの価格は15万元から。高度ADASの価格障壁を大幅に引き下げ、2026年中に100万台への搭載を計画している。</p>
+
+          <div class="card-tags">
+            <span class="tag">天神之眼</span>
+            <span class="tag">比亚迪</span>
+            <span class="tag">LiDAR</span>
+            <span class="tag">量産</span>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <div class="card-header">
+            <div class="card-title-wrap">
+              <h3 class="card-title">
+                <a href="https://www.zhidx.com/p/345678.html" target="_blank" rel="noopener noreferrer">
+                  Momentaが東風日産の2027年モデルに採用——コックピット・ドライビング統合プラットフォームを提供
+                </a>
+              </h3>
+              <div class="card-meta">
+                <span class="source">智驾网</span>
+                <span>2026-03-22</span>
+              </div>
+            </div>
+            <span class="relevance-badge high">
+              <span class="relevance-dot"></span>
+              9.0
+            </span>
+          </div>
+
+          <p class="card-summary">Momentaは東風日産の2027年モデル向け自動運転システムのサプライヤーに選定された。「飛輪」量産プラットフォームをベースとしたコックピット・ドライビング統合ソリューションを提供し、中国市場での日系OEMへの展開が加速する。</p>
+
+          <div class="card-tags">
+            <span class="tag">Momenta</span>
+            <span class="tag">东风日产</span>
+            <span class="tag">量産</span>
+            <span class="tag">定点</span>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <div class="card-header">
+            <div class="card-title-wrap">
+              <h3 class="card-title">
+                <a href="https://auto.gasgoo.com/news/2026/03/23.html" target="_blank" rel="noopener noreferrer">
+                  XPENG「XNGP」が全国主要都市圏をカバー、デイリーユーザー50万人突破
+                </a>
+              </h3>
+              <div class="card-meta">
+                <span class="source">盖世汽车</span>
+                <span>2026-03-23</span>
+              </div>
+            </div>
+            <span class="relevance-badge high">
+              <span class="relevance-dot"></span>
+              8.8
+            </span>
+          </div>
+
+          <p class="card-summary">XPENGは「XNGP」自動運転システムが全国主要都市圏をカバーしたと発表した。デイリーアクティブユーザーは50万人に達し、都市部での車線変更成功率は98.6%に向上。2026年第3四半期にXNGP 4.0をリリース予定。</p>
+
+          <div class="card-tags">
+            <span class="tag">XNGP</span>
+            <span class="tag">小鹏</span>
+            <span class="tag">城市NOA</span>
+            <span class="tag">OTA</span>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <div class="card-header">
+            <div class="card-title-wrap">
+              <h3 class="card-title">
+                <a href="https://www.autohome.com.cn/news/20260322/123.html" target="_blank" rel="noopener noreferrer">
+                  理想汽車がOTA 6.0を配信——エンドツーエンドモデルがルールエンジンを完全代替
+                </a>
+              </h3>
+              <div class="card-meta">
+                <span class="source">汽车之家</span>
+                <span>2026-03-22</span>
+              </div>
+            </div>
+            <span class="relevance-badge high">
+              <span class="relevance-dot"></span>
+              8.5
+            </span>
+          </div>
+
+          <p class="card-summary">理想汽車（Li Auto）はOTA 6.0アップデートを配信し、従来のルールベースエンジンをエンドツーエンドニューラルネットワークモデルへ完全移行した。高速道路ランプ通過率が35%向上し、ユーザー評価は5点満点中4.8を記録している。</p>
+
+          <div class="card-tags">
+            <span class="tag">OTA</span>
+            <span class="tag">理想</span>
+            <span class="tag">エンドツーエンド</span>
+            <span class="tag">Li Auto</span>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <div class="card-header">
+            <div class="card-title-wrap">
+              <h3 class="card-title">
+                <a href="https://36kr.com/p/3198765432" target="_blank" rel="noopener noreferrer">
+                  2026年Q1中国スマートドライビング市場レポート——普及率が40%を突破
+                </a>
+              </h3>
+              <div class="card-meta">
+                <span class="source">36氪</span>
+                <span>2026-03-21</span>
+              </div>
+            </div>
+            <span class="relevance-badge high">
+              <span class="relevance-dot"></span>
+              7.8
+            </span>
+          </div>
+
+          <p class="card-summary">2026年第1四半期、中国の新エネルギー車における高度運転支援システムの普及率が41.3%に達し、前年同期比18ポイント上昇した。ファーウェイ・BYD・XPENGがトップ3を占め、合弁ブランドも国内ADASソリューションの採用を加速させている。</p>
+
+          <div class="card-tags">
+            <span class="tag">市場動向</span>
+            <span class="tag">普及率</span>
+            <span class="tag">2026Q1</span>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <div class="card-header">
+            <div class="card-title-wrap">
+              <h3 class="card-title">
+                <a href="https://auto.gasgoo.com/news/2026/03/20.html" target="_blank" rel="noopener noreferrer">
+                  NVIDIAチップ不足でOEMが国産代替品を模索——地平線・黒芝麻が恩恵
+                </a>
+              </h3>
+              <div class="card-meta">
+                <span class="source">盖世汽车</span>
+                <span>2026-03-20</span>
+              </div>
+            </div>
+            <span class="relevance-badge high">
+              <span class="relevance-dot"></span>
+              7.2
+            </span>
+          </div>
+
+          <p class="card-summary">NVIDIAのThorチップ供給不足により納期が2027年第1四半期にまで延長され、BYDや吉利などの中国OEMが地平線J6・黒芝麻A2000などの国産チップ採用を加速している。半導体のサプライチェーンリスクが中国ADAS市場の競争構造を変えつつある。</p>
+
+          <div class="card-tags">
+            <span class="tag">チップ</span>
+            <span class="tag">地平線</span>
+            <span class="tag">黒芝麻</span>
+            <span class="tag">NVIDIA</span>
+            <span class="tag">サプライチェーン</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="site-footer">
+      <p>
+        <span class="brand">Powered by Momenta ADAS Intelligence</span>
+        &nbsp;·&nbsp;
+        生成日時: 2026年03月27日 12:48 JST
+      </p>
+    </footer>
+
+  </div><!-- /.container -->
+
+</body>
+</html>

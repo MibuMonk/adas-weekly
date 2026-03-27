@@ -30,8 +30,7 @@ htmlcov/
 .env.local
 .env.*.local
 
-# Generated reports — deployed via GitHub Pages, not committed
-output/
+# output/ is intentionally tracked — generated HTML is committed and served via Pages
 
 # macOS
 .DS_Store

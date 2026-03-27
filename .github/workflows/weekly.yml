@@ -1,18 +1,15 @@
-# ADAS Weekly Report — automated build & GitHub Pages deployment
+# ADAS Weekly Report — Deploy to GitHub Pages
 #
-# Required secret (set in repo Settings → Secrets → Actions):
-#   LLM_API_KEY   — Momenta LLM Gateway API key
-#
-# Required GitHub Pages configuration:
-#   Settings → Pages → Source: "GitHub Actions"
+# Generation runs locally on Mac (scripts/run_and_push.sh).
+# This workflow only deploys the committed output/ to GitHub Pages.
 
-name: Weekly ADAS Report
+name: Deploy ADAS Report
 
 on:
-  # Every Friday at 09:00 JST (= 00:00 UTC Friday)
-  schedule:
-    - cron: '0 0 * * 5'
-  # Allow manual runs from the Actions tab
+  push:
+    branches: [main]
+    paths:
+      - 'output/**'
   workflow_dispatch:
 
 permissions:
@@ -20,49 +17,26 @@ permissions:
   pages: write
   id-token: write
 
-# Prevent concurrent deployments; cancel in-progress runs if a new one starts.
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
 
     steps:
-      # ── 1. Checkout ──────────────────────────────────────────────────────────
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ── 2. Python setup ──────────────────────────────────────────────────────
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          cache: "pip"
-
-      # ── 3. Install dependencies ──────────────────────────────────────────────
-      - name: Install package
-        run: pip install -e .
-
-      # ── 4. Generate report ───────────────────────────────────────────────────
-      - name: Generate ADAS weekly report
-        env:
-          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
-          LLM_MODEL: claude-sonnet-4-6
-          LLM_BASE_URL: https://llm-gateway.momenta.works/v1
-        run: python main.py
-
-      # ── 5. Upload artifact for Pages ────────────────────────────────────────
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: output/
 
-      # ── 6. Deploy to GitHub Pages ────────────────────────────────────────────
       - name: Deploy to GitHub Pages
         id: deploy
         uses: actions/deploy-pages@v4
