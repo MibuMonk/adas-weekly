@@ -260,27 +260,21 @@
       grid-column: span 3;
       border-right: 1px solid #999;
       border-bottom: 1px solid #ccc;
-      padding: 14px 16px 16px 0;
-    }
-    .article-t2:nth-of-type(even) {
-      border-right: none;
-      padding-right: 0;
-      padding-left: 16px;
+      padding: 14px 16px 16px;
     }
     .article-t3 {
       grid-column: span 2;
       border-right: 1px solid #999;
       border-bottom: 1px solid #ccc;
-      padding: 12px 14px 14px 0;
+      padding: 12px 14px 14px;
     }
-    .article-t3:last-of-type { border-right: none; }
     .article-t4 {
       grid-column: span 1;
       border-right: 1px solid #999;
       border-bottom: 1px solid #ccc;
-      padding: 10px 10px 12px 0;
+      padding: 10px 10px 12px;
     }
-    .article-t4:last-child { border-right: none; }
+    .no-right { border-right: none; }
 
     .headline-t1 {
       font-size: clamp(1.9rem, 3.2vw, 2.4rem);
@@ -472,7 +466,21 @@
 
       <div class="news-grid">
       {% set video_idx = namespace(value=0) %}
+      {% set t2_count = namespace(value=0) %}
+      {% set t3_count = namespace(value=0) %}
+      {% set t4_count = namespace(value=0) %}
       {% for article in articles %}
+
+        {% if article.tier == 2 %}{% set t2_count.value = t2_count.value + 1 %}{% endif %}
+        {% if article.tier == 3 %}{% set t3_count.value = t3_count.value + 1 %}{% endif %}
+        {% if article.tier == 4 %}{% set t4_count.value = t4_count.value + 1 %}{% endif %}
+
+        {# Last-in-row: no right border needed (nothing to its right in that row) #}
+        {% set no_right = false %}
+        {% if article.tier == 1 %}{% set no_right = true %}{% endif %}
+        {% if article.tier == 2 and t2_count.value % 2 == 0 %}{% set no_right = true %}{% endif %}
+        {% if article.tier == 3 and t3_count.value % 3 == 0 %}{% set no_right = true %}{% endif %}
+        {% if article.tier == 4 and t4_count.value % 6 == 0 %}{% set no_right = true %}{% endif %}
 
         {% if article.credibility_score >= 8 %}
           {% set cred_label = "公式発表" %}
@@ -484,7 +492,7 @@
           {% set cred_label = "情報源未確認" %}
         {% endif %}
 
-        <article class="article-t{{ article.tier }}">
+        <article class="article-t{{ article.tier }}{% if no_right %} no-right{% endif %}">
           {% if article.tier == 1 %}
           <span class="tier-label">◈ 本週の主要記事</span>
           {% endif %}
@@ -508,7 +516,7 @@
           {% endif %}
         </article>
 
-        {% if loop.index % 4 == 0 and video_idx.value < videos|length %}
+        {% if loop.index in (3, 12, 18, 24) and video_idx.value < videos|length %}
         <div class="video-insert">
           <div class="video-insert-embed">
             <iframe src="{{ videos[video_idx.value].embed_url }}"

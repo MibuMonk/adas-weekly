@@ -64,15 +64,15 @@ def generate_report(
 
     normalised.sort(key=_sort_score, reverse=True)
 
-    # Keep only the top 25 articles — rest discarded
-    normalised = normalised[:25]
+    # Keep only the top 24 articles — fills exactly 7 complete grid rows, zero gaps
+    normalised = normalised[:24]
 
     # Assign tiers by position (not score) to guarantee visual balance:
-    #   T1: 1 article  — full-width lead
-    #   T2: 3 articles — half-width features
-    #   T3: 8 articles — third-width secondary
-    #   T4: rest       — brief column items
-    _TIER_CUTS = [1, 4, 12]  # positions where tier changes (exclusive upper bound)
+    #   T1: 1 article  (span 6 × 1 = 1 row)
+    #   T2: 2 articles (span 3 × 2 = 1 row)
+    #   T3: 9 articles (span 2 × 9 = 3 rows)
+    #   T4: 12 articles (span 1 × 12 = 2 rows)
+    _TIER_CUTS = [1, 3, 12]  # positions where tier changes (exclusive upper bound)
     for i, a in enumerate(normalised):
         if i < _TIER_CUTS[0]:
             a["tier"] = 1
