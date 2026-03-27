@@ -75,15 +75,19 @@ async def collect_all(sources_path: str = "data/sources.yaml") -> list[Article]:
 
     results = await asyncio.gather(*tasks, return_exceptions=True)
 
-    seen: dict[str, Article] = {}
+    seen_ids: dict[str, Article] = {}
+    seen_titles: set[str] = set()
     for name, result in zip([t.get_name() for t in tasks], results):
         if isinstance(result, BaseException):
             print(f"[{_timestamp()}] collector: ERROR in {name}: {result}")
             continue
         for article in result:
-            if article.id not in seen:
-                seen[article.id] = article
+            norm_title = article.title.strip().replace(" ", "")
+            if article.id not in seen_ids and norm_title not in seen_titles:
+                seen_ids[article.id] = article
+                if norm_title:
+                    seen_titles.add(norm_title)
 
-    articles = list(seen.values())
+    articles = list(seen_ids.values())
     print(f"[{_timestamp()}] collector: collected {len(articles)} unique article(s)")
     return articles

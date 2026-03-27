@@ -61,7 +61,7 @@ async def fetch_page(
     ) as client:
         response = await client.get(base_url)
         response.raise_for_status()
-        soup = BeautifulSoup(response.text, "html.parser")
+        soup = BeautifulSoup(response.content, "html.parser")
 
         containers = soup.select(article_selector)
         for container in containers:
