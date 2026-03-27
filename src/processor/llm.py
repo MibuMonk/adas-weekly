@@ -9,10 +9,19 @@ from openai import OpenAI
 _BASE_URL = "https://llm-gateway.momenta.works/v1"
 _DEFAULT_MODEL = "claude-sonnet-4-6"
 
+# Module-level client — reused across calls to share connection pool
+_client: OpenAI | None = None
+
 
 def _get_client() -> OpenAI:
-    api_key = os.environ.get("LLM_API_KEY", "")
-    return OpenAI(api_key=api_key, base_url=_BASE_URL)
+    global _client
+    if _client is None:
+        _client = OpenAI(
+            api_key=os.environ.get("LLM_API_KEY", ""),
+            base_url=os.environ.get("LLM_BASE_URL", _BASE_URL),
+            timeout=120.0,  # 2 min per request; default is too aggressive in CI
+        )
+    return _client
 
 
 async def llm_call(system: str, user: str, max_tokens: int = 1000) -> str:
