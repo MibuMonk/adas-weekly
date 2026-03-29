@@ -62,6 +62,56 @@ async def generate_executive_summary(
     return bullets
 
 
+async def generate_morning_brief(
+    articles: list,
+    llm_call_fn: Callable[..., Awaitable[str]],
+) -> str:
+    """Return a 3-5 sentence spoken Japanese brief suitable for a morning car commute.
+
+    Args:
+        articles: Up to 10 ProcessedArticle dicts (or objects with __dict__),
+                  already filtered to the most relevant items.
+        llm_call_fn: The ``llm_call`` coroutine from ``src.processor.llm``.
+                     Signature: ``async llm_call(messages, ...) -> str``
+
+    Returns:
+        A single Japanese string of 3-5 sentences (~150 characters).
+    """
+    dicts = [a if isinstance(a, dict) else a.__dict__ for a in articles]
+
+    digest_lines = []
+    for i, a in enumerate(dicts, 1):
+        title = a.get("title_ja") or a.get("title", "")
+        summary = a.get("summary_ja") or a.get("summary_zh", "")
+        score = a.get("relevance_score", 0)
+        digest_lines.append(f"{i}. [{score:.1f}] {title} — {summary}")
+
+    digest = "\n".join(digest_lines)
+
+    system_prompt = (
+        "あなたは中国の自動運転（ADAS）業界を専門とするアナリストです。"
+        "日本の自動車メーカー幹部向けに、朝の車内で聴ける短い音声ブリーフィングを執筆します。"
+    )
+
+    user_prompt = f"""以下は今週の中国ADAS関連記事（関連スコア順）です。
+
+{digest}
+
+これらの記事を踏まえ、朝刊ブリーフィングを**日本語で3〜5文**書いてください。
+
+要件:
+- 読み上げられる文体（話し言葉に近い、でも品格がある）
+- 各文に具体的な企業名・数値・事実を最低1つ含める
+- 編集的な判断を示す（「〜にとって」「〜は急務」「〜を迫られている」などの表現）
+- 最後の文は今後の動向や展望で締める
+- 全体で150〜200文字程度
+- 箇条書き・記号・改行なし。連続した文章として出力する
+- 余分なテキスト不要。ブリーフィング本文のみ出力する"""
+
+    raw = await llm_call_fn(system=system_prompt, user=user_prompt)
+    return raw.strip()
+
+
 def _parse_bullets(raw: str) -> list[str]:
     """Extract a 3-element list from the LLM response, with fallback."""
     raw = raw.strip()

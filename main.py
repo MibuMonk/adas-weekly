@@ -36,8 +36,9 @@ async def main() -> None:
 
     # 5. Generate executive summary from top 10 articles
     from src.processor.llm import llm_call
-    from src.generator.executive_summary import generate_executive_summary
+    from src.generator.executive_summary import generate_executive_summary, generate_morning_brief
     summary = await generate_executive_summary(processed[:10], llm_call)
+    brief = await generate_morning_brief(processed[:10], llm_call)
 
     # 6. Render HTML report
     from src.generator.report import generate_report
@@ -49,6 +50,7 @@ async def main() -> None:
         videos=[v.__dict__ for v in processed_videos],
         week_label=week_label,
         executive_summary=summary,
+        morning_brief=brief,
         output_path=output_path,
     )
     print(f"Report generated: {result}")

@@ -30,6 +30,7 @@ def generate_report(
     executive_summary: list,
     output_path: str,
     videos: list = None,
+    morning_brief: str = "",
 ) -> str:
     """Render the weekly HTML report and write it to *output_path*.
 
@@ -41,6 +42,7 @@ def generate_report(
         executive_summary: Exactly 3 Japanese bullet strings.
         output_path: Destination path, e.g. "output/2026-W13/index.html".
         videos: Optional list of VideoItem dicts (or objects with __dict__).
+        morning_brief: Optional single-string spoken brief for the 朝刊ブリーフィング section.
 
     Returns:
         The resolved absolute path of the written report file.
@@ -86,6 +88,7 @@ def generate_report(
         articles=normalised,
         total_articles=len(normalised),
         executive_summary=executive_summary,
+        morning_brief=morning_brief,
         videos=normalised_videos,
     )
 

@@ -389,6 +389,33 @@
       letter-spacing: 0.04em;
     }
 
+    /* ════════════════════════════════
+       MORNING BRIEF
+    ════════════════════════════════ */
+    .morning-brief {
+      background: #1a1a1a;
+      color: #f4f0e8;
+      padding: 20px 28px 18px;
+      margin-bottom: 22px;
+    }
+
+    .morning-brief-kicker {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #a0a0a0;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .morning-brief-text {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #f4f0e8;
+      font-family: "Noto Serif JP", Georgia, "Times New Roman", serif;
+    }
+
     /* ── Masthead responsive ── */
     @media (max-width: 640px) {
       .masthead {
@@ -435,6 +462,18 @@
     <div class="dateline">
       「{{ week_label }}」&nbsp;&nbsp;·&nbsp;&nbsp;本紙特別版&nbsp;&nbsp;·&nbsp;&nbsp;Powered by Momenta Intelligence
     </div>
+
+    {% if morning_brief %}
+    <!-- ══════════════════════════════
+         MORNING BRIEF
+    ══════════════════════════════ -->
+    <section aria-labelledby="morning-brief-heading">
+      <div class="morning-brief">
+        <span class="morning-brief-kicker" id="morning-brief-heading">▌ 朝刊ブリーフィング</span>
+        <p class="morning-brief-text">{{ morning_brief }}</p>
+      </div>
+    </section>
+    {% endif %}
 
     <!-- ══════════════════════════════
          EXECUTIVE SUMMARY
